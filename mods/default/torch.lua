@@ -124,20 +124,3 @@ minetest.register_node("default:torch_ceiling", {
 	on_flood = on_flood,
 	on_rotate = false
 })
-
-minetest.register_lbm({
-	name = "default:3dtorch",
-	nodenames = {"default:torch", "torches:floor", "torches:wall"},
-	action = function(pos, node)
-		if node.param2 == 0 then
-			minetest.set_node(pos, {name = "default:torch_ceiling",
-				param2 = node.param2})
-		elseif node.param2 == 1 then
-			minetest.set_node(pos, {name = "default:torch",
-				param2 = node.param2})
-		else
-			minetest.set_node(pos, {name = "default:torch_wall",
-				param2 = node.param2})
-		end
-	end
-})
