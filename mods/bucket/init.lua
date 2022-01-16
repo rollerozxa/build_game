@@ -9,14 +9,6 @@ minetest.register_alias("bucket", "bucket:bucket_empty")
 minetest.register_alias("bucket_water", "bucket:bucket_water")
 minetest.register_alias("bucket_lava", "bucket:bucket_lava")
 
-minetest.register_craft({
-	output = "bucket:bucket_empty 1",
-	recipe = {
-		{"default:steel_ingot", "", "default:steel_ingot"},
-		{"", "default:steel_ingot", ""},
-	}
-})
-
 bucket = {}
 bucket.liquids = {}
 
@@ -217,13 +209,6 @@ bucket.register_liquid(
 	S("Lava Bucket"),
 	{tool = 1}
 )
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "bucket:bucket_lava",
-	burntime = 60,
-	replacements = {{"bucket:bucket_lava", "bucket:bucket_empty"}},
-})
 
 -- Register buckets as dungeon loot
 if minetest.global_exists("dungeon_loot") then

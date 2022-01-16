@@ -345,12 +345,6 @@ function doors.register(name, def)
 	})
 	def.inventory_image = nil
 
-	if def.recipe then
-		minetest.register_craft({
-			output = name,
-			recipe = def.recipe,
-		})
-	end
 	def.recipe = nil
 
 	if not def.sounds then
@@ -740,23 +734,6 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	groups = {cracky = 1, level = 2, door = 1},
 })
 
-minetest.register_craft({
-	output = "doors:trapdoor 2",
-	recipe = {
-		{"group:wood", "group:wood", "group:wood"},
-		{"group:wood", "group:wood", "group:wood"},
-		{"", "", ""},
-	}
-})
-
-minetest.register_craft({
-	output = "doors:trapdoor_steel",
-	recipe = {
-		{"default:steel_ingot", "default:steel_ingot"},
-		{"default:steel_ingot", "default:steel_ingot"},
-	}
-})
-
 
 ----fence gate----
 local fence_collision_extra = minetest.settings:get_bool("enable_fence_tall") and 3/8 or 0
@@ -825,14 +802,6 @@ function doors.register_fencegate(name, def)
 
 	minetest.register_node(":" .. name .. "_closed", fence_closed)
 	minetest.register_node(":" .. name .. "_open", fence_open)
-
-	minetest.register_craft({
-		output = name .. "_closed",
-		recipe = {
-			{"group:stick", def.material, "group:stick"},
-			{"group:stick", def.material, "group:stick"}
-		}
-	})
 end
 
 doors.register_fencegate("doors:gate_wood", {
@@ -870,47 +839,3 @@ doors.register_fencegate("doors:gate_aspen_wood", {
 	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3}
 })
 
-
-----fuels----
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:trapdoor",
-	burntime = 7,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:door_wood",
-	burntime = 14,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:gate_wood_closed",
-	burntime = 7,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:gate_acacia_wood_closed",
-	burntime = 8,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:gate_junglewood_closed",
-	burntime = 9,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:gate_pine_wood_closed",
-	burntime = 6,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "doors:gate_aspen_wood_closed",
-	burntime = 5,
-})

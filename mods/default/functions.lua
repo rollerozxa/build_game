@@ -305,14 +305,6 @@ end
 local fence_collision_extra = minetest.settings:get_bool("enable_fence_tall") and 3/8 or 0
 
 function default.register_fence(name, def)
-	minetest.register_craft({
-		output = name .. " 4",
-		recipe = {
-			{ def.material, 'group:stick', def.material },
-			{ def.material, 'group:stick', def.material },
-		}
-	})
-
 	local fence_texture = "default_fence_overlay.png^" .. def.texture ..
 			"^default_fence_overlay.png^[makealpha:255,126,126"
 	-- Allow almost everything to be overridden
@@ -372,15 +364,6 @@ end
 --
 
 function default.register_fence_rail(name, def)
-	minetest.register_craft({
-		output = name .. " 16",
-		recipe = {
-			{ def.material, def.material },
-			{ "", ""},
-			{ def.material, def.material },
-		}
-	})
-
 	local fence_rail_texture = "default_fence_rail_overlay.png^" .. def.texture ..
 			"^default_fence_rail_overlay.png^[makealpha:255,126,126"
 	-- Allow almost everything to be overridden
@@ -440,15 +423,6 @@ end
 --
 
 function default.register_mesepost(name, def)
-	minetest.register_craft({
-		output = name .. " 4",
-		recipe = {
-			{'', 'default:glass', ''},
-			{'default:mese_crystal', 'default:mese_crystal', 'default:mese_crystal'},
-			{'', def.material, ''},
-		}
-	})
-
 	local post_texture = def.texture .. "^default_mese_post_light_side.png^[makealpha:0,0,0"
 	local post_texture_dark = def.texture .. "^default_mese_post_light_side_dark.png^[makealpha:0,0,0"
 	-- Allow almost everything to be overridden
@@ -682,12 +656,6 @@ minetest.register_abm({
 --
 
 function default.register_craft_metadata_copy(ingredient, result)
-	minetest.register_craft({
-		type = "shapeless",
-		output = result,
-		recipe = {ingredient, result}
-	})
-
 	minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
 		if itemstack:get_name() ~= result then
 			return

@@ -156,11 +156,6 @@ function xpanes.register_pane(name, def)
 		},
 		connects_to = {"group:pane", "group:stone", "group:glass", "group:wood", "group:tree"},
 	})
-
-	minetest.register_craft({
-		output = "xpanes:" .. name .. "_flat 16",
-		recipe = def.recipe
-	})
 end
 
 xpanes.register_pane("pane", {
@@ -249,13 +244,5 @@ if minetest.get_modpath("doors") then
 		sound_close = "xpanes_steel_bar_door_close",
 		gain_open = 0.15,
 		gain_close = 0.13,
-	})
-
-	minetest.register_craft({
-		output = "xpanes:trapdoor_steel_bar",
-		recipe = {
-			{"xpanes:bar_flat", "xpanes:bar_flat"},
-			{"xpanes:bar_flat", "xpanes:bar_flat"},
-		}
 	})
 end

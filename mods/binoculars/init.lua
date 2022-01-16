@@ -59,15 +59,3 @@ minetest.register_craftitem("binoculars:binoculars", {
 		binoculars.update_player_property(user)
 	end,
 })
-
-
--- Crafting
-
-minetest.register_craft({
-	output = "binoculars:binoculars",
-	recipe = {
-		{"default:obsidian_glass", "", "default:obsidian_glass"},
-		{"default:bronze_ingot", "default:bronze_ingot", "default:bronze_ingot"},
-		{"default:obsidian_glass", "", "default:obsidian_glass"},
-	}
-})

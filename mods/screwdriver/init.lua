@@ -163,14 +163,6 @@ minetest.register_tool("screwdriver:screwdriver", {
 })
 
 
-minetest.register_craft({
-	output = "screwdriver:screwdriver",
-	recipe = {
-		{"default:steel_ingot"},
-		{"group:stick"}
-	}
-})
-
 minetest.register_alias("screwdriver:screwdriver1", "screwdriver:screwdriver")
 minetest.register_alias("screwdriver:screwdriver2", "screwdriver:screwdriver")
 minetest.register_alias("screwdriver:screwdriver3", "screwdriver:screwdriver")

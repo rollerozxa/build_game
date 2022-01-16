@@ -176,9 +176,4 @@ function beds.register_bed(name, def)
 	})
 
 	minetest.register_alias(name, name .. "_bottom")
-
-	minetest.register_craft({
-		output = name,
-		recipe = def.recipe
-	})
 end
