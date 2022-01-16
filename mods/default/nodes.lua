@@ -2903,31 +2903,17 @@ minetest.register_node("default:cloud", {
 -- register trees for leafdecay
 --
 
-if minetest.get_mapgen_setting("mg_name") == "v6" then
-	default.register_leafdecay({
-		trunks = {"default:tree"},
-		leaves = {"default:apple", "default:leaves"},
-		radius = 2,
-	})
+default.register_leafdecay({
+	trunks = {"default:tree"},
+	leaves = {"default:apple", "default:leaves"},
+	radius = 3,
+})
 
-	default.register_leafdecay({
-		trunks = {"default:jungletree"},
-		leaves = {"default:jungleleaves"},
-		radius = 3,
-	})
-else
-	default.register_leafdecay({
-		trunks = {"default:tree"},
-		leaves = {"default:apple", "default:leaves"},
-		radius = 3,
-	})
-
-	default.register_leafdecay({
-		trunks = {"default:jungletree"},
-		leaves = {"default:jungleleaves"},
-		radius = 2,
-	})
-end
+default.register_leafdecay({
+	trunks = {"default:jungletree"},
+	leaves = {"default:jungleleaves"},
+	radius = 2,
+})
 
 default.register_leafdecay({
 	trunks = {"default:pine_tree"},
