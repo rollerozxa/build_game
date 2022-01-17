@@ -2319,4 +2319,13 @@ default.register_leafdecay({
 	radius = 3,
 })
 
+-- vessels
+minetest.register_node("default:vessels_shelf", {
+	description = S("Vessels Shelf"),
+	tiles = {"default_wood.png", "default_wood.png", "default_wood.png",
+		"default_wood.png", "vessels_shelf.png", "vessels_shelf.png"},
+	paramtype2 = "facedir",
+	is_ground_content = false,
+	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3},
+	sounds = default.node_sound_wood_defaults(),
 })
