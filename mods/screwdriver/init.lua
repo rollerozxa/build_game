@@ -161,9 +161,3 @@ minetest.register_tool("screwdriver:screwdriver", {
 		return itemstack
 	end,
 })
-
-
-minetest.register_alias("screwdriver:screwdriver1", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver2", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver3", "screwdriver:screwdriver")
-minetest.register_alias("screwdriver:screwdriver4", "screwdriver:screwdriver")

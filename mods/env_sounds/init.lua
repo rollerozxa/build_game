@@ -21,11 +21,8 @@ local allsounds = {
 	},
 }
 
-if minetest.settings:get_bool("river_source_sounds") then
-	table.insert(allsounds["env_sounds_water"].trigger,
-		"default:river_water_source")
-end
-
+table.insert(allsounds["env_sounds_water"].trigger,
+	"default:river_water_source")
 
 -- Cache the union of all trigger nodes
 

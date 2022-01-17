@@ -46,12 +46,7 @@ beds.register_bed("beds:fancy_bed", {
 			{-0.4375, -0.3125, -0.5, 0.4375, -0.0625, 0.4375},
 		}
 	},
-	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.06, 1.5},
-	recipe = {
-		{"", "", "group:stick"},
-		{"wool:white", "wool:white", "wool:white"},
-		{"group:wood", "group:wood", "group:wood"},
-	},
+	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.06, 1.5}
 })
 
 -- Simple shaped bed
@@ -82,15 +77,5 @@ beds.register_bed("beds:bed", {
 		bottom = {-0.5, -0.5, -0.5, 0.5, 0.0625, 0.5},
 		top = {-0.5, -0.5, -0.5, 0.5, 0.0625, 0.5},
 	},
-	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.0625, 1.5},
-	recipe = {
-		{"wool:white", "wool:white", "wool:white"},
-		{"group:wood", "group:wood", "group:wood"}
-	},
+	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.0625, 1.5}
 })
-
--- Aliases for PilzAdam's beds mod
-
-minetest.register_alias("beds:bed_bottom_red", "beds:bed_bottom")
-minetest.register_alias("beds:bed_top_red", "beds:bed_top")
-

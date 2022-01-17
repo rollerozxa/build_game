@@ -165,10 +165,6 @@ xpanes.register_pane("pane", {
 	wield_image = "default_glass.png",
 	sounds = default.node_sound_glass_defaults(),
 	groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3},
-	recipe = {
-		{"default:glass", "default:glass", "default:glass"},
-		{"default:glass", "default:glass", "default:glass"}
-	}
 })
 
 xpanes.register_pane("obsidian_pane", {
@@ -178,10 +174,6 @@ xpanes.register_pane("obsidian_pane", {
 	wield_image = "default_obsidian_glass.png",
 	sounds = default.node_sound_glass_defaults(),
 	groups = {snappy=2, cracky=3},
-	recipe = {
-		{"default:obsidian_glass", "default:obsidian_glass", "default:obsidian_glass"},
-		{"default:obsidian_glass", "default:obsidian_glass", "default:obsidian_glass"}
-	}
 })
 
 xpanes.register_pane("bar", {
@@ -191,10 +183,6 @@ xpanes.register_pane("bar", {
 	wield_image = "xpanes_bar.png",
 	groups = {cracky=2},
 	sounds = default.node_sound_metal_defaults(),
-	recipe = {
-		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
-		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"}
-	}
 })
 
 -- Register steel bar doors and trapdoors
@@ -212,11 +200,6 @@ if minetest.get_modpath("doors") then
 		sound_close = "xpanes_steel_bar_door_close",
 		gain_open = 0.15,
 		gain_close = 0.13,
-		recipe = {
-			{"xpanes:bar_flat", "xpanes:bar_flat"},
-			{"xpanes:bar_flat", "xpanes:bar_flat"},
-			{"xpanes:bar_flat", "xpanes:bar_flat"},
-		},
 	})
 
 	doors.register_trapdoor("xpanes:trapdoor_steel_bar", {

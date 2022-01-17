@@ -310,8 +310,6 @@ function doors.register(name, def)
 	})
 	def.inventory_image = nil
 
-	def.recipe = nil
-
 	if not def.sounds then
 		def.sounds = default.node_sound_wood_defaults()
 	end
@@ -354,42 +352,11 @@ function doors.register(name, def)
 		return false
 	end
 
-	if def.protected then
-		def.can_dig = can_dig_door
-		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this locked door."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked door"), owner
-		end
-		def.node_dig_prediction = ""
-	else
-		def.on_blast = function(pos, intensity)
-			minetest.remove_node(pos)
-			-- hidden node doesn't get blasted away.
-			minetest.remove_node({x = pos.x, y = pos.y + 1, z = pos.z})
-			return {name}
-		end
+	def.on_blast = function(pos, intensity)
+		minetest.remove_node(pos)
+		-- hidden node doesn't get blasted away.
+		minetest.remove_node({x = pos.x, y = pos.y + 1, z = pos.z})
+		return {name}
 	end
 
 	def.on_destruct = function(pos)
@@ -426,94 +393,49 @@ function doors.register(name, def)
 end
 
 doors.register("door_wood", {
-		tiles = {{ name = "doors_door_wood.png", backface_culling = true }},
-		description = S("Wooden Door"),
-		inventory_image = "doors_item_wood.png",
-		groups = {node = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-		gain_open = 0.06,
-		gain_close = 0.13,
-		recipe = {
-			{"group:wood", "group:wood"},
-			{"group:wood", "group:wood"},
-			{"group:wood", "group:wood"},
-		}
+	tiles = {{ name = "doors_door_wood.png", backface_culling = true }},
+	description = S("Wooden Door"),
+	inventory_image = "doors_item_wood.png",
+	groups = {node = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+	gain_open = 0.06,
+	gain_close = 0.13,
 })
 
 doors.register("door_steel", {
-		tiles = {{name = "doors_door_steel.png", backface_culling = true}},
-		description = S("Steel Door"),
-		inventory_image = "doors_item_steel.png",
-		protected = true,
-		groups = {node = 1, cracky = 1, level = 2},
-		sounds = default.node_sound_metal_defaults(),
-		sound_open = "doors_steel_door_open",
-		sound_close = "doors_steel_door_close",
-		gain_open = 0.2,
-		gain_close = 0.2,
-		recipe = {
-			{"default:steel_ingot", "default:steel_ingot"},
-			{"default:steel_ingot", "default:steel_ingot"},
-			{"default:steel_ingot", "default:steel_ingot"},
-		}
+	tiles = {{name = "doors_door_steel.png", backface_culling = true}},
+	description = S("Steel Door"),
+	inventory_image = "doors_item_steel.png",
+	groups = {node = 1, cracky = 1, level = 2},
+	sounds = default.node_sound_metal_defaults(),
+	sound_open = "doors_steel_door_open",
+	sound_close = "doors_steel_door_close",
+	gain_open = 0.2,
+	gain_close = 0.2,
 })
 
 doors.register("door_glass", {
-		tiles = {"doors_door_glass.png"},
-		description = S("Glass Door"),
-		inventory_image = "doors_item_glass.png",
-		groups = {node = 1, cracky=3, oddly_breakable_by_hand=3},
-		sounds = default.node_sound_glass_defaults(),
-		sound_open = "doors_glass_door_open",
-		sound_close = "doors_glass_door_close",
-		gain_open = 0.3,
-		gain_close = 0.25,
-		recipe = {
-			{"default:glass", "default:glass"},
-			{"default:glass", "default:glass"},
-			{"default:glass", "default:glass"},
-		}
+	tiles = {"doors_door_glass.png"},
+	description = S("Glass Door"),
+	inventory_image = "doors_item_glass.png",
+	groups = {node = 1, cracky=3, oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+	sound_open = "doors_glass_door_open",
+	sound_close = "doors_glass_door_close",
+	gain_open = 0.3,
+	gain_close = 0.25,
 })
 
 doors.register("door_obsidian_glass", {
-		tiles = {"doors_door_obsidian_glass.png"},
-		description = S("Obsidian Glass Door"),
-		inventory_image = "doors_item_obsidian_glass.png",
-		groups = {node = 1, cracky=3},
-		sounds = default.node_sound_glass_defaults(),
-		sound_open = "doors_glass_door_open",
-		sound_close = "doors_glass_door_close",
-		gain_open = 0.3,
-		gain_close = 0.25,
-		recipe = {
-			{"default:obsidian_glass", "default:obsidian_glass"},
-			{"default:obsidian_glass", "default:obsidian_glass"},
-			{"default:obsidian_glass", "default:obsidian_glass"},
-		},
+	tiles = {"doors_door_obsidian_glass.png"},
+	description = S("Obsidian Glass Door"),
+	inventory_image = "doors_item_obsidian_glass.png",
+	groups = {node = 1, cracky=3},
+	sounds = default.node_sound_glass_defaults(),
+	sound_open = "doors_glass_door_open",
+	sound_close = "doors_glass_door_close",
+	gain_open = 0.3,
+	gain_close = 0.25,
 })
-
--- Capture mods using the old API as best as possible.
-function doors.register_door(name, def)
-	if def.only_placer_can_open then
-		def.protected = true
-	end
-	def.only_placer_can_open = nil
-
-	local i = name:find(":")
-	local modname = name:sub(1, i - 1)
-	if not def.tiles then
-		if def.protected then
-			def.tiles = {{name = "doors_door_steel.png", backface_culling = true}}
-		else
-			def.tiles = {{name = "doors_door_wood.png", backface_culling = true}}
-		end
-		minetest.log("warning", modname .. " registered door \"" .. name .. "\" " ..
-				"using deprecated API method \"doors.register_door()\" but " ..
-				"did not provide the \"tiles\" parameter. A fallback tiledef " ..
-				"will be used instead.")
-	end
-
-	doors.register(name, def)
-end
 
 ----trapdoor----
 
@@ -561,49 +483,9 @@ function doors.register_trapdoor(name, def)
 	def.is_ground_content = false
 	def.use_texture_alpha = def.use_texture_alpha or "clip"
 
-	if def.protected then
-		def.can_dig = can_dig_door
-		def.after_place_node = function(pos, placer, itemstack, pointed_thing)
-			local pn = placer:get_player_name()
-			local meta = minetest.get_meta(pos)
-			meta:set_string("owner", pn)
-			meta:set_string("infotext", def.description .. "\n" .. S("Owned by @1", pn))
-
-			return minetest.is_creative_enabled(pn)
-		end
-
-		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this trapdoor."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked trapdoor"), owner
-		end
-		def.node_dig_prediction = ""
-	else
-		def.on_blast = function(pos, intensity)
-			minetest.remove_node(pos)
-			return {name}
-		end
+	def.on_blast = function(pos, intensity)
+		minetest.remove_node(pos)
+		return {name}
 	end
 
 	if not def.sounds then
@@ -690,7 +572,6 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	wield_image = "doors_trapdoor_steel.png",
 	tile_front = "doors_trapdoor_steel.png",
 	tile_side = "doors_trapdoor_steel_side.png",
-	protected = true,
 	sounds = default.node_sound_metal_defaults(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
@@ -701,7 +582,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 
 
 ----fence gate----
-local fence_collision_extra = minetest.settings:get_bool("enable_fence_tall") and 3/8 or 0
+local fence_collision_extra = 0
 
 function doors.register_fencegate(name, def)
 	local fence = {

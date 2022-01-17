@@ -158,19 +158,17 @@ default.cool_lava = function(pos, node)
 		{pos = pos, max_hear_distance = 16, gain = 0.25}, true)
 end
 
-if minetest.settings:get_bool("enable_lavacooling") ~= false then
-	minetest.register_abm({
-		label = "Lava cooling",
-		nodenames = {"default:lava_source", "default:lava_flowing"},
-		neighbors = {"group:cools_lava", "group:water"},
-		interval = 2,
-		chance = 2,
-		catch_up = false,
-		action = function(...)
-			default.cool_lava(...)
-		end,
-	})
-end
+minetest.register_abm({
+	label = "Lava cooling",
+	nodenames = {"default:lava_source", "default:lava_flowing"},
+	neighbors = {"group:cools_lava", "group:water"},
+	interval = 2,
+	chance = 2,
+	catch_up = false,
+	action = function(...)
+		default.cool_lava(...)
+	end,
+})
 
 
 --
@@ -190,100 +188,6 @@ function default.get_inventory_drops(pos, inventory, drops)
 end
 
 
---
--- Papyrus and cactus growing
---
-
--- Wrapping the functions in ABM action is necessary to make overriding them possible
-
-function default.grow_cactus(pos, node)
-	if node.param2 >= 4 then
-		return
-	end
-	pos.y = pos.y - 1
-	if minetest.get_item_group(minetest.get_node(pos).name, "sand") == 0 then
-		return
-	end
-	pos.y = pos.y + 1
-	local height = 0
-	while node.name == "default:cactus" and height < 4 do
-		height = height + 1
-		pos.y = pos.y + 1
-		node = minetest.get_node(pos)
-	end
-	if height == 4 or node.name ~= "air" then
-		return
-	end
-	if minetest.get_node_light(pos) < 13 then
-		return
-	end
-	minetest.set_node(pos, {name = "default:cactus"})
-	return true
-end
-
-function default.grow_papyrus(pos, node)
-	pos.y = pos.y - 1
-	local name = minetest.get_node(pos).name
-	if name ~= "default:dirt" and
-			name ~= "default:dirt_with_grass" and
-			name ~= "default:dirt_with_dry_grass" and
-			name ~= "default:dirt_with_rainforest_litter" and
-			name ~= "default:dry_dirt" and
-			name ~= "default:dry_dirt_with_dry_grass" then
-		return
-	end
-	if not minetest.find_node_near(pos, 3, {"group:water"}) then
-		return
-	end
-	pos.y = pos.y + 1
-	local height = 0
-	while node.name == "default:papyrus" and height < 4 do
-		height = height + 1
-		pos.y = pos.y + 1
-		node = minetest.get_node(pos)
-	end
-	if height == 4 or node.name ~= "air" then
-		return
-	end
-	if minetest.get_node_light(pos) < 13 then
-		return
-	end
-	minetest.set_node(pos, {name = "default:papyrus"})
-	return true
-end
-
-minetest.register_abm({
-	label = "Grow cactus",
-	nodenames = {"default:cactus"},
-	neighbors = {"group:sand"},
-	interval = 12,
-	chance = 83,
-	action = function(...)
-		default.grow_cactus(...)
-	end
-})
-
-minetest.register_abm({
-	label = "Grow papyrus",
-	nodenames = {"default:papyrus"},
-	-- Grows on the dirt and surface dirt nodes of the biomes papyrus appears in,
-	-- including the old savanna nodes.
-	-- 'default:dirt_with_grass' is here only because it was allowed before.
-	neighbors = {
-		"default:dirt",
-		"default:dirt_with_grass",
-		"default:dirt_with_dry_grass",
-		"default:dirt_with_rainforest_litter",
-		"default:dry_dirt",
-		"default:dry_dirt_with_dry_grass",
-	},
-	interval = 14,
-	chance = 71,
-	action = function(...)
-		default.grow_papyrus(...)
-	end
-})
-
 
 --
 -- Dig upwards
@@ -302,7 +206,7 @@ end
 --
 -- Fence registration helper
 --
-local fence_collision_extra = minetest.settings:get_bool("enable_fence_tall") and 3/8 or 0
+local fence_collision_extra = 0
 
 function default.register_fence(name, def)
 	local fence_texture = "default_fence_overlay.png^" .. def.texture ..

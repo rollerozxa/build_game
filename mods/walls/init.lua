@@ -2,7 +2,7 @@
 
 walls = {}
 
-local fence_collision_extra = minetest.settings:get_bool("enable_fence_tall") and 3/8 or 0
+local fence_collision_extra = 0
 
 -- Load support for MT game translation.
 local S = minetest.get_translator("walls")

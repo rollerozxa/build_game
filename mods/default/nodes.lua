@@ -235,11 +235,6 @@ default:mese_post_light_junglewood
 default:mese_post_light_pine_wood
 default:mese_post_light_aspen_wood
 
-Misc
-----
-
-default:cloud
-
 --]]
 
 -- Required wrapper to allow customization of default.after_place_leaves
@@ -261,7 +256,6 @@ minetest.register_node("default:stone", {
 	tiles = {"default_stone.png"},
 	groups = {cracky = 3, stone = 1},
 	drop = "default:cobble",
-	legacy_mineral = true,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -305,7 +299,6 @@ minetest.register_node("default:desert_stone", {
 	tiles = {"default_desert_stone.png"},
 	groups = {cracky = 3, stone = 1},
 	drop = "default:desert_cobble",
-	legacy_mineral = true,
 	sounds = default.node_sound_stone_defaults(),
 })
 

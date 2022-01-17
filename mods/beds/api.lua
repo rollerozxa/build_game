@@ -17,8 +17,6 @@ local function destruct_bed(pos, n)
 		reverse = not reverse
 		minetest.remove_node(other)
 		minetest.check_for_falling(other)
-		beds.remove_spawns_at(pos)
-		beds.remove_spawns_at(other)
 	else
 		reverse = not reverse
 	end
@@ -106,11 +104,6 @@ function beds.register_bed(name, def)
 			destruct_bed(pos, 1)
 		end,
 
-		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			beds.on_rightclick(pos, clicker)
-			return itemstack
-		end,
-
 		on_rotate = function(pos, node, user, _, new_param2)
 			local dir = minetest.facedir_to_dir(node.param2)
 			local p = vector.add(pos, dir)
@@ -142,10 +135,7 @@ function beds.register_bed(name, def)
 			minetest.set_node(pos, node)
 			minetest.set_node(newp, {name = name .. "_top", param2 = new_param2})
 			return true
-		end,
-		can_dig = function(pos, player)
-			return beds.can_dig(pos)
-		end,
+		end
 	})
 
 	minetest.register_node(name .. "_top", {
@@ -166,13 +156,7 @@ function beds.register_bed(name, def)
 		},
 		on_destruct = function(pos)
 			destruct_bed(pos, 2)
-		end,
-		can_dig = function(pos, player)
-			local node = minetest.get_node(pos)
-			local dir = minetest.facedir_to_dir(node.param2)
-			local p = vector.add(pos, dir)
-			return beds.can_dig(p)
-		end,
+		end
 	})
 
 	minetest.register_alias(name, name .. "_bottom")
