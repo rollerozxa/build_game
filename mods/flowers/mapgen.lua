@@ -41,30 +41,6 @@ local function register_mushroom(mushroom_name)
 	})
 end
 
-local function register_waterlily()
-	minetest.register_decoration({
-		name = "default:waterlily",
-		deco_type = "simple",
-		place_on = {"default:dirt"},
-		sidelen = 16,
-		noise_params = {
-			offset = -0.12,
-			scale = 0.3,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 33,
-			octaves = 3,
-			persist = 0.7
-		},
-		biomes = {"savanna_shore", "deciduous_forest_shore"},
-		y_max = 0,
-		y_min = 0,
-		decoration = "flowers:waterlily_waving",
-		param2 = 0,
-		param2_max = 3,
-		place_offset_y = 1,
-	})
-end
-
 function flowers.register_decorations()
 	register_flower(436,     "rose")
 	register_flower(19822,   "tulip")
@@ -77,8 +53,6 @@ function flowers.register_decorations()
 
 	register_mushroom("mushroom_brown")
 	register_mushroom("mushroom_red")
-
-	register_waterlily()
 end
 
 flowers.register_decorations()

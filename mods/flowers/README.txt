@@ -19,10 +19,6 @@ RHRhino (CC BY-SA 3.0):
 Gambit (CC BY-SA 3.0):
   flowers_mushroom_brown.png
   flowers_mushroom_red.png
-  flowers_waterlily.png
-
-yyt16384 (CC BY-SA 3.0):
-  flowers_waterlily_bottom.png -- Derived from Gambit's texture
 
 paramat (CC BY-SA 3.0):
   flowers_dandelion_yellow.png -- Derived from RHRhino's texture

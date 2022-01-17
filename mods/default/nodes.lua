@@ -423,8 +423,7 @@ minetest.register_node("default:dirt", {
 minetest.register_node("default:dirt_with_grass", {
 	description = S("Dirt with Grass"),
 	tiles = {"default_grass.png", "default_dirt.png",
-		{name = "default_dirt.png^default_grass_side.png",
-			tileable_vertical = false}},
+		"default_dirt.png^default_grass_side.png"},
 	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
@@ -435,8 +434,7 @@ minetest.register_node("default:dirt_with_grass", {
 minetest.register_node("default:dirt_with_grass_footsteps", {
 	description = S("Dirt with Grass and Footsteps"),
 	tiles = {"default_grass.png^default_footprint.png", "default_dirt.png",
-		{name = "default_dirt.png^default_grass_side.png",
-			tileable_vertical = false}},
+		"default_dirt.png^default_grass_side.png"},
 	groups = {crumbly = 3, soil = 1, not_in_creative_inventory = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
@@ -446,10 +444,11 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 
 minetest.register_node("default:dirt_with_dry_grass", {
 	description = S("Dirt with Savanna Grass"),
-	tiles = {"default_dry_grass.png",
+	tiles = {
+		"default_dry_grass.png",
 		"default_dirt.png",
-		{name = "default_dirt.png^default_dry_grass_side.png",
-			tileable_vertical = false}},
+		"default_dirt.png^default_dry_grass_side.png"
+	},
 	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
@@ -460,8 +459,7 @@ minetest.register_node("default:dirt_with_dry_grass", {
 minetest.register_node("default:dirt_with_snow", {
 	description = S("Dirt with Snow"),
 	tiles = {"default_snow.png", "default_dirt.png",
-		{name = "default_dirt.png^default_snow_side.png",
-			tileable_vertical = false}},
+		"default_dirt.png^default_snow_side.png"},
 	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1, snowy = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
@@ -474,8 +472,7 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 	tiles = {
 		"default_coniferous_litter.png",
 		"default_dirt.png",
-		{name = "default_dirt.png^default_coniferous_litter_side.png",
-			tileable_vertical = false}
+		"default_dirt.png^default_coniferous_litter_side.png",
 	},
 	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
@@ -493,9 +490,10 @@ minetest.register_node("default:dry_dirt", {
 
 minetest.register_node("default:dry_dirt_with_dry_grass", {
 	description = S("Savanna Dirt with Savanna Grass"),
-	tiles = {"default_dry_grass.png", "default_dry_dirt.png",
-		{name = "default_dry_dirt.png^default_dry_grass_side.png",
-			tileable_vertical = false}},
+	tiles = {
+		"default_dry_grass.png",
+		"default_dry_dirt.png",
+		"default_dry_dirt.png^default_dry_grass_side.png"},
 	groups = {crumbly = 3, soil = 1},
 	drop = "default:dry_dirt",
 	sounds = default.node_sound_dirt_defaults({
@@ -522,8 +520,7 @@ minetest.register_node("default:permafrost_with_stones", {
 minetest.register_node("default:permafrost_with_moss", {
 	description = S("Permafrost with Moss"),
 	tiles = {"default_moss.png", "default_permafrost.png",
-		{name = "default_permafrost.png^default_moss_side.png",
-			tileable_vertical = false}},
+		"default_permafrost.png^default_moss_side.png"},
 	groups = {cracky = 3},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -1488,7 +1485,7 @@ minetest.register_node("default:sand_with_kelp", {
 	drawtype = "plantlike_rooted",
 	waving = 1,
 	tiles = {"default_sand.png"},
-	special_tiles = {{name = "default_kelp.png", tileable_vertical = true}},
+	special_tiles = {"default_kelp.png"},
 	inventory_image = "default_kelp.png",
 	wield_image = "default_kelp.png",
 	paramtype = "light",
@@ -1605,7 +1602,7 @@ minetest.register_node("default:coral_green", {
 	waving = 1,
 	paramtype = "light",
 	tiles = {"default_coral_skeleton.png"},
-	special_tiles = {{name = "default_coral_green.png", tileable_vertical = true}},
+	special_tiles = {"default_coral_green.png"},
 	inventory_image = "default_coral_green.png",
 	wield_image = "default_coral_green.png",
 	groups = {snappy = 3},
@@ -1636,7 +1633,7 @@ minetest.register_node("default:coral_pink", {
 	waving = 1,
 	paramtype = "light",
 	tiles = {"default_coral_skeleton.png"},
-	special_tiles = {{name = "default_coral_pink.png", tileable_vertical = true}},
+	special_tiles = {name = "default_coral_pink.png"},
 	inventory_image = "default_coral_pink.png",
 	wield_image = "default_coral_pink.png",
 	groups = {snappy = 3},
@@ -1667,7 +1664,7 @@ minetest.register_node("default:coral_cyan", {
 	waving = 1,
 	paramtype = "light",
 	tiles = {"default_coral_skeleton.png"},
-	special_tiles = {{name = "default_coral_cyan.png", tileable_vertical = true}},
+	special_tiles = {"default_coral_cyan.png"},
 	inventory_image = "default_coral_cyan.png",
 	wield_image = "default_coral_cyan.png",
 	groups = {snappy = 3},
