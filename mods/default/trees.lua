@@ -49,10 +49,6 @@ function default.grow_sapling(pos)
 		minetest.log("action", "A sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_apple_tree(pos)
-	elseif node.name == "default:junglesapling" then
-		minetest.log("action", "A jungle sapling grows into a tree at "..
-			minetest.pos_to_string(pos))
-		default.grow_new_jungle_tree(pos)
 	elseif node.name == "default:pine_sapling" then
 		minetest.log("action", "A pine sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
@@ -70,26 +66,6 @@ function default.grow_sapling(pos)
 		minetest.log("action", "An aspen sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_aspen_tree(pos)
-	elseif node.name == "default:bush_sapling" then
-		minetest.log("action", "A bush sapling grows into a bush at "..
-			minetest.pos_to_string(pos))
-		default.grow_bush(pos)
-	elseif node.name == "default:blueberry_bush_sapling" then
-		minetest.log("action", "A blueberry bush sapling grows into a bush at "..
-			minetest.pos_to_string(pos))
-		default.grow_blueberry_bush(pos)
-	elseif node.name == "default:acacia_bush_sapling" then
-		minetest.log("action", "An acacia bush sapling grows into a bush at "..
-			minetest.pos_to_string(pos))
-		default.grow_acacia_bush(pos)
-	elseif node.name == "default:pine_bush_sapling" then
-		minetest.log("action", "A pine bush sapling grows into a bush at "..
-			minetest.pos_to_string(pos))
-		default.grow_pine_bush(pos)
-	elseif node.name == "default:emergent_jungle_sapling" then
-		minetest.log("action", "An emergent jungle sapling grows into a tree at "..
-			minetest.pos_to_string(pos))
-		default.grow_new_emergent_jungle_tree(pos)
 	end
 end
 
@@ -97,7 +73,7 @@ end
 -- Tree generation
 --
 
--- Apple tree and jungle tree trunk and leaves function
+-- Apple tree and leaves function
 
 local function add_trunk_and_leaves(data, a, pos, tree_cid, leaves_cid,
 		height, size, iters, is_apple_tree)
@@ -188,60 +164,6 @@ function default.grow_tree(pos, is_apple_tree, bad)
 	vm:write_to_map()
 	vm:update_map()
 end
-
-
--- Jungle tree
-
-function default.grow_jungle_tree(pos, bad)
-	--[[
-		NOTE: Jungletree-placing code is currently duplicated in the engine
-		and in games that have saplings; both are deprecated but not
-		replaced yet
-	--]]
-	if bad then
-		error("Deprecated use of default.grow_jungle_tree")
-	end
-
-	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(8, 12)
-	local c_air = minetest.get_content_id("air")
-	local c_ignore = minetest.get_content_id("ignore")
-	local c_jungletree = minetest.get_content_id("default:jungletree")
-	local c_jungleleaves = minetest.get_content_id("default:jungleleaves")
-
-	local vm = minetest.get_voxel_manip()
-	local minp, maxp = vm:read_from_map(
-		{x = x - 3, y = y - 1, z = z - 3},
-		{x = x + 3, y = y + height + 1, z = z + 3}
-	)
-	local a = VoxelArea:new({MinEdge = minp, MaxEdge = maxp})
-	local data = vm:get_data()
-
-	add_trunk_and_leaves(data, a, pos, c_jungletree, c_jungleleaves,
-		height, 3, 30, false)
-
-	-- Roots
-	for z_dist = -1, 1 do
-		local vi_1 = a:index(x - 1, y - 1, z + z_dist)
-		local vi_2 = a:index(x - 1, y, z + z_dist)
-		for x_dist = -1, 1 do
-			if random(1, 3) >= 2 then
-				if data[vi_1] == c_air or data[vi_1] == c_ignore then
-					data[vi_1] = c_jungletree
-				elseif data[vi_2] == c_air or data[vi_2] == c_ignore then
-					data[vi_2] = c_jungletree
-				end
-			end
-			vi_1 = vi_1 + 1
-			vi_2 = vi_2 + 1
-		end
-	end
-
-	vm:set_data(data)
-	vm:write_to_map()
-	vm:update_map()
-end
-
 
 -- Pine tree from mg mapgen mod, design by sfan5, pointy top added by paramat
 
@@ -379,26 +301,6 @@ function default.grow_new_apple_tree(pos)
 end
 
 
--- New jungle tree
-
-function default.grow_new_jungle_tree(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/jungle_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, "random", nil, false)
-end
-
-
--- New emergent jungle tree
-
-function default.grow_new_emergent_jungle_tree(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/emergent_jungle_tree_from_sapling.mts"
-	minetest.place_schematic({x = pos.x - 3, y = pos.y - 5, z = pos.z - 3},
-		path, "random", nil, false)
-end
-
-
 -- New pine tree
 
 function default.grow_new_pine_tree(pos)
@@ -448,58 +350,6 @@ function default.grow_new_aspen_tree(pos)
 		"/schematics/aspen_tree_from_sapling.mts"
 	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
 		path, "0", nil, false)
-end
-
-
--- Bushes do not need 'from sapling' schematic variants because
--- only the stem node is force-placed in the schematic.
-
--- Bush
-
-function default.grow_bush(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/bush.mts"
-	minetest.place_schematic({x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-		path, "0", nil, false)
-end
-
--- Blueberry bush
-
-function default.grow_blueberry_bush(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/blueberry_bush.mts"
-	minetest.place_schematic({x = pos.x - 1, y = pos.y, z = pos.z - 1},
-		path, "0", nil, false)
-end
-
-
--- Acacia bush
-
-function default.grow_acacia_bush(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/acacia_bush.mts"
-	minetest.place_schematic({x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-		path, "0", nil, false)
-end
-
-
--- Pine bush
-
-function default.grow_pine_bush(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/pine_bush.mts"
-	minetest.place_schematic({x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-		path, "0", nil, false)
-end
-
-
--- Large cactus
-
-function default.grow_large_cactus(pos)
-	local path = minetest.get_modpath("default") ..
-		"/schematics/large_cactus.mts"
-	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, "random", nil, false)
 end
 
 

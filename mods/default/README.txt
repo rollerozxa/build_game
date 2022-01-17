@@ -22,7 +22,6 @@ Cisoun's texture pack (CC BY-SA 3.0):
   default_lava.png
   default_leaves.png
   default_sapling.png
-  default_bush_sapling.png
   default_stone.png
   default_tree.png
   default_tree_top.png
@@ -74,14 +73,9 @@ paramat (CC BY-SA 3.0):
   default_acacia_leaves.png
   default_acacia_leaves_simple.png
   default_acacia_sapling.png
-  default_acacia_bush_sapling.png
-  default_pine_bush_sapling.png
   default_acacia_tree.png
   default_acacia_tree_top.png
   default_acacia_wood.png
-  default_acacia_bush_stem.png
-  default_bush_stem.png
-  default_pine_bush_stem.png
   default_sandstone_brick.png
   default_obsidian_brick.png
   default_stone_brick.png
@@ -129,7 +123,6 @@ TumeniNodes (CC BY-SA 3.0):
 BlockMen (CC BY-SA 3.0):
   default_aspen_leaves.png -- Derived from Sofar's texture
   default_wood.png
-  default_clay_brick.png
   default_iron_ingot.png
   default_gold_ingot.png
   default_tool_steelsword.png
@@ -159,25 +152,14 @@ Neuromancer (CC BY-SA 3.0):
   default_mossycobble.png, based on texture by Brane praefect
 
 Gambit (CC BY-SA 3.0):
-  default_bronze_ingot.png
-  default_copper_ingot.png
-  default_copper_lump.png
-  default_iron_lump.png
-  default_gold_lump.png
-  default_clay_lump.png
-  default_coal_lump.png
   default_grass_*.png
   default_paper.png
   default_diamond_block.png
   default_ladder_steel.png
   default_sign_wall_wood.png
-  default_flint.png
   default_snow.png
   default_snow_side.png
   default_snowball.png
-  default_key.png
-  default_key_skeleton.png
-  default_book.png
 
 asl97 (CC BY-SA 3.0):
   default_ice.png
@@ -186,9 +168,6 @@ Pithydon (CC BY-SA 3.0)
   default_coral_brown.png
   default_coral_orange.png
   default_coral_skeleton.png
-
-Ferk (CC0 1.0):
-  default_item_smoke.png
 
 kaeza (CC-BY-SA 3.0):
   default_desert_sandstone.png
@@ -218,7 +197,6 @@ random-geek (CC BY-SA 3.0):
   default_blueberries.png
   default_blueberry_overlay.png
   default_blueberry_bush_leaves.png, derived from default_bush_leaves (by paramat)
-  default_blueberry_bush_sapling.png
   default_dirt.png -- Derived from a texture by Neuromancer (CC BY-SA 3.0)
 
 Krock (CC0 1.0):
@@ -231,7 +209,6 @@ Topywo (CC BY-SA 3.0)
   default_coral_pink.png
 
 Extex101 (CC BY-SA 3.0)
-  default_large_cactus_seedling.png
   default_dry_shrub.png -- Derived from the original texture by celeron55
 
 An0n3m0us (CC BY-SA 3.0):
@@ -292,9 +269,6 @@ Ryding (CC0 1.0):
 http://freesound.org/people/Ryding/sounds/94337/
   default_snow_footstep.*.ogg
 
-Ferk (CC0 1.0):
-  default_item_smoke.ogg, based on a sound by http://opengameart.org/users/bart
-
 sonictechtonic (CC BY 3.0):
 https://www.freesound.org/people/sonictechtonic/sounds/241872/
   player_damage.ogg
@@ -344,15 +318,12 @@ sofar (CC BY-SA 3.0):
 Schematics
 ----------
 paramat (CC BY-SA 3.0):
-  acacia_bush.mts
   acacia_tree.mts
   acacia_tree_from_sapling.mts
   apple_tree.mts
   apple_tree_from_sapling.mts
   aspen_tree.mts
   aspen_tree_from_sapling.mts
-  bush.mts
-  large_cactus.mts
   papyrus.mts
   pine_tree.mts
   pine_tree_from_sapling.mts
@@ -366,9 +337,3 @@ Shara RedCat (CC BY-SA 3.0):
   apple_log.mts
   aspen_log.mts
   pine_log.mts
-
-TumeniNodes (CC BY-SA 3.0):
-  pine_bush.mts
-
-random-geek (CC BY-SA 3.0):
-  blueberry_bush.mts
