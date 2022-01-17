@@ -52,7 +52,6 @@ default:dirt_with_grass
 default:dirt_with_grass_footsteps
 default:dirt_with_dry_grass
 default:dirt_with_snow
-default:dirt_with_rainforest_litter
 default:dirt_with_coniferous_litter
 default:dry_dirt
 default:dry_dirt_with_dry_grass
@@ -83,12 +82,6 @@ default:wood
 default:leaves
 default:sapling
 default:apple
-
-default:jungletree
-default:junglewood
-default:jungleleaves
-default:junglesapling
-default:emergent_jungle_sapling
 
 default:pine_tree
 default:pine_wood
@@ -140,7 +133,6 @@ default:large_cactus_seedling
 
 default:papyrus
 default:dry_shrub
-default:junglegrass
 
 default:grass_1
 default:grass_2
@@ -213,13 +205,11 @@ default:ladder_steel
 
 default:fence_wood
 default:fence_acacia_wood
-default:fence_junglewood
 default:fence_pine_wood
 default:fence_aspen_wood
 
 default:fence_rail_wood
 default:fence_rail_acacia_wood
-default:fence_rail_junglewood
 default:fence_rail_pine_wood
 default:fence_rail_aspen_wood
 
@@ -231,7 +221,6 @@ default:brick
 default:meselamp
 default:mese_post_light
 default:mese_post_light_acacia_wood
-default:mese_post_light_junglewood
 default:mese_post_light_pine_wood
 default:mese_post_light_aspen_wood
 
@@ -485,21 +474,6 @@ minetest.register_node("default:dirt_with_snow", {
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.2},
-	}),
-})
-
-minetest.register_node("default:dirt_with_rainforest_litter", {
-	description = S("Dirt with Rainforest Litter"),
-	tiles = {
-		"default_rainforest_litter.png",
-		"default_dirt.png",
-		{name = "default_dirt.png^default_rainforest_litter_side.png",
-			tileable_vertical = false}
-	},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
-	drop = "default:dirt",
-	sounds = default.node_sound_dirt_defaults({
-		footstep = {name = "default_grass_footstep", gain = 0.4},
 	}),
 })
 
@@ -819,122 +793,6 @@ minetest.register_node("default:apple_mark", {
 		end
 	end
 })
-
-
-minetest.register_node("default:jungletree", {
-	description = S("Jungle Tree"),
-	tiles = {"default_jungletree_top.png", "default_jungletree_top.png",
-		"default_jungletree.png"},
-	paramtype2 = "facedir",
-	is_ground_content = false,
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
-
-	on_place = minetest.rotate_node
-})
-
-minetest.register_node("default:junglewood", {
-	description = S("Jungle Wood Planks"),
-	paramtype2 = "facedir",
-	place_param2 = 0,
-	tiles = {"default_junglewood.png"},
-	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node("default:jungleleaves", {
-	description = S("Jungle Tree Leaves"),
-	drawtype = "allfaces_optional",
-	waving = 1,
-	tiles = {"default_jungleleaves.png"},
-	special_tiles = {"default_jungleleaves_simple.png"},
-	paramtype = "light",
-	is_ground_content = false,
-	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {"default:junglesapling"}, rarity = 20},
-			{items = {"default:jungleleaves"}}
-		}
-	},
-	sounds = default.node_sound_leaves_defaults(),
-
-	after_place_node = after_place_leaves,
-})
-
-minetest.register_node("default:junglesapling", {
-	description = S("Jungle Tree Sapling"),
-	drawtype = "plantlike",
-	tiles = {"default_junglesapling.png"},
-	inventory_image = "default_junglesapling.png",
-	wield_image = "default_junglesapling.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	on_timer = grow_sapling,
-	selection_box = {
-		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
-	},
-	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
-		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
-
-	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(300, 1500))
-	end,
-
-	on_place = function(itemstack, placer, pointed_thing)
-		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-			"default:junglesapling",
-			-- minp, maxp to be checked, relative to sapling pos
-			-- minp_relative.y = 1 because sapling pos has been checked
-			{x = -2, y = 1, z = -2},
-			{x = 2, y = 15, z = 2},
-			-- maximum interval of interior volume check
-			4)
-
-		return itemstack
-	end,
-})
-
-minetest.register_node("default:emergent_jungle_sapling", {
-	description = S("Emergent Jungle Tree Sapling"),
-	drawtype = "plantlike",
-	tiles = {"default_emergent_jungle_sapling.png"},
-	inventory_image = "default_emergent_jungle_sapling.png",
-	wield_image = "default_emergent_jungle_sapling.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	on_timer = grow_sapling,
-	selection_box = {
-		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
-	},
-	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
-		attached_node = 1, sapling = 1},
-	sounds = default.node_sound_leaves_defaults(),
-
-	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(300, 1500))
-	end,
-
-	on_place = function(itemstack, placer, pointed_thing)
-		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-			"default:emergent_jungle_sapling",
-			-- minp, maxp to be checked, relative to sapling pos
-			{x = -3, y = -5, z = -3},
-			{x = 3, y = 31, z = 3},
-			-- maximum interval of interior volume check
-			4)
-
-		return itemstack
-	end,
-})
-
 
 minetest.register_node("default:pine_tree", {
 	description = S("Pine Tree"),
@@ -2561,10 +2419,7 @@ minetest.register_node("default:ladder_wood", {
 	climbable = true,
 	is_ground_content = false,
 	selection_box = {
-		type = "wallmounted",
-		--wall_top = = <default>
-		--wall_bottom = = <default>
-		--wall_side = = <default>
+		type = "wallmounted"
 	},
 	groups = {choppy = 2, oddly_breakable_by_hand = 3, flammable = 2},
 	legacy_wallmounted = true,
@@ -2584,10 +2439,7 @@ minetest.register_node("default:ladder_steel", {
 	climbable = true,
 	is_ground_content = false,
 	selection_box = {
-		type = "wallmounted",
-		--wall_top = = <default>
-		--wall_bottom = = <default>
-		--wall_side = = <default>
+		type = "wallmounted"
 	},
 	groups = {cracky = 2},
 	sounds = default.node_sound_metal_defaults(),
@@ -2613,18 +2465,6 @@ default.register_fence("default:fence_acacia_wood", {
 	wield_image = "default_fence_overlay.png^default_acacia_wood.png^" ..
 				"default_fence_overlay.png^[makealpha:255,126,126",
 	material = "default:acacia_wood",
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	sounds = default.node_sound_wood_defaults()
-})
-
-default.register_fence("default:fence_junglewood", {
-	description = S("Jungle Wood Fence"),
-	texture = "default_fence_junglewood.png",
-	inventory_image = "default_fence_overlay.png^default_junglewood.png^" ..
-				"default_fence_overlay.png^[makealpha:255,126,126",
-	wield_image = "default_fence_overlay.png^default_junglewood.png^" ..
-				"default_fence_overlay.png^[makealpha:255,126,126",
-	material = "default:junglewood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 	sounds = default.node_sound_wood_defaults()
 })
@@ -2673,18 +2513,6 @@ default.register_fence_rail("default:fence_rail_acacia_wood", {
 	wield_image = "default_fence_rail_overlay.png^default_acacia_wood.png^" ..
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
 	material = "default:acacia_wood",
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	sounds = default.node_sound_wood_defaults()
-})
-
-default.register_fence_rail("default:fence_rail_junglewood", {
-	description = S("Jungle Wood Fence Rail"),
-	texture = "default_fence_rail_junglewood.png",
-	inventory_image = "default_fence_rail_overlay.png^default_junglewood.png^" ..
-				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	wield_image = "default_fence_rail_overlay.png^default_junglewood.png^" ..
-				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	material = "default:junglewood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 	sounds = default.node_sound_wood_defaults()
 })
@@ -2778,12 +2606,6 @@ default.register_mesepost("default:mese_post_light_acacia_wood", {
 	material = "default:acacia_wood",
 })
 
-default.register_mesepost("default:mese_post_light_junglewood", {
-	description = S("Jungle Wood Mese Post Light"),
-	texture = "default_fence_junglewood.png",
-	material = "default:junglewood",
-})
-
 default.register_mesepost("default:mese_post_light_pine_wood", {
 	description = S("Pine Wood Mese Post Light"),
 	texture = "default_fence_pine_wood.png",
@@ -2797,18 +2619,6 @@ default.register_mesepost("default:mese_post_light_aspen_wood", {
 })
 
 --
--- Misc
---
-
-minetest.register_node("default:cloud", {
-	description = S("Cloud"),
-	tiles = {"default_cloud.png"},
-	is_ground_content = false,
-	sounds = default.node_sound_defaults(),
-	groups = {not_in_creative_inventory = 1},
-})
-
---
 -- register trees for leafdecay
 --
 
@@ -2816,12 +2626,6 @@ default.register_leafdecay({
 	trunks = {"default:tree"},
 	leaves = {"default:apple", "default:leaves"},
 	radius = 3,
-})
-
-default.register_leafdecay({
-	trunks = {"default:jungletree"},
-	leaves = {"default:jungleleaves"},
-	radius = 2,
 })
 
 default.register_leafdecay({

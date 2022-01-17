@@ -55,7 +55,7 @@ local function register_waterlily()
 			octaves = 3,
 			persist = 0.7
 		},
-		biomes = {"rainforest_swamp", "savanna_shore", "deciduous_forest_shore"},
+		biomes = {"savanna_shore", "deciduous_forest_shore"},
 		y_max = 0,
 		y_min = 0,
 		decoration = "flowers:waterlily_waving",

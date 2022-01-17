@@ -19,7 +19,6 @@ celeron55, Perttu Ahola <celeron55@gmail.com> (CC BY-SA 3.0)
 Textures
 --------
 Cisoun's texture pack (CC BY-SA 3.0):
-  default_jungletree.png
   default_lava.png
   default_leaves.png
   default_sapling.png
@@ -50,8 +49,6 @@ Calinou (CC BY-SA 3.0):
   default_mineral_copper.png
 
 PilzAdam (CC BY-SA 3.0):
-  default_jungleleaves.png
-  default_junglesapling.png
   default_obsidian_glass.png
   default_obsidian_shard.png
   default_mineral_gold.png
@@ -85,8 +82,6 @@ paramat (CC BY-SA 3.0):
   default_acacia_bush_stem.png
   default_bush_stem.png
   default_pine_bush_stem.png
-  default_junglewood.png
-  default_jungletree_top.png
   default_sandstone_brick.png
   default_obsidian_brick.png
   default_stone_brick.png
@@ -112,7 +107,6 @@ paramat (CC BY-SA 3.0):
   default_silver_sandstone_block.png -- Derived from a texture by GreenXenith (CC-BY-SA 3.0)
   default_bookshelf_slot.png -- Derived from a texture by Gambit (CC-BY-SA 3.0)
   default_marram_grass_*.png -- Derived from textures by TumeniNodes (CC-BY-SA 3.0)
-  default_emergent_jungle_sapling.png
   default_permafrost.png -- Derived from a texture by Neuromancer (CC BY-SA 3.0)
   default_stones.png -- Derived from a texture by sofar (CC0 1.0)
   default_stones_side.png -- Derived from a texture by sofar (CC0 1.0)
@@ -120,7 +114,6 @@ paramat (CC BY-SA 3.0):
   default_moss_side.png
   default_fence_rail_acacia_wood
   default_fence_rail_aspen_wood -- Derived from a texture by sofar (CC BY-SA 3.0)
-  default_fence_rail_junglewood
   default_fence_rail_pine_wood
   default_fence_rail_wood -- Derived from a texture by BlockMen (CC BY-SA 3.0)
   gui_hotbar.png
@@ -196,10 +189,6 @@ Pithydon (CC BY-SA 3.0)
 
 Ferk (CC0 1.0):
   default_item_smoke.png
-
-npx (CC BY-SA 3.0):
-  default_rainforest_litter.png
-  default_rainforest_litter_side.png
 
 kaeza (CC-BY-SA 3.0):
   default_desert_sandstone.png
@@ -363,10 +352,6 @@ paramat (CC BY-SA 3.0):
   aspen_tree.mts
   aspen_tree_from_sapling.mts
   bush.mts
-  emergent_jungle_tree.mts
-  emergent_jungle_tree_from_sapling.mts
-  jungle_tree.mts
-  jungle_tree_from_sapling.mts
   large_cactus.mts
   papyrus.mts
   pine_tree.mts
@@ -380,7 +365,6 @@ Shara RedCat (CC BY-SA 3.0):
   acacia_log.mts
   apple_log.mts
   aspen_log.mts
-  jungle_log.mts
   pine_log.mts
 
 TumeniNodes (CC BY-SA 3.0):

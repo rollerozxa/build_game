@@ -182,8 +182,7 @@ function default.register_ores()
 		},
 		-- Only where default:dirt is present as surface material
 		biomes = {"taiga", "snowy_grassland", "grassland", "coniferous_forest",
-				"deciduous_forest", "deciduous_forest_shore", "rainforest",
-				"rainforest_swamp"}
+				"deciduous_forest", "deciduous_forest_shore"}
 	})
 
 	-- Gravel
@@ -1154,73 +1153,6 @@ function default.register_biomes()
 		heat_point = 89,
 		humidity_point = 42,
 	})
-
-	-- Rainforest
-
-	minetest.register_biome({
-		name = "rainforest",
-		node_top = "default:dirt_with_rainforest_litter",
-		depth_top = 1,
-		node_filler = "default:dirt",
-		depth_filler = 3,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = 31000,
-		y_min = 1,
-		heat_point = 86,
-		humidity_point = 65,
-	})
-
-	minetest.register_biome({
-		name = "rainforest_swamp",
-		node_top = "default:dirt",
-		depth_top = 1,
-		node_filler = "default:dirt",
-		depth_filler = 3,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = 0,
-		y_min = -1,
-		heat_point = 86,
-		humidity_point = 65,
-	})
-
-	minetest.register_biome({
-		name = "rainforest_ocean",
-		node_top = "default:sand",
-		depth_top = 1,
-		node_filler = "default:sand",
-		depth_filler = 3,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		vertical_blend = 1,
-		y_max = -2,
-		y_min = -255,
-		heat_point = 86,
-		humidity_point = 65,
-	})
-
-	minetest.register_biome({
-		name = "rainforest_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = -256,
-		y_min = -31000,
-		heat_point = 86,
-		humidity_point = 65,
-	})
 end
 
 
@@ -1362,92 +1294,6 @@ function default.register_decorations()
 		flags = "place_center_x",
 		rotation = "random",
 		spawn_by = "default:dirt_with_grass",
-		num_spawn_by = 8,
-	})
-
-	-- Emergent jungle tree
-	-- Due to 32 node height, altitude is limited and prescence depends on chunksize
-
-	local chunksize = tonumber(minetest.get_mapgen_setting("chunksize"))
-	if chunksize >= 5 then
-		minetest.register_decoration({
-			name = "default:emergent_jungle_tree",
-			deco_type = "schematic",
-			place_on = {"default:dirt_with_rainforest_litter"},
-			sidelen = 80,
-			noise_params = {
-				offset = 0.0,
-				scale = 0.0025,
-				spread = {x = 250, y = 250, z = 250},
-				seed = 2685,
-				octaves = 3,
-				persist = 0.7
-			},
-			biomes = {"rainforest"},
-			y_max = 32,
-			y_min = 1,
-			schematic = minetest.get_modpath("default") ..
-					"/schematics/emergent_jungle_tree.mts",
-			flags = "place_center_x, place_center_z",
-			rotation = "random",
-			place_offset_y = -4,
-		})
-	end
-
-	-- Jungle tree and log
-
-	minetest.register_decoration({
-		name = "default:jungle_tree",
-		deco_type = "schematic",
-		place_on = {"default:dirt_with_rainforest_litter"},
-		sidelen = 80,
-		fill_ratio = 0.1,
-		biomes = {"rainforest"},
-		y_max = 31000,
-		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/jungle_tree.mts",
-		flags = "place_center_x, place_center_z",
-		rotation = "random",
-	})
-
-	-- Swamp jungle trees
-
-	minetest.register_decoration({
-		name = "default:jungle_tree(swamp)",
-		deco_type = "schematic",
-		place_on = {"default:dirt"},
-		sidelen = 16,
-		-- Noise tuned to place swamp trees where papyrus is absent
-		noise_params = {
-			offset = 0.0,
-			scale = -0.1,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 354,
-			octaves = 1,
-			persist = 0.5
-		},
-		biomes = {"rainforest_swamp"},
-		y_max = 0,
-		y_min = -1,
-		schematic = minetest.get_modpath("default") .. "/schematics/jungle_tree.mts",
-		flags = "place_center_x, place_center_z",
-		rotation = "random",
-	})
-
-	minetest.register_decoration({
-		name = "default:jungle_log",
-		deco_type = "schematic",
-		place_on = {"default:dirt_with_rainforest_litter"},
-		place_offset_y = 1,
-		sidelen = 80,
-		fill_ratio = 0.005,
-		biomes = {"rainforest"},
-		y_max = 31000,
-		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/jungle_log.mts",
-		flags = "place_center_x",
-		rotation = "random",
-		spawn_by = "default:dirt_with_rainforest_litter",
 		num_spawn_by = 8,
 	})
 
@@ -1651,27 +1497,6 @@ function default.register_decorations()
 
 	-- Papyrus
 
-	-- Dirt version for rainforest swamp
-
-	minetest.register_decoration({
-		name = "default:papyrus_on_dirt",
-		deco_type = "schematic",
-		place_on = {"default:dirt"},
-		sidelen = 16,
-		noise_params = {
-			offset = -0.3,
-			scale = 0.7,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 354,
-			octaves = 3,
-			persist = 0.7
-		},
-		biomes = {"rainforest_swamp"},
-		y_max = 0,
-		y_min = 0,
-		schematic = minetest.get_modpath("default") .. "/schematics/papyrus_on_dirt.mts",
-	})
-
 	-- Dry dirt version for savanna shore
 
 	minetest.register_decoration({
@@ -1805,20 +1630,6 @@ function default.register_decorations()
 	register_fern_decoration(801,   2)
 	register_fern_decoration(5,     1)
 
-	-- Junglegrass
-
-	minetest.register_decoration({
-		name = "default:junglegrass",
-		deco_type = "simple",
-		place_on = {"default:dirt_with_rainforest_litter"},
-		sidelen = 80,
-		fill_ratio = 0.1,
-		biomes = {"rainforest"},
-		y_max = 31000,
-		y_min = 1,
-		decoration = "default:junglegrass",
-	})
-
 	-- Dry shrub
 
 	minetest.register_decoration({
@@ -1934,7 +1745,6 @@ function default.register_decorations()
 		biomes = {
 			"desert_ocean",
 			"savanna_ocean",
-			"rainforest_ocean",
 		},
 		y_max = -2,
 		y_min = -8,
