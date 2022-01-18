@@ -49,6 +49,9 @@ default.gui_survival_form = "size[8,8.5]"..
 			"listring[current_player;main]"..
 			"listring[current_player;craft]"..
 			default.get_hotbar_bg(0,4.25)
+default.gui_bg     = ""
+default.gui_bg_img = ""
+default.gui_slots  = ""
 
 -- Load files
 local default_path = minetest.get_modpath("default")
@@ -60,4 +63,3 @@ dofile(default_path.."/torch.lua")
 dofile(default_path.."/tools.lua")
 dofile(default_path.."/mapgen.lua")
 dofile(default_path.."/aliases.lua")
-dofile(default_path.."/legacy.lua")
