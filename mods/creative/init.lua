@@ -59,19 +59,17 @@ if minetest.is_creative_enabled("") then
 	minetest.override_item("", {
 		range = 10,
 		tool_capabilities = {
-			full_punch_interval = 0.5,
 			max_drop_level = 3,
 			groupcaps = {
 				crumbly = caps,
 				cracky  = caps,
-				snappy  = caps,
+				snappy  = {times = {[2] = digtime, [3] = 0}, uses = 0, maxlevel = 256},
 				choppy  = caps,
 				oddly_breakable_by_hand = caps,
 				-- dig_immediate group doesn't use value 1. Value 3 is instant dig
 				dig_immediate =
 					{times = {[2] = digtime, [3] = 0}, uses = 0, maxlevel = 256},
-			},
-			damage_groups = {fleshy = 10},
+			}
 		}
 	})
 end

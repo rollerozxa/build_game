@@ -23,7 +23,7 @@ dofile(minetest.get_modpath("flowers") .. "/mapgen.lua")
 
 local function add_simple_flower(name, desc, box, f_groups)
 	-- Common flowers' groups
-	f_groups.snappy = 3
+	f_groups.snappy=3
 	f_groups.flower = 1
 	f_groups.flora = 1
 	f_groups.attached_node = 1
@@ -53,42 +53,42 @@ flowers.datas = {
 		"rose",
 		S("Red Rose"),
 		{-2 / 16, -0.5, -2 / 16, 2 / 16, 5 / 16, 2 / 16},
-		{color_red = 1, flammable = 1}
+		{color_red = 1}
 	}, {
 		"tulip",
 		S("Orange Tulip"),
 		{-2 / 16, -0.5, -2 / 16, 2 / 16, 3 / 16, 2 / 16},
-		{color_orange = 1, flammable = 1}
+		{color_orange = 1}
 	}, {
 		"dandelion_yellow",
 		S("Yellow Dandelion"),
 		{-4 / 16, -0.5, -4 / 16, 4 / 16, -2 / 16, 4 / 16},
-		{color_yellow = 1, flammable = 1}
+		{color_yellow = 1}
 	}, {
 		"chrysanthemum_green",
 		S("Green Chrysanthemum"),
 		{-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
-		{color_green = 1, flammable = 1}
+		{color_green = 1}
 	}, {
 		"geranium",
 		S("Blue Geranium"),
 		{-2 / 16, -0.5, -2 / 16, 2 / 16, 2 / 16, 2 / 16},
-		{color_blue = 1, flammable = 1}
+		{color_blue = 1}
 	}, {
 		"viola",
 		S("Viola"),
 		{-5 / 16, -0.5, -5 / 16, 5 / 16, -1 / 16, 5 / 16},
-		{color_violet = 1, flammable = 1}
+		{color_violet = 1}
 	}, {
 		"dandelion_white",
 		S("White Dandelion"),
 		{-5 / 16, -0.5, -5 / 16, 5 / 16, -2 / 16, 5 / 16},
-		{color_white = 1, flammable = 1}
+		{color_white = 1}
 	}, {
 		"tulip_black",
 		S("Black Tulip"),
 		{-2 / 16, -0.5, -2 / 16, 2 / 16, 3 / 16, 2 / 16},
-		{color_black = 1, flammable = 1}
+		{color_black = 1}
 	},
 }
 
@@ -111,7 +111,7 @@ minetest.register_node("flowers:mushroom_red", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = {mushroom = 1, snappy = 3, attached_node = 1, flammable = 1},
+	groups = {mushroom = 1, snappy=3, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -129,7 +129,7 @@ minetest.register_node("flowers:mushroom_brown", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = {mushroom = 1, food_mushroom = 1, snappy = 3, attached_node = 1, flammable = 1},
+	groups = {mushroom=1, food_mushroom=1, snappy=3, attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",

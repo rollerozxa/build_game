@@ -396,7 +396,7 @@ doors.register("door_wood", {
 	tiles = {{ name = "doors_door_wood.png", backface_culling = true }},
 	description = S("Wooden Door"),
 	inventory_image = "doors_item_wood.png",
-	groups = {node = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+	groups = {node=1, snappy=3},
 	gain_open = 0.06,
 	gain_close = 0.13,
 })
@@ -405,7 +405,7 @@ doors.register("door_steel", {
 	tiles = {{name = "doors_door_steel.png", backface_culling = true}},
 	description = S("Steel Door"),
 	inventory_image = "doors_item_steel.png",
-	groups = {node = 1, cracky = 1, level = 2},
+	groups = {node=1, snappy=3, level=2},
 	sounds = default.node_sound_metal_defaults(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
@@ -417,19 +417,7 @@ doors.register("door_glass", {
 	tiles = {"doors_door_glass.png"},
 	description = S("Glass Door"),
 	inventory_image = "doors_item_glass.png",
-	groups = {node = 1, cracky=3, oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
-	sound_open = "doors_glass_door_open",
-	sound_close = "doors_glass_door_close",
-	gain_open = 0.3,
-	gain_close = 0.25,
-})
-
-doors.register("door_obsidian_glass", {
-	tiles = {"doors_door_obsidian_glass.png"},
-	description = S("Obsidian Glass Door"),
-	inventory_image = "doors_item_obsidian_glass.png",
-	groups = {node = 1, cracky=3},
+	groups = {node = 1, snappy=3},
 	sounds = default.node_sound_glass_defaults(),
 	sound_open = "doors_glass_door_open",
 	sound_close = "doors_glass_door_close",
@@ -563,7 +551,7 @@ doors.register_trapdoor("doors:trapdoor", {
 	tile_side = "doors_trapdoor_side.png",
 	gain_open = 0.06,
 	gain_close = 0.13,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, door = 1},
+	groups = {snappy=3, door=1},
 })
 
 doors.register_trapdoor("doors:trapdoor_steel", {
@@ -577,7 +565,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	sound_close = "doors_steel_door_close",
 	gain_open = 0.2,
 	gain_close = 0.2,
-	groups = {cracky = 1, level = 2, door = 1},
+	groups = {snappy=3, level=2, door=1},
 })
 
 
@@ -654,27 +642,27 @@ doors.register_fencegate("doors:gate_wood", {
 	description = S("Apple Wood Fence Gate"),
 	texture = "default_wood.png",
 	material = "default:wood",
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
+	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_acacia_wood", {
 	description = S("Acacia Wood Fence Gate"),
 	texture = "default_acacia_wood.png",
 	material = "default:acacia_wood",
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
+	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_pine_wood", {
 	description = S("Pine Wood Fence Gate"),
 	texture = "default_pine_wood.png",
 	material = "default:pine_wood",
-	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3}
+	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_aspen_wood", {
 	description = S("Aspen Wood Fence Gate"),
 	texture = "default_aspen_wood.png",
 	material = "default:aspen_wood",
-	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3}
+	groups = {snappy=3}
 })
 

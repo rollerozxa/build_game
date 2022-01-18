@@ -345,7 +345,7 @@ function default.register_mesepost(name, def)
 		light_source = default.LIGHT_MAX,
 		sunlight_propagates = true,
 		is_ground_content = false,
-		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+		groups = {snappy=3},
 		sounds = default.node_sound_wood_defaults(),
 	}
 	for k, v in pairs(default_fields) do

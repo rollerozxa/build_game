@@ -28,8 +28,7 @@ for i = 1, #dyes do
 		description = S(desc .. " Wool"),
 		tiles = {"wool_" .. name .. ".png"},
 		is_ground_content = false,
-		groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3,
-				flammable = 3, wool = 1},
+		groups = {snappy=3, wool=1},
 		sounds = default.node_sound_defaults(),
 	})
 end

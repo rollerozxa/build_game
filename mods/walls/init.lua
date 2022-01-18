@@ -40,7 +40,7 @@ walls.register = function(wall_name, wall_desc, wall_texture_table, wall_mat, wa
 		is_ground_content = false,
 		tiles = wall_texture_table,
 		walkable = true,
-		groups = { cracky = 3, wall = 1, stone = 2 },
+		groups = {snappy=3, wall=1, stone=2},
 		sounds = wall_sounds,
 	})
 end

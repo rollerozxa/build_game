@@ -164,16 +164,7 @@ xpanes.register_pane("pane", {
 	inventory_image = "default_glass.png",
 	wield_image = "default_glass.png",
 	sounds = default.node_sound_glass_defaults(),
-	groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3},
-})
-
-xpanes.register_pane("obsidian_pane", {
-	description = S("Obsidian Glass Pane"),
-	textures = {"default_obsidian_glass.png", "", "xpanes_edge_obsidian.png"},
-	inventory_image = "default_obsidian_glass.png",
-	wield_image = "default_obsidian_glass.png",
-	sounds = default.node_sound_glass_defaults(),
-	groups = {snappy=2, cracky=3},
+	groups = {snappy=3},
 })
 
 xpanes.register_pane("bar", {
@@ -181,7 +172,7 @@ xpanes.register_pane("bar", {
 	textures = {"xpanes_bar.png", "", "xpanes_bar_top.png"},
 	inventory_image = "xpanes_bar.png",
 	wield_image = "xpanes_bar.png",
-	groups = {cracky=2},
+	groups = {snappy=3},
 	sounds = default.node_sound_metal_defaults(),
 })
 
@@ -194,7 +185,7 @@ if minetest.get_modpath("doors") then
 		description = S("Steel Bar Door"),
 		inventory_image = "xpanes_item_steel_bar.png",
 		protected = true,
-		groups = {node = 1, cracky = 1, level = 2},
+		groups = {node=1, snappy=3, level=2},
 		sounds = default.node_sound_metal_defaults(),
 		sound_open = "xpanes_steel_bar_door_open",
 		sound_close = "xpanes_steel_bar_door_close",
@@ -209,7 +200,7 @@ if minetest.get_modpath("doors") then
 		tile_front = "xpanes_trapdoor_steel_bar.png",
 		tile_side = "xpanes_trapdoor_steel_bar_side.png",
 		protected = true,
-		groups = {node = 1, cracky = 1, level = 2, door = 1},
+		groups = {node=1, snappy=3, level=2, door=1},
 		sounds = default.node_sound_metal_defaults(),
 		sound_open = "xpanes_steel_bar_door_open",
 		sound_close = "xpanes_steel_bar_door_close",

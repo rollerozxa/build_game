@@ -48,7 +48,6 @@ Calinou (CC BY-SA 3.0):
   default_mineral_copper.png
 
 PilzAdam (CC BY-SA 3.0):
-  default_obsidian_glass.png
   default_obsidian_shard.png
   default_mineral_gold.png
 
@@ -224,9 +223,6 @@ Glass breaking sounds (CC BY 3.0):
   3: http://www.freesound.org/people/lsprice/sounds/88808/
 
 Mito551 (sounds) (CC BY-SA 3.0):
-  default_dig_crumbly.*.ogg
-  default_dig_dig_immediate.ogg
-  default_dig_oddly_breakable_by_hand.ogg
   default_dug_node.*.ogg
   default_grass_footstep.1.ogg
   default_grass_footstep.2.ogg
@@ -242,8 +238,6 @@ Mito551 (sounds) (CC BY-SA 3.0):
   default_glass_footstep.ogg
 
 Metal sounds:
-  default_dig_metal.ogg - yadronoff - CC-BY-3.0
-  - https://www.freesound.org/people/yadronoff/sounds/320397/
   default_dug_metal.*.ogg - Iwan Gabovitch - qubodup - CC0
   - http://opengameart.org/users/qubodup
   default_metal_footstep.*.ogg - (CC0 1.0) - CC0 1.0
@@ -261,10 +255,6 @@ https://www.freesound.org/people/AGFX/packs/1253/
   default_water_footstep.3.ogg
 (default_water_footstep.4.ogg is silent)
 
-blukotek (CC0 1.0):
-https://www.freesound.org/people/blukotek/sounds/251660/
-  default_dig_snappy.ogg
-
 Ryding (CC0 1.0):
 http://freesound.org/people/Ryding/sounds/94337/
   default_snow_footstep.*.ogg
@@ -273,18 +263,10 @@ sonictechtonic (CC BY 3.0):
 https://www.freesound.org/people/sonictechtonic/sounds/241872/
   player_damage.ogg
 
-Sheyvan (CC0 1.0):
-https://freesound.org/people/Sheyvan/sounds/476113/
-  default_dig_choppy.*.ogg
-
 lolamadeus (CC0 1.0):
 https://freesound.org/people/lolamadeus/sounds/179341/
   default_gravel_dig.*.ogg
   default_gravel_dug.*.ogg
-
-Benboncan (CC BY 3.0):
-https://freesound.org/people/Benboncan/sounds/71823/
-  default_dig_cracky.*.ogg
 
 Erdie (CC BY 3.0):
 https://freesound.org/people/Erdie/sounds/41579/
