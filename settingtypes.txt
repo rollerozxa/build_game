@@ -1,5 +1,0 @@
-# This file contains settings of minetest_game that can be changed in
-# minetest.conf
-
-#    Replaces old stairs with new ones. Only required for older worlds.
-enable_stairs_replace_abm (Replace old stairs) bool false

@@ -109,8 +109,6 @@ paramat (CC BY-SA 3.0):
   default_fence_rail_aspen_wood -- Derived from a texture by sofar (CC BY-SA 3.0)
   default_fence_rail_pine_wood
   default_fence_rail_wood -- Derived from a texture by BlockMen (CC BY-SA 3.0)
-  gui_hotbar.png
-  gui_hotbar_selected.png
 
 TumeniNodes (CC BY-SA 3.0):
   default_desert_cobble.png -- Derived from a texture by brunob.santos (CC BY-SA 3.0)
@@ -209,10 +207,6 @@ Topywo (CC BY-SA 3.0)
 
 Extex101 (CC BY-SA 3.0)
   default_dry_shrub.png -- Derived from the original texture by celeron55
-
-An0n3m0us (CC BY-SA 3.0):
-  heart.png -- Derived from a texture by KevDoy (CC BY-SA 3.0)
-  bubble.png -- Derived from a texture by BlockMen (CC BY-SA 3.0)
 
 
 Sounds
