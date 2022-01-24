@@ -276,7 +276,6 @@ minetest.register_node("default:desert_stone", {
 	description = S("Desert Stone"),
 	tiles = {"default_desert_stone.png"},
 	groups = {snappy=3, stone = 1},
-	drop = "default:desert_cobble",
 	sounds = default.node_sound_stone_defaults(),
 })
 
