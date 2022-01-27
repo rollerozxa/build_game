@@ -47,6 +47,7 @@ local default_nodes = { -- Default stairs/slabs/panels/microblocks:
 	"sandstone_block",
 	"coral_skeleton",
 	"ice",
+	"dirt",
 }
 
 for _, name in pairs(default_nodes) do
