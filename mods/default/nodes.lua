@@ -507,21 +507,21 @@ minetest.register_node("default:permafrost_with_moss", {
 minetest.register_node("default:sand", {
 	description = S("Sand"),
 	tiles = {"default_sand.png"},
-	groups = {snappy=3, falling_node = 1, sand = 1},
+	groups = {snappy=3, sand = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
 minetest.register_node("default:desert_sand", {
 	description = S("Desert Sand"),
 	tiles = {"default_desert_sand.png"},
-	groups = {snappy=3, falling_node = 1, sand = 1},
+	groups = {snappy=3, sand = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
 minetest.register_node("default:silver_sand", {
 	description = S("Silver Sand"),
 	tiles = {"default_silver_sand.png"},
-	groups = {snappy=3, falling_node = 1, sand = 1},
+	groups = {snappy=3, sand = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -529,7 +529,7 @@ minetest.register_node("default:silver_sand", {
 minetest.register_node("default:gravel", {
 	description = S("Gravel"),
 	tiles = {"default_gravel.png"},
-	groups = {snappy=3, falling_node = 1},
+	groups = {snappy=3},
 	sounds = default.node_sound_gravel_defaults()
 })
 
@@ -562,7 +562,7 @@ minetest.register_node("default:snow", {
 			{-0.5, -0.5, -0.5, 0.5, -6 / 16, 0.5},
 		},
 	},
-	groups = {snappy=3, falling_node = 1, snowy = 1},
+	groups = {snappy=3, snowy = 1},
 	sounds = default.node_sound_snow_defaults(),
 
 	on_construct = function(pos)
