@@ -954,73 +954,6 @@ function default.register_biomes()
 		heat_point = 60,
 		humidity_point = 0,
 	})
-
-	-- Savanna
-
-	minetest.register_biome({
-		name = "savanna",
-		node_top = "default:dry_dirt_with_dry_grass",
-		depth_top = 1,
-		node_filler = "default:dry_dirt",
-		depth_filler = 1,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = 31000,
-		y_min = 1,
-		heat_point = 89,
-		humidity_point = 42,
-	})
-
-	minetest.register_biome({
-		name = "savanna_shore",
-		node_top = "default:dry_dirt",
-		depth_top = 1,
-		node_filler = "default:dry_dirt",
-		depth_filler = 3,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = 0,
-		y_min = -1,
-		heat_point = 89,
-		humidity_point = 42,
-	})
-
-	minetest.register_biome({
-		name = "savanna_ocean",
-		node_top = "default:sand",
-		depth_top = 1,
-		node_filler = "default:sand",
-		depth_filler = 3,
-		node_riverbed = "default:sand",
-		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		vertical_blend = 1,
-		y_max = -2,
-		y_min = -255,
-		heat_point = 89,
-		humidity_point = 42,
-	})
-
-	minetest.register_biome({
-		name = "savanna_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
-		node_dungeon_stair = "stairs:stair_cobble",
-		y_max = -256,
-		y_min = -31000,
-		heat_point = 89,
-		humidity_point = 42,
-	})
 end
 
 
@@ -1049,27 +982,6 @@ local function register_grass_decoration(offset, scale, length)
 	})
 end
 
-local function register_dry_grass_decoration(offset, scale, length)
-	minetest.register_decoration({
-		name = "default:dry_grass_" .. length,
-		deco_type = "simple",
-		place_on = {"default:dry_dirt_with_dry_grass"},
-		sidelen = 16,
-		noise_params = {
-			offset = offset,
-			scale = scale,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 329,
-			octaves = 3,
-			persist = 0.6
-		},
-		biomes = {"savanna"},
-		y_max = 31000,
-		y_min = 1,
-		decoration = "default:dry_grass_" .. length,
-	})
-end
-
 local function register_fern_decoration(seed, length)
 	minetest.register_decoration({
 		name = "default:fern_" .. length,
@@ -1093,30 +1005,6 @@ end
 
 
 function default.register_decorations()
-	-- Savanna bare dirt patches.
-	-- Must come before all savanna decorations that are placed on dry grass.
-	-- Noise is similar to long dry grass noise, but scale inverted, to appear
-	-- where long dry grass is least dense and shortest.
-
-	minetest.register_decoration({
-		deco_type = "simple",
-		place_on = {"default:dry_dirt_with_dry_grass"},
-		sidelen = 4,
-		noise_params = {
-			offset = -1.5,
-			scale = -1.5,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 329,
-			octaves = 4,
-			persist = 1.0
-		},
-		biomes = {"savanna"},
-		y_max = 31000,
-		y_min = 1,
-		decoration = "default:dry_dirt",
-		place_offset_y = -1,
-		flags = "force_placement",
-	})
 
 	-- Apple tree and log
 
@@ -1224,53 +1112,6 @@ function default.register_decorations()
 		num_spawn_by = 8,
 	})
 
-	-- Acacia tree and log
-
-	minetest.register_decoration({
-		name = "default:acacia_tree",
-		deco_type = "schematic",
-		place_on = {"default:dry_dirt_with_dry_grass"},
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 0.002,
-			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
-			octaves = 3,
-			persist = 0.66
-		},
-		biomes = {"savanna"},
-		y_max = 31000,
-		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/acacia_tree.mts",
-		flags = "place_center_x, place_center_z",
-		rotation = "random",
-	})
-
-	minetest.register_decoration({
-		name = "default:acacia_log",
-		deco_type = "schematic",
-		place_on = {"default:dry_dirt_with_dry_grass"},
-		place_offset_y = 1,
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 0.001,
-			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
-			octaves = 3,
-			persist = 0.66
-		},
-		biomes = {"savanna"},
-		y_max = 31000,
-		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/acacia_log.mts",
-		flags = "place_center_x",
-		rotation = "random",
-		spawn_by = "default:dry_dirt_with_dry_grass",
-		num_spawn_by = 8,
-	})
-
 	-- Aspen tree and log
 
 	minetest.register_decoration({
@@ -1340,30 +1181,6 @@ function default.register_decorations()
 		height_max = 5,
 	})
 
-	-- Papyrus
-
-	-- Dry dirt version for savanna shore
-
-	minetest.register_decoration({
-		name = "default:papyrus_on_dry_dirt",
-		deco_type = "schematic",
-		place_on = {"default:dry_dirt"},
-		sidelen = 16,
-		noise_params = {
-			offset = -0.3,
-			scale = 0.7,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 354,
-			octaves = 3,
-			persist = 0.7
-		},
-		biomes = {"savanna_shore"},
-		y_max = 0,
-		y_min = 0,
-		schematic = minetest.get_modpath("default") ..
-			"/schematics/papyrus_on_dry_dirt.mts",
-	})
-
 	-- Grasses
 
 	register_grass_decoration(-0.03,  0.09,  5)
@@ -1371,14 +1188,6 @@ function default.register_decorations()
 	register_grass_decoration(0,      0.06,  3)
 	register_grass_decoration(0.015,  0.045, 2)
 	register_grass_decoration(0.03,   0.03,  1)
-
-	-- Dry grasses
-
-	register_dry_grass_decoration(0.01, 0.05,  5)
-	register_dry_grass_decoration(0.03, 0.03,  4)
-	register_dry_grass_decoration(0.05, 0.01,  3)
-	register_dry_grass_decoration(0.07, -0.01, 2)
-	register_dry_grass_decoration(0.09, -0.03, 1)
 
 	-- Ferns
 
@@ -1453,7 +1262,6 @@ function default.register_decorations()
 		},
 		biomes = {
 			"desert_ocean",
-			"savanna_ocean",
 		},
 		y_max = -2,
 		y_min = -8,
