@@ -130,10 +130,6 @@ BlockMen (CC BY-SA 3.0):
   default_stick.png
   default_mineral_mese.png
   default_meselamp.png
-  gui_formbg.png
-  gui_furnace_arrow_bg.png
-  gui_furnace_arrow_fg.png
-  gui_hb_bg.png
 
 sofar (CC BY-SA 3.0):
   default_aspen_sapling

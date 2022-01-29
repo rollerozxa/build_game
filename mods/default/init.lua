@@ -21,20 +21,12 @@ minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
 	local info = minetest.get_player_information(name)
 	if info.formspec_version > 1 then
-		formspec = formspec .. "background9[5,5;1,1;gui_formbg.png;true;10]"
+		formspec = formspec .. "background9[5,5;1,1;i3_bg_full.png;true;10]"
 	else
-		formspec = formspec .. "background[5,5;1,1;gui_formbg.png;true]"
+		formspec = formspec .. "background[5,5;1,1;i3_bg_full.png;true]"
 	end
 	player:set_formspec_prepend(formspec)
 end)
-
-function default.get_hotbar_bg(x,y)
-	local out = ""
-	for i=0,7,1 do
-		out = out .."image["..x+i..","..y..";1,1;gui_hb_bg.png]"
-	end
-	return out
-end
 
 minetest.override_item("", {
 	wield_scale = { x = 1, y = 1, z = 2.5 },
