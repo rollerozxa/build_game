@@ -69,6 +69,10 @@ for _, name in pairs(default_nodes) do
 
 	mod = "moreblocks"
 	stairsplus:register_all(mod, name, nodename, ndef)
+	minetest.register_alias_force("stairs:stair_" .. name, mod .. ":stair_" .. name)
+	minetest.register_alias_force("stairs:stair_outer_" .. name, mod .. ":stair_" .. name .. "_outer")
+	minetest.register_alias_force("stairs:stair_inner_" .. name, mod .. ":stair_" .. name .. "_inner")
+	minetest.register_alias_force("stairs:slab_"  .. name, mod .. ":slab_"  .. name)
 end
 
 -- wool registrations

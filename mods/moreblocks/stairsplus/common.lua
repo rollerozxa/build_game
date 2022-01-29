@@ -8,11 +8,11 @@ Licensed under the zlib license. See LICENSE.md for more information.
 local S = minetest.get_translator("moreblocks")
 
 local descriptions = {
-	["micro"] = S("%s Microblock"),
-	["slab"] = S("%s Slab"),
-	["slope"] = S("%s Slope"),
-	["panel"] = S("%s Panel"),
-	["stair"] = S("%s Stairs"),
+	["micro"] = "Microblock",
+	["slab"] = "Slab",
+	["slope"] = "Slope",
+	["panel"] = "Panel",
+	["stair"] = "Stairs",
 }
 
 -- Extends the standad rotate_node placement so that it takes into account
@@ -120,7 +120,7 @@ end
 
 stairsplus.register_single = function(category, alternate, info, modname, subname, recipeitem, fields)
 	local src_def = minetest.registered_nodes[recipeitem] or {}
-	local desc_base = descriptions[category]:format(fields.description)
+	local desc_base = S("@1 "..descriptions[category], fields.description)
 	local def = {}
 
 	if category ~= "slab" then
