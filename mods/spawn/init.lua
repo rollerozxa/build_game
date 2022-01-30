@@ -29,7 +29,6 @@ local biome_ids = {
 	minetest.get_biome_id("coniferous_forest"),
 	minetest.get_biome_id("deciduous_forest"),
 	minetest.get_biome_id("grassland"),
-	minetest.get_biome_id("savanna"),
 }
 
 -- End of parameters
