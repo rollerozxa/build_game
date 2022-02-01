@@ -29,6 +29,6 @@ for i = 1, #dyes do
 		tiles = {"wool_" .. name .. ".png"},
 		is_ground_content = false,
 		groups = {snappy=3, wool=1},
-		sounds = default.node_sound_defaults(),
+		sounds = default.sound(),
 	})
 end

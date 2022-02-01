@@ -311,7 +311,7 @@ function doors.register(name, def)
 	def.inventory_image = nil
 
 	if not def.sounds then
-		def.sounds = default.node_sound_wood_defaults()
+		def.sounds = default.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -406,7 +406,7 @@ doors.register("door_steel", {
 	description = S("Steel Door"),
 	inventory_image = "doors_item_steel.png",
 	groups = {node=1, snappy=3, level=2},
-	sounds = default.node_sound_metal_defaults(),
+	sounds = default.sound_metal(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
 	gain_open = 0.2,
@@ -418,7 +418,7 @@ doors.register("door_glass", {
 	description = S("Glass Door"),
 	inventory_image = "doors_item_glass.png",
 	groups = {node = 1, snappy=3},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.sound_glass(),
 	sound_open = "doors_glass_door_open",
 	sound_close = "doors_glass_door_close",
 	gain_open = 0.3,
@@ -477,7 +477,7 @@ function doors.register_trapdoor(name, def)
 	end
 
 	if not def.sounds then
-		def.sounds = default.node_sound_wood_defaults()
+		def.sounds = default.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -560,7 +560,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	wield_image = "doors_trapdoor_steel.png",
 	tile_front = "doors_trapdoor_steel.png",
 	tile_side = "doors_trapdoor_steel_side.png",
-	sounds = default.node_sound_metal_defaults(),
+	sounds = default.sound_metal(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
 	gain_open = 0.2,
@@ -609,7 +609,7 @@ function doors.register_fencegate(name, def)
 	end
 
 	if not fence.sounds then
-		fence.sounds = default.node_sound_wood_defaults()
+		fence.sounds = default.sound_wood()
 	end
 
 	fence.groups.fence = 1

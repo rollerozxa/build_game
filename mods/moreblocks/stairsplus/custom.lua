@@ -69,7 +69,7 @@ local function register_custom_subset(subset, modname, subname, recipeitem, grou
 		description = description,
 		drop = drop,
 		light_source = light,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = default.sound_stone(),
 	})
 end
 

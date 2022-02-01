@@ -7,15 +7,12 @@ Licensed under the zlib license. See LICENSE.md for more information.
 
 local S = minetest.get_translator("moreblocks")
 
-local sound_dirt = default.node_sound_dirt_defaults()
-local sound_wood = default.node_sound_wood_defaults()
-local sound_stone = default.node_sound_stone_defaults()
-local sound_glass = default.node_sound_glass_defaults()
-local sound_leaves = default.node_sound_leaves_defaults()
-
--- Don't break on 0.4.14 and earlier.
-local sound_metal = (default.node_sound_metal_defaults
-		and default.node_sound_metal_defaults() or sound_stone)
+local sound_dirt = default.sound_dirt()
+local sound_wood = default.sound_wood()
+local sound_stone = default.sound_stone()
+local sound_glass = default.sound_glass()
+local sound_leaves = default.sound_leaves()
+local sound_metal = default.sound_metal()
 
 local function tile_tiles(name)
 	local tex = "moreblocks_" ..name.. ".png"
