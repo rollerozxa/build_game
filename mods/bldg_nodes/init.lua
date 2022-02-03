@@ -9,7 +9,7 @@ minetest.register_node("bldg_nodes:wired_fence", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.5}, -- NodeBox1
+			{-0.5, -0.5, 0.437500, 0.5, 0.5, 0.5}, -- NodeBox1
 		}
 	},
 	groups = {snappy=3},
