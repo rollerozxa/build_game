@@ -1,5 +1,3 @@
--- player/init.lua
-
 dofile(minetest.get_modpath("player_api") .. "/api.lua")
 
 -- Default player appearance

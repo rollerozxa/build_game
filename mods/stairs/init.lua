@@ -1,24 +1,13 @@
--- stairs/init.lua
-
--- Minetest 0.4 mod: stairs
--- See README.txt for licensing and other information.
-
-
--- Global namespace for functions
-
 stairs = {}
 
--- Load support for MT game translation.
 local S = minetest.get_translator("stairs")
 -- Same as S, but will be ignored by translation file update scripts
 local T = S
-
 
 -- Register aliases for new pine node names
 
 minetest.register_alias("stairs:stair_pinewood", "stairs:stair_pine_wood")
 minetest.register_alias("stairs:slab_pinewood", "stairs:slab_pine_wood")
-
 
 local function rotate_and_place(itemstack, placer, pointed_thing)
 	local p0 = pointed_thing.under

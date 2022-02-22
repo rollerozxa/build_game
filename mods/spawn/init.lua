@@ -1,5 +1,3 @@
--- spawn/init.lua
-
 -- Disable by mapgen, setting or if 'static_spawnpoint' is set
 --------------------------------------------------------------
 

@@ -1,10 +1,6 @@
--- screwdriver/init.lua
-
 screwdriver = {}
 
--- Load support for MT game translation.
 local S = minetest.get_translator("screwdriver")
-
 
 screwdriver.ROTATE_FACE = 1
 screwdriver.ROTATE_AXIS = 2

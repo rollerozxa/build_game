@@ -1,5 +1,3 @@
--- doors/init.lua
-
 -- our API object
 doors = {}
 
