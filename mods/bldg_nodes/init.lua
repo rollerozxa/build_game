@@ -1,7 +1,12 @@
 
 minetest.register_node("bldg_nodes:wired_fence", {
 	description = "Wired fence",
-	tiles = {"bldg_nodes_wired_fence.png"},
+	tiles = {
+		"bldg_nodes_wired_fence.png",
+		"bldg_nodes_wired_fence.png",
+		"blank.png", "blank.png",
+		"bldg_nodes_wired_fence.png^[transformFX",
+		"bldg_nodes_wired_fence.png"},
 	use_texture_alpha = "clip",
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -9,7 +14,7 @@ minetest.register_node("bldg_nodes:wired_fence", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.437500, 0.5, 0.5, 0.5}, -- NodeBox1
+			{-0.5, -0.5, 0.437500, 0.5, 0.5, 0.5},
 		}
 	},
 	groups = {snappy=3},
