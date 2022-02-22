@@ -1,4 +1,4 @@
-dofile(minetest.get_modpath("player_api") .. "/api.lua")
+include("api")
 
 -- Default player appearance
 player_api.register_model("character.b3d", {

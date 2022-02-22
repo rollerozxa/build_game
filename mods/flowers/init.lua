@@ -3,8 +3,7 @@ flowers = {}
 local S = minetest.get_translator("flowers")
 
 -- Map Generation
-
-dofile(minetest.get_modpath("flowers") .. "/mapgen.lua")
+include("mapgen")
 
 --
 -- Flowers

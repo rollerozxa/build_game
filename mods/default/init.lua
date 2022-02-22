@@ -32,12 +32,22 @@ minetest.override_item("", {
 	}
 })
 
--- Load files
-local default_path = minetest.get_modpath("default")
+-- Less verbose file include function taken from NodeCore
+-- https://gitlab.com/sztest/nodecore/-/blob/master/mods/nc_api/init.lua
+local include = rawget(_G, "include") or function(...)
+	local parts = {...}
+	table.insert(parts, 1, minetest.get_modpath(minetest.get_current_modname()))
+	if parts[#parts]:sub(-4) ~= ".lua" then
+		parts[#parts] = parts[#parts] .. ".lua"
+	end
+	return dofile(table.concat(parts, "/"))
+end
+rawset(_G, "include", include)
 
-dofile(default_path.."/functions.lua")
-dofile(default_path.."/trees.lua")
-dofile(default_path.."/nodes.lua")
-dofile(default_path.."/torch.lua")
-dofile(default_path.."/mapgen.lua")
-dofile(default_path.."/aliases.lua")
+-- Load files
+include("functions")
+include("trees")
+include("nodes")
+include("torch")
+include("mapgen")
+include("aliases")
