@@ -260,6 +260,8 @@ local moreblocks_nodes = {
 	"sandstone_block",
 	"coral_skeleton",
 	"ice",
+
+	"dirt"
 }
 
 local colors_moreblocks = copy(colors)
