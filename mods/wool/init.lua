@@ -1,4 +1,3 @@
-local S = minetest.get_translator("wool")
 
 local dyes = {
 	{"white",      "White"},
@@ -22,10 +21,10 @@ for i = 1, #dyes do
 	local name, desc = unpack(dyes[i])
 
 	minetest.register_node("wool:" .. name, {
-		description = S(desc .. " Wool"),
+		description = desc .. " Wool",
 		tiles = {"wool_" .. name .. ".png"},
 		is_ground_content = false,
 		groups = {snappy=3, wool=1},
-		sounds = default.sound(),
+		sounds = bldg_sounds.sound(),
 	})
 end

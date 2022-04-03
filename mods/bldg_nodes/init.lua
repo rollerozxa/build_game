@@ -18,5 +18,11 @@ minetest.register_node("bldg_nodes:wired_fence", {
 		}
 	},
 	groups = {snappy=3},
-	sounds = default.sound_stone(),
+	sounds = bldg_sounds.sound_stone(),
 })
+
+include("default")
+include("default_fences")
+include("default_mesepost")
+include("default_signs")
+include("default_todo")
