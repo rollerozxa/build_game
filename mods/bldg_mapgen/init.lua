@@ -2,21 +2,16 @@
 -- Aliases for map generators
 --
 
--- All mapgens
-
-minetest.register_alias("mapgen_stone", "default:stone")
-minetest.register_alias("mapgen_water_source", "default:water_source")
-minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
+minetest.register_alias("mapgen_stone", "bldg_nodes:stone")
+minetest.register_alias("mapgen_water_source", "bldg_nodes:water_source")
+minetest.register_alias("mapgen_river_water_source", "bldg_nodes:river_water_source")
 
 
 --
 -- Register ores
 --
 
--- All mapgens
-
-function default.register_ores()
-
+local function register_ores()
 	-- Stratum ores.
 	-- These obviously first.
 
@@ -24,8 +19,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "stratum",
-		ore             = "default:silver_sandstone",
-		wherein         = {"default:stone"},
+		ore             = "bldg_nodes:silver_sandstone",
+		wherein         = {"bldg_nodes:stone"},
 		clust_scarcity  = 1,
 		y_max           = 46,
 		y_min           = 10,
@@ -42,8 +37,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "stratum",
-		ore             = "default:silver_sandstone",
-		wherein         = {"default:stone"},
+		ore             = "bldg_nodes:silver_sandstone",
+		wherein         = {"bldg_nodes:stone"},
 		clust_scarcity  = 1,
 		y_max           = 42,
 		y_min           = 6,
@@ -62,8 +57,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "stratum",
-		ore             = "default:desert_sandstone",
-		wherein         = {"default:desert_stone"},
+		ore             = "bldg_nodes:desert_sandstone",
+		wherein         = {"bldg_nodes:desert_stone"},
 		clust_scarcity  = 1,
 		y_max           = 46,
 		y_min           = 10,
@@ -80,8 +75,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "stratum",
-		ore             = "default:desert_sandstone",
-		wherein         = {"default:desert_stone"},
+		ore             = "bldg_nodes:desert_sandstone",
+		wherein         = {"bldg_nodes:desert_stone"},
 		clust_scarcity  = 1,
 		y_max           = 42,
 		y_min           = 6,
@@ -100,8 +95,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "stratum",
-		ore             = "default:sandstone",
-		wherein         = {"default:desert_stone"},
+		ore             = "bldg_nodes:sandstone",
+		wherein         = {"bldg_nodes:desert_stone"},
 		clust_scarcity  = 1,
 		y_max           = 39,
 		y_min           = 3,
@@ -123,8 +118,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
-		ore             = "default:clay",
-		wherein         = {"default:sand"},
+		ore             = "bldg_nodes:clay",
+		wherein         = {"bldg_nodes:sand"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 0,
@@ -144,8 +139,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
-		ore             = "default:silver_sand",
-		wherein         = {"default:stone"},
+		ore             = "bldg_nodes:silver_sand",
+		wherein         = {"bldg_nodes:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 31000,
@@ -165,8 +160,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
-		ore             = "default:dirt",
-		wherein         = {"default:stone"},
+		ore             = "bldg_nodes:dirt",
+		wherein         = {"bldg_nodes:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 31000,
@@ -180,7 +175,7 @@ function default.register_ores()
 			octaves = 1,
 			persist = 0.0
 		},
-		-- Only where default:dirt is present as surface material
+		-- Only where bldg_nodes:dirt is present as surface material
 		biomes = {"taiga", "snowy_grassland", "grassland", "coniferous_forest",
 				"deciduous_forest", "deciduous_forest_shore"}
 	})
@@ -189,8 +184,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
-		ore             = "default:gravel",
-		wherein         = {"default:stone"},
+		ore             = "bldg_nodes:gravel",
+		wherein         = {"bldg_nodes:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 31000,
@@ -212,8 +207,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:coal_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 9,
 		clust_size     = 3,
@@ -223,8 +218,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:coal_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 8,
 		clust_size     = 3,
@@ -234,8 +229,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:coal_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 30,
 		clust_size     = 5,
@@ -247,8 +242,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_tin",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:tin_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 10 * 10 * 10,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -258,8 +253,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_tin",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:tin_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 13 * 13 * 13,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -269,8 +264,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_tin",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:tin_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 10 * 10 * 10,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -282,8 +277,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:copper_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -293,8 +288,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:copper_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -304,8 +299,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:copper_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -317,8 +312,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:iron_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 12,
 		clust_size     = 3,
@@ -328,8 +323,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:iron_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 7 * 7 * 7,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -339,8 +334,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:iron_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 29,
 		clust_size     = 5,
@@ -352,8 +347,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:gold_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 13 * 13 * 13,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -363,8 +358,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:gold_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -374,8 +369,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:gold_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 13 * 13 * 13,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -387,8 +382,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 14 * 14 * 14,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -398,8 +393,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 18 * 18 * 18,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -409,8 +404,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 14 * 14 * 14,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -422,8 +417,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:diamond_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -433,8 +428,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:diamond_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 17 * 17 * 17,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -444,8 +439,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:diamond_ore",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 4,
 		clust_size     = 3,
@@ -457,8 +452,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_block",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 36 * 36 * 36,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -468,8 +463,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_block",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 36 * 36 * 36,
 		clust_num_ores = 3,
 		clust_size     = 2,
@@ -479,8 +474,8 @@ function default.register_ores()
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:mese",
-		wherein        = "default:stone",
+		ore            = "bldg_nodes:mese_block",
+		wherein        = "bldg_nodes:stone",
 		clust_scarcity = 28 * 28 * 28,
 		clust_num_ores = 5,
 		clust_size     = 3,
@@ -494,24 +489,23 @@ end
 -- Register biomes
 --
 
-function default.register_biomes()
-
+local function register_biomes()
 	-- Icesheet
 
 	minetest.register_biome({
 		name = "icesheet",
-		node_dust = "default:snowblock",
-		node_top = "default:snowblock",
+		node_dust = "bldg_nodes:snowblock",
+		node_top = "bldg_nodes:snowblock",
 		depth_top = 1,
-		node_filler = "default:snowblock",
+		node_filler = "bldg_nodes:snowblock",
 		depth_filler = 3,
-		node_stone = "default:cave_ice",
-		node_water_top = "default:ice",
+		node_stone = "bldg_nodes:cave_ice",
+		node_water_top = "bldg_nodes:ice",
 		depth_water_top = 10,
-		node_river_water = "default:ice",
-		node_riverbed = "default:gravel",
+		node_river_water = "bldg_nodes:ice",
+		node_riverbed = "bldg_nodes:gravel",
 		depth_riverbed = 2,
-		node_dungeon = "default:ice",
+		node_dungeon = "bldg_nodes:ice",
 		node_dungeon_stair = "stairs:stair_ice",
 		y_max = 31000,
 		y_min = -8,
@@ -521,16 +515,16 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "icesheet_ocean",
-		node_dust = "default:snowblock",
-		node_top = "default:sand",
+		node_dust = "bldg_nodes:snowblock",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_water_top = "default:ice",
+		node_water_top = "bldg_nodes:ice",
 		depth_water_top = 10,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -9,
 		y_min = -255,
@@ -540,9 +534,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "icesheet_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -555,15 +549,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "taiga",
-		node_dust = "default:snow",
-		node_top = "default:dirt_with_snow",
+		node_dust = "bldg_nodes:snow",
+		node_top = "bldg_nodes:dirt_with_snow",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 31000,
 		y_min = 4,
@@ -573,16 +567,16 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "taiga_ocean",
-		node_dust = "default:snow",
-		node_top = "default:sand",
+		node_dust = "bldg_nodes:snow",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		vertical_blend = 1,
 		y_max = 3,
@@ -593,9 +587,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "taiga_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -607,15 +601,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "snowy_grassland",
-		node_dust = "default:snow",
-		node_top = "default:dirt_with_snow",
+		node_dust = "bldg_nodes:snow",
+		node_top = "bldg_nodes:dirt_with_snow",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 1,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 31000,
 		y_min = 4,
@@ -625,16 +619,16 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "snowy_grassland_ocean",
-		node_dust = "default:snow",
-		node_top = "default:sand",
+		node_dust = "bldg_nodes:snow",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		vertical_blend = 1,
 		y_max = 3,
@@ -645,9 +639,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "snowy_grassland_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -659,14 +653,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "grassland",
-		node_top = "default:dirt_with_grass",
+		node_top = "bldg_nodes:dirt_with_grass",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 1,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 31000,
 		y_min = 6,
@@ -676,14 +670,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "grassland_dunes",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 2,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		vertical_blend = 1,
 		y_max = 5,
@@ -694,15 +688,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "grassland_ocean",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 3,
 		y_min = -255,
@@ -712,9 +706,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "grassland_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -726,14 +720,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "coniferous_forest",
-		node_top = "default:dirt_with_coniferous_litter",
+		node_top = "bldg_nodes:dirt_with_coniferous_litter",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 31000,
 		y_min = 6,
@@ -743,14 +737,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "coniferous_forest_dunes",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		vertical_blend = 1,
 		y_max = 5,
@@ -761,15 +755,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "coniferous_forest_ocean",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 3,
 		y_min = -255,
@@ -779,9 +773,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "coniferous_forest_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -793,14 +787,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "deciduous_forest",
-		node_top = "default:dirt_with_grass",
+		node_top = "bldg_nodes:dirt_with_grass",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 31000,
 		y_min = 1,
@@ -810,14 +804,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "deciduous_forest_shore",
-		node_top = "default:dirt",
+		node_top = "bldg_nodes:dirt",
 		depth_top = 1,
-		node_filler = "default:dirt",
+		node_filler = "bldg_nodes:dirt",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = 0,
 		y_min = -1,
@@ -827,15 +821,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "deciduous_forest_ocean",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_riverbed = "default:sand",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		vertical_blend = 1,
 		y_max = -2,
@@ -846,9 +840,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "deciduous_forest_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -860,14 +854,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "desert",
-		node_top = "default:desert_sand",
+		node_top = "bldg_nodes:desert_sand",
 		depth_top = 1,
-		node_filler = "default:desert_sand",
+		node_filler = "bldg_nodes:desert_sand",
 		depth_filler = 1,
-		node_stone = "default:desert_stone",
-		node_riverbed = "default:sand",
+		node_stone = "bldg_nodes:desert_stone",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:desert_stone",
+		node_dungeon = "bldg_nodes:desert_stone",
 		node_dungeon_stair = "stairs:stair_desert_stone",
 		y_max = 31000,
 		y_min = 4,
@@ -877,15 +871,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "desert_ocean",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_stone = "default:desert_stone",
-		node_riverbed = "default:sand",
+		node_stone = "bldg_nodes:desert_stone",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:desert_stone",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:desert_stone",
 		node_dungeon_stair = "stairs:stair_desert_stone",
 		vertical_blend = 1,
 		y_max = 3,
@@ -896,9 +890,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "desert_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -910,14 +904,14 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "sandstone_desert",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 1,
-		node_stone = "default:sandstone",
-		node_riverbed = "default:sand",
+		node_stone = "bldg_nodes:sandstone",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_dungeon = "default:sandstonebrick",
+		node_dungeon = "bldg_nodes:sandstonebrick",
 		node_dungeon_stair = "stairs:stair_sandstone_block",
 		y_max = 31000,
 		y_min = 4,
@@ -927,15 +921,15 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "sandstone_desert_ocean",
-		node_top = "default:sand",
+		node_top = "bldg_nodes:sand",
 		depth_top = 1,
-		node_filler = "default:sand",
+		node_filler = "bldg_nodes:sand",
 		depth_filler = 3,
-		node_stone = "default:sandstone",
-		node_riverbed = "default:sand",
+		node_stone = "bldg_nodes:sandstone",
+		node_riverbed = "bldg_nodes:sand",
 		depth_riverbed = 2,
-		node_cave_liquid = "default:water_source",
-		node_dungeon = "default:sandstonebrick",
+		node_cave_liquid = "bldg_nodes:water_source",
+		node_dungeon = "bldg_nodes:sandstonebrick",
 		node_dungeon_stair = "stairs:stair_sandstone_block",
 		y_max = 3,
 		y_min = -255,
@@ -945,9 +939,9 @@ function default.register_biomes()
 
 	minetest.register_biome({
 		name = "sandstone_desert_under",
-		node_cave_liquid = {"default:water_source", "default:lava_source"},
-		node_dungeon = "default:cobble",
-		node_dungeon_alt = "default:mossycobble",
+		node_cave_liquid = {"bldg_nodes:water_source", "bldg_nodes:lava_source"},
+		node_dungeon = "bldg_nodes:cobble",
+		node_dungeon_alt = "bldg_nodes:mossycobble",
 		node_dungeon_stair = "stairs:stair_cobble",
 		y_max = -256,
 		y_min = -31000,
@@ -963,9 +957,9 @@ end
 
 local function register_grass_decoration(offset, scale, length)
 	minetest.register_decoration({
-		name = "default:grass_" .. length,
+		name = "bldg_nodes:grass_" .. length,
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		sidelen = 16,
 		noise_params = {
 			offset = offset,
@@ -978,15 +972,15 @@ local function register_grass_decoration(offset, scale, length)
 		biomes = {"grassland", "deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		decoration = "default:grass_" .. length,
+		decoration = "bldg_nodes:grass_" .. length,
 	})
 end
 
 local function register_fern_decoration(seed, length)
 	minetest.register_decoration({
-		name = "default:fern_" .. length,
+		name = "bldg_nodes:fern_" .. length,
 		deco_type = "simple",
-		place_on = {"default:dirt_with_coniferous_litter"},
+		place_on = {"bldg_nodes:dirt_with_coniferous_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -999,19 +993,19 @@ local function register_fern_decoration(seed, length)
 		biomes = {"coniferous_forest"},
 		y_max = 31000,
 		y_min = 6,
-		decoration = "default:fern_" .. length,
+		decoration = "bldg_nodes:fern_" .. length,
 	})
 end
 
 
-function default.register_decorations()
+local function register_decorations()
 
 	-- Apple tree and log
 
 	minetest.register_decoration({
-		name = "default:apple_tree",
+		name = "bldg_nodes:apple_tree",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0.024,
@@ -1024,15 +1018,15 @@ function default.register_decorations()
 		biomes = {"deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/apple_tree.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/apple_tree.mts",
 		flags = "place_center_x, place_center_z",
 		rotation = "random",
 	})
 
 	minetest.register_decoration({
-		name = "default:apple_log",
+		name = "bldg_nodes:apple_log",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		place_offset_y = 1,
 		sidelen = 16,
 		noise_params = {
@@ -1046,19 +1040,19 @@ function default.register_decorations()
 		biomes = {"deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/apple_log.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/apple_log.mts",
 		flags = "place_center_x",
 		rotation = "random",
-		spawn_by = "default:dirt_with_grass",
+		spawn_by = "bldg_nodes:dirt_with_grass",
 		num_spawn_by = 8,
 	})
 
 	-- Taiga and temperate coniferous forest pine tree, small pine tree and log
 
 	minetest.register_decoration({
-		name = "default:pine_tree",
+		name = "bldg_nodes:pine_tree",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
+		place_on = {"bldg_nodes:dirt_with_snow", "bldg_nodes:dirt_with_coniferous_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0.010,
@@ -1071,14 +1065,14 @@ function default.register_decorations()
 		biomes = {"taiga", "coniferous_forest"},
 		y_max = 31000,
 		y_min = 4,
-		schematic = minetest.get_modpath("default") .. "/schematics/pine_tree.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/pine_tree.mts",
 		flags = "place_center_x, place_center_z",
 	})
 
 	minetest.register_decoration({
-		name = "default:small_pine_tree",
+		name = "bldg_nodes:small_pine_tree",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
+		place_on = {"bldg_nodes:dirt_with_snow", "bldg_nodes:dirt_with_coniferous_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0.010,
@@ -1091,33 +1085,33 @@ function default.register_decorations()
 		biomes = {"taiga", "coniferous_forest"},
 		y_max = 31000,
 		y_min = 4,
-		schematic = minetest.get_modpath("default") .. "/schematics/small_pine_tree.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/small_pine_tree.mts",
 		flags = "place_center_x, place_center_z",
 	})
 
 	minetest.register_decoration({
-		name = "default:pine_log",
+		name = "bldg_nodes:pine_log",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
+		place_on = {"bldg_nodes:dirt_with_snow", "bldg_nodes:dirt_with_coniferous_litter"},
 		place_offset_y = 1,
 		sidelen = 80,
 		fill_ratio = 0.0018,
 		biomes = {"taiga", "coniferous_forest"},
 		y_max = 31000,
 		y_min = 4,
-		schematic = minetest.get_modpath("default") .. "/schematics/pine_log.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/pine_log.mts",
 		flags = "place_center_x",
 		rotation = "random",
-		spawn_by = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
+		spawn_by = {"bldg_nodes:dirt_with_snow", "bldg_nodes:dirt_with_coniferous_litter"},
 		num_spawn_by = 8,
 	})
 
 	-- Aspen tree and log
 
 	minetest.register_decoration({
-		name = "default:aspen_tree",
+		name = "bldg_nodes:aspen_tree",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0.0,
@@ -1130,14 +1124,14 @@ function default.register_decorations()
 		biomes = {"deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/aspen_tree.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/aspen_tree.mts",
 		flags = "place_center_x, place_center_z",
 	})
 
 	minetest.register_decoration({
-		name = "default:aspen_log",
+		name = "bldg_nodes:aspen_log",
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		place_offset_y = 1,
 		sidelen = 16,
 		noise_params = {
@@ -1151,19 +1145,19 @@ function default.register_decorations()
 		biomes = {"deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		schematic = minetest.get_modpath("default") .. "/schematics/aspen_log.mts",
+		schematic = minetest.get_modpath("bldg_mapgen") .. "/schematics/aspen_log.mts",
 		flags = "place_center_x",
 		rotation = "random",
-		spawn_by = "default:dirt_with_grass",
+		spawn_by = "bldg_nodes:dirt_with_grass",
 		num_spawn_by = 8,
 	})
 
 	-- Cactus
 
 	minetest.register_decoration({
-		name = "default:cactus",
+		name = "bldg_nodes:cactus",
 		deco_type = "simple",
-		place_on = {"default:desert_sand"},
+		place_on = {"bldg_nodes:desert_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.0003,
@@ -1176,7 +1170,7 @@ function default.register_decorations()
 		biomes = {"desert"},
 		y_max = 31000,
 		y_min = 4,
-		decoration = "default:cactus",
+		decoration = "bldg_nodes:cactus",
 		height = 2,
 		height_max = 5,
 	})
@@ -1198,10 +1192,10 @@ function default.register_decorations()
 	-- Dry shrub
 
 	minetest.register_decoration({
-		name = "default:dry_shrub",
+		name = "bldg_nodes:dry_shrub",
 		deco_type = "simple",
-		place_on = {"default:desert_sand",
-			"default:sand", "default:silver_sand"},
+		place_on = {"bldg_nodes:desert_sand",
+			"bldg_nodes:sand", "bldg_nodes:silver_sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1214,16 +1208,16 @@ function default.register_decorations()
 		biomes = {"desert", "sandstone_desert", "cold_desert"},
 		y_max = 31000,
 		y_min = 2,
-		decoration = "default:dry_shrub",
+		decoration = "bldg_nodes:dry_shrub",
 		param2 = 4,
 	})
 
 	-- Marram grass
 
 	minetest.register_decoration({
-		name = "default:marram_grass",
+		name = "bldg_nodes:marram_grass",
 		deco_type = "simple",
-		place_on = {"default:sand"},
+		place_on = {"bldg_nodes:sand"},
 		sidelen = 4,
 		noise_params = {
 			offset = -0.7,
@@ -1238,18 +1232,18 @@ function default.register_decorations()
 		y_max = 6,
 		y_min = 4,
 		decoration = {
-			"default:marram_grass_1",
-			"default:marram_grass_2",
-			"default:marram_grass_3",
+			"bldg_nodes:marram_grass_1",
+			"bldg_nodes:marram_grass_2",
+			"bldg_nodes:marram_grass_3",
 		},
 	})
 
 	-- Coral reef
 
 	minetest.register_decoration({
-		name = "default:corals",
+		name = "bldg_nodes:corals",
 		deco_type = "simple",
-		place_on = {"default:sand"},
+		place_on = {"bldg_nodes:sand"},
 		place_offset_y = -1,
 		sidelen = 4,
 		noise_params = {
@@ -1267,18 +1261,18 @@ function default.register_decorations()
 		y_min = -8,
 		flags = "force_placement",
 		decoration = {
-			"default:coral_green", "default:coral_pink",
-			"default:coral_cyan", "default:coral_brown",
-			"default:coral_orange", "default:coral_skeleton",
+			"bldg_nodes:coral_green", "bldg_nodes:coral_pink",
+			"bldg_nodes:coral_cyan", "bldg_nodes:coral_brown",
+			"bldg_nodes:coral_orange", "bldg_nodes:coral_skeleton",
 		},
 	})
 
 	-- Kelp
 
 	minetest.register_decoration({
-		name = "default:kelp",
+		name = "bldg_nodes:kelp",
 		deco_type = "simple",
-		place_on = {"default:sand"},
+		place_on = {"bldg_nodes:sand"},
 		place_offset_y = -1,
 		sidelen = 16,
 		noise_params = {
@@ -1300,7 +1294,7 @@ function default.register_decorations()
 		y_max = -5,
 		y_min = -10,
 		flags = "force_placement",
-		decoration = "default:sand_with_kelp",
+		decoration = "bldg_nodes:sand_with_kelp",
 		param2 = 48,
 		param2_max = 96,
 	})
@@ -1315,6 +1309,6 @@ minetest.clear_registered_biomes()
 minetest.clear_registered_ores()
 minetest.clear_registered_decorations()
 
-default.register_biomes()
-default.register_ores()
-default.register_decorations()
+register_biomes()
+register_ores()
+register_decorations()

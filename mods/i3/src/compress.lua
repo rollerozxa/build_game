@@ -26,22 +26,22 @@ local colors = {
 }
 
 local to_compress = {
-	["default:wood"] = {
+	["bldg_nodes:wood"] = {
 		replace = "wood",
 		by = wood_types,
 	},
 
-	["default:fence_wood"] = {
+	["bldg_nodes:fence_wood"] = {
 		replace = "wood",
 		by = wood_types,
 	},
 
-	["default:fence_rail_wood"] = {
+	["bldg_nodes:fence_rail_wood"] = {
 		replace = "wood",
 		by = wood_types,
 	},
 
-	["default:mese_post_light"] = {
+	["bldg_nodes:mese_post_light"] = {
 		replace = "mese_post_light",
 		by = {
 			"mese_post_light_acacia_wood",
@@ -61,34 +61,24 @@ local to_compress = {
 		by = colors
 	},
 
-	["dye:white"] = {
-		replace = "white",
-		by = colors
-	},
-
-	["default:axe_steel"] = {
+	["bldg_nodes:axe_steel"] = {
 		replace = "steel",
 		by = material_tools
 	},
 
-	["default:pick_steel"] = {
+	["bldg_nodes:pick_steel"] = {
 		replace = "steel",
 		by = material_tools
 	},
 
-	["default:shovel_steel"] = {
+	["bldg_nodes:shovel_steel"] = {
 		replace = "steel",
 		by = material_tools
 	},
 
-	["default:sword_steel"] = {
+	["bldg_nodes:sword_steel"] = {
 		replace = "steel",
 		by = material_tools
-	},
-
-	["farming:hoe_steel"] = {
-		replace = "steel",
-		by = {"wood", "stone"}
 	},
 
 	["stairs:slab_wood"] = {

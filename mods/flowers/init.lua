@@ -30,7 +30,7 @@ local function add_simple_flower(name, desc, box, f_groups)
 		walkable = false,
 		buildable_to = true,
 		groups = f_groups,
-		sounds = default.sound_leaves(),
+		sounds = bldg_sounds.sound_leaves(),
 		selection_box = {
 			type = "fixed",
 			fixed = box
@@ -102,7 +102,7 @@ minetest.register_node("flowers:mushroom_red", {
 	walkable = false,
 	buildable_to = true,
 	groups = {mushroom = 1, snappy=3, attached_node = 1},
-	sounds = default.sound_leaves(),
+	sounds = bldg_sounds.sound_leaves(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
@@ -120,7 +120,7 @@ minetest.register_node("flowers:mushroom_brown", {
 	walkable = false,
 	buildable_to = true,
 	groups = {mushroom=1, food_mushroom=1, snappy=3, attached_node=1},
-	sounds = default.sound_leaves(),
+	sounds = bldg_sounds.sound_leaves(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-3 / 16, -0.5, -3 / 16, 3 / 16, -2 / 16, 3 / 16},

@@ -41,11 +41,10 @@ walls.register = function(wall_name, wall_desc, wall_texture_table, wall_mat, wa
 end
 
 walls.register("walls:cobble", S("Cobblestone Wall"), {"default_cobble.png"},
-		"default:cobble", default.sound_stone())
+		"default:cobble", bldg_sounds.sound_stone())
 
 walls.register("walls:mossycobble", S("Mossy Cobblestone Wall"), {"default_mossycobble.png"},
-		"default:mossycobble", default.sound_stone())
+		"default:mossycobble", bldg_sounds.sound_stone())
 
 walls.register("walls:desertcobble", S("Desert Cobblestone Wall"), {"default_desert_cobble.png"},
-		"default:desert_cobble", default.sound_stone())
-
+		"default:desert_cobble", bldg_sounds.sound_stone())

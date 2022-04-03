@@ -159,7 +159,7 @@ xpanes.register_pane("pane", {
 	textures = {"default_glass.png", "", "xpanes_edge.png"},
 	inventory_image = "default_glass.png",
 	wield_image = "default_glass.png",
-	sounds = default.sound_glass(),
+	sounds = bldg_sounds.sound_glass(),
 	groups = {snappy=3},
 })
 
@@ -169,7 +169,7 @@ xpanes.register_pane("bar", {
 	inventory_image = "xpanes_bar.png",
 	wield_image = "xpanes_bar.png",
 	groups = {snappy=3},
-	sounds = default.sound_metal(),
+	sounds = bldg_sounds.sound_metal(),
 })
 
 -- Register steel bar doors and trapdoors
@@ -182,7 +182,7 @@ if minetest.get_modpath("doors") then
 		inventory_image = "xpanes_item_steel_bar.png",
 		protected = true,
 		groups = {node=1, snappy=3, level=2},
-		sounds = default.sound_metal(),
+		sounds = bldg_sounds.sound_metal(),
 		sound_open = "xpanes_steel_bar_door_open",
 		sound_close = "xpanes_steel_bar_door_close",
 		gain_open = 0.15,
@@ -197,7 +197,7 @@ if minetest.get_modpath("doors") then
 		tile_side = "xpanes_trapdoor_steel_bar_side.png",
 		protected = true,
 		groups = {node=1, snappy=3, level=2, door=1},
-		sounds = default.sound_metal(),
+		sounds = bldg_sounds.sound_metal(),
 		sound_open = "xpanes_steel_bar_door_open",
 		sound_close = "xpanes_steel_bar_door_close",
 		gain_open = 0.15,

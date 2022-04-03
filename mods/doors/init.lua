@@ -146,7 +146,7 @@ function doors.door_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
+	if clicker and not bldg.can_interact_with_node(clicker, pos) then
 		return false
 	end
 
@@ -207,7 +207,7 @@ end
 
 local function can_dig_door(pos, digger)
 	replace_old_owner_information(pos)
-	return default.can_interact_with_node(digger, pos)
+	return bldg.can_interact_with_node(digger, pos)
 end
 
 function doors.register(name, def)
@@ -309,7 +309,7 @@ function doors.register(name, def)
 	def.inventory_image = nil
 
 	if not def.sounds then
-		def.sounds = default.sound_wood()
+		def.sounds = bldg_sounds.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -404,7 +404,7 @@ doors.register("door_steel", {
 	description = S("Steel Door"),
 	inventory_image = "doors_item_steel.png",
 	groups = {node=1, snappy=3, level=2},
-	sounds = default.sound_metal(),
+	sounds = bldg_sounds.sound_metal(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
 	gain_open = 0.2,
@@ -416,7 +416,7 @@ doors.register("door_glass", {
 	description = S("Glass Door"),
 	inventory_image = "doors_item_glass.png",
 	groups = {node = 1, snappy=3},
-	sounds = default.sound_glass(),
+	sounds = bldg_sounds.sound_glass(),
 	sound_open = "doors_glass_door_open",
 	sound_close = "doors_glass_door_close",
 	gain_open = 0.3,
@@ -430,7 +430,7 @@ function doors.trapdoor_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
+	if clicker and not bldg.can_interact_with_node(clicker, pos) then
 		return false
 	end
 
@@ -475,7 +475,7 @@ function doors.register_trapdoor(name, def)
 	end
 
 	if not def.sounds then
-		def.sounds = default.sound_wood()
+		def.sounds = bldg_sounds.sound_wood()
 	end
 
 	if not def.sound_open then
@@ -558,7 +558,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	wield_image = "doors_trapdoor_steel.png",
 	tile_front = "doors_trapdoor_steel.png",
 	tile_side = "doors_trapdoor_steel_side.png",
-	sounds = default.sound_metal(),
+	sounds = bldg_sounds.sound_metal(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
 	gain_open = 0.2,
@@ -607,7 +607,7 @@ function doors.register_fencegate(name, def)
 	end
 
 	if not fence.sounds then
-		fence.sounds = default.sound_wood()
+		fence.sounds = bldg_sounds.sound_wood()
 	end
 
 	fence.groups.fence = 1
@@ -639,28 +639,24 @@ end
 doors.register_fencegate("doors:gate_wood", {
 	description = S("Apple Wood Fence Gate"),
 	texture = "default_wood.png",
-	material = "default:wood",
 	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_acacia_wood", {
 	description = S("Acacia Wood Fence Gate"),
 	texture = "default_acacia_wood.png",
-	material = "default:acacia_wood",
 	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_pine_wood", {
 	description = S("Pine Wood Fence Gate"),
 	texture = "default_pine_wood.png",
-	material = "default:pine_wood",
 	groups = {snappy=3}
 })
 
 doors.register_fencegate("doors:gate_aspen_wood", {
 	description = S("Aspen Wood Fence Gate"),
 	texture = "default_aspen_wood.png",
-	material = "default:aspen_wood",
 	groups = {snappy=3}
 })
 

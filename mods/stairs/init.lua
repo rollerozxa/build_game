@@ -364,7 +364,7 @@ my_register_stair_and_slab(
 	{"default_wood.png"},
 	"Wooden Stair",
 	"Wooden Slab",
-	default.sound_wood(),
+	bldg_sounds.sound_wood(),
 	false
 )
 
@@ -375,7 +375,7 @@ my_register_stair_and_slab(
 	{"default_pine_wood.png"},
 	"Pine Wood Stair",
 	"Pine Wood Slab",
-	default.sound_wood(),
+	bldg_sounds.sound_wood(),
 	false
 )
 
@@ -386,7 +386,7 @@ my_register_stair_and_slab(
 	{"default_acacia_wood.png"},
 	"Acacia Wood Stair",
 	"Acacia Wood Slab",
-	default.sound_wood(),
+	bldg_sounds.sound_wood(),
 	false
 )
 
@@ -397,7 +397,7 @@ my_register_stair_and_slab(
 	{"default_aspen_wood.png"},
 	"Aspen Wood Stair",
 	"Aspen Wood Slab",
-	default.sound_wood(),
+	bldg_sounds.sound_wood(),
 	false
 )
 
@@ -408,7 +408,7 @@ my_register_stair_and_slab(
 	{"default_stone.png"},
 	"Stone Stair",
 	"Stone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -419,7 +419,7 @@ my_register_stair_and_slab(
 	{"default_cobble.png"},
 	"Cobblestone Stair",
 	"Cobblestone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -430,7 +430,7 @@ my_register_stair_and_slab(
 	{"default_mossycobble.png"},
 	"Mossy Cobblestone Stair",
 	"Mossy Cobblestone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -441,7 +441,7 @@ my_register_stair_and_slab(
 	{"default_stone_brick.png"},
 	"Stone Brick Stair",
 	"Stone Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -452,7 +452,7 @@ my_register_stair_and_slab(
 	{"default_stone_block.png"},
 	"Stone Block Stair",
 	"Stone Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -463,7 +463,7 @@ my_register_stair_and_slab(
 	{"default_desert_stone.png"},
 	"Desert Stone Stair",
 	"Desert Stone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -474,7 +474,7 @@ my_register_stair_and_slab(
 	{"default_desert_cobble.png"},
 	"Desert Cobblestone Stair",
 	"Desert Cobblestone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -485,7 +485,7 @@ my_register_stair_and_slab(
 	{"default_desert_stone_brick.png"},
 	"Desert Stone Brick Stair",
 	"Desert Stone Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -496,7 +496,7 @@ my_register_stair_and_slab(
 	{"default_desert_stone_block.png"},
 	"Desert Stone Block Stair",
 	"Desert Stone Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -507,7 +507,7 @@ my_register_stair_and_slab(
 	{"default_sandstone.png"},
 	"Sandstone Stair",
 	"Sandstone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -518,7 +518,7 @@ my_register_stair_and_slab(
 	{"default_sandstone_brick.png"},
 	"Sandstone Brick Stair",
 	"Sandstone Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -529,7 +529,7 @@ my_register_stair_and_slab(
 	{"default_sandstone_block.png"},
 	"Sandstone Block Stair",
 	"Sandstone Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -540,7 +540,7 @@ my_register_stair_and_slab(
 	{"default_desert_sandstone.png"},
 	"Desert Sandstone Stair",
 	"Desert Sandstone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -551,7 +551,7 @@ my_register_stair_and_slab(
 	{"default_desert_sandstone_brick.png"},
 	"Desert Sandstone Brick Stair",
 	"Desert Sandstone Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -562,7 +562,7 @@ my_register_stair_and_slab(
 	{"default_desert_sandstone_block.png"},
 	"Desert Sandstone Block Stair",
 	"Desert Sandstone Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -573,7 +573,7 @@ my_register_stair_and_slab(
 	{"default_silver_sandstone.png"},
 	"Silver Sandstone Stair",
 	"Silver Sandstone Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -584,7 +584,7 @@ my_register_stair_and_slab(
 	{"default_silver_sandstone_brick.png"},
 	"Silver Sandstone Brick Stair",
 	"Silver Sandstone Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -595,7 +595,7 @@ my_register_stair_and_slab(
 	{"default_silver_sandstone_block.png"},
 	"Silver Sandstone Block Stair",
 	"Silver Sandstone Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -606,7 +606,7 @@ my_register_stair_and_slab(
 	{"default_obsidian.png"},
 	"Obsidian Stair",
 	"Obsidian Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -617,7 +617,7 @@ my_register_stair_and_slab(
 	{"default_obsidian_brick.png"},
 	"Obsidian Brick Stair",
 	"Obsidian Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -628,7 +628,7 @@ my_register_stair_and_slab(
 	{"default_obsidian_block.png"},
 	"Obsidian Block Stair",
 	"Obsidian Block Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	true
 )
 
@@ -639,7 +639,7 @@ my_register_stair_and_slab(
 	{"default_brick.png"},
 	"Brick Stair",
 	"Brick Slab",
-	default.sound_stone(),
+	bldg_sounds.sound_stone(),
 	false
 )
 
@@ -650,7 +650,7 @@ my_register_stair_and_slab(
 	{"default_steel_block.png"},
 	"Steel Block Stair",
 	"Steel Block Slab",
-	default.sound_metal(),
+	bldg_sounds.sound_metal(),
 	true
 )
 
@@ -661,7 +661,7 @@ my_register_stair_and_slab(
 	{"default_tin_block.png"},
 	"Tin Block Stair",
 	"Tin Block Slab",
-	default.sound_metal(),
+	bldg_sounds.sound_metal(),
 	true
 )
 
@@ -672,7 +672,7 @@ my_register_stair_and_slab(
 	{"default_copper_block.png"},
 	"Copper Block Stair",
 	"Copper Block Slab",
-	default.sound_metal(),
+	bldg_sounds.sound_metal(),
 	true
 )
 
@@ -683,7 +683,7 @@ my_register_stair_and_slab(
 	{"default_bronze_block.png"},
 	"Bronze Block Stair",
 	"Bronze Block Slab",
-	default.sound_metal(),
+	bldg_sounds.sound_metal(),
 	true
 )
 
@@ -694,7 +694,7 @@ my_register_stair_and_slab(
 	{"default_gold_block.png"},
 	"Gold Block Stair",
 	"Gold Block Slab",
-	default.sound_metal(),
+	bldg_sounds.sound_metal(),
 	true
 )
 
@@ -705,7 +705,7 @@ my_register_stair_and_slab(
 	{"default_ice.png"},
 	"Ice Stair",
 	"Ice Slab",
-	default.sound_ice(),
+	bldg_sounds.sound_ice(),
 	true
 )
 
@@ -716,7 +716,7 @@ my_register_stair_and_slab(
 	{"default_snow.png"},
 	"Snow Block Stair",
 	"Snow Block Slab",
-	default.sound_snow(),
+	bldg_sounds.sound_snow(),
 	true
 )
 
@@ -730,7 +730,7 @@ stairs.register_stair(
 	"stairs_glass_stairside.png^[transformFX", "stairs_glass_stairside.png",
 	"default_glass.png", "stairs_glass_split.png"},
 	S("Glass Stair"),
-	default.sound_glass(),
+	bldg_sounds.sound_glass(),
 	false
 )
 
@@ -740,7 +740,7 @@ stairs.register_slab(
 	{snappy=3},
 	{"default_glass.png", "default_glass.png", "stairs_glass_split.png"},
 	S("Glass Slab"),
-	default.sound_glass(),
+	bldg_sounds.sound_glass(),
 	false
 )
 
@@ -752,7 +752,7 @@ stairs.register_stair_inner(
 	"stairs_glass_stairside.png^[transformFX", "default_glass.png",
 	"default_glass.png", "stairs_glass_stairside.png"},
 	"",
-	default.sound_glass(),
+	bldg_sounds.sound_glass(),
 	false,
 	S("Inner Glass Stair")
 )
@@ -765,7 +765,7 @@ stairs.register_stair_outer(
 	"stairs_glass_outer_stairside.png", "stairs_glass_stairside.png",
 	"stairs_glass_stairside.png^[transformR90","stairs_glass_outer_stairside.png"},
 	"",
-	default.sound_glass(),
+	bldg_sounds.sound_glass(),
 	false,
 	S("Outer Glass Stair")
 )

@@ -3,7 +3,7 @@ local function register_flower(seed, flower_name)
 	minetest.register_decoration({
 		name = "flowers:"..flower_name,
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass"},
+		place_on = {"bldg_nodes:dirt_with_grass"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.02,
@@ -24,7 +24,7 @@ local function register_mushroom(mushroom_name)
 	minetest.register_decoration({
 		name = "flowers:"..mushroom_name,
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass", "default:dirt_with_coniferous_litter"},
+		place_on = {"bldg_nodes:dirt_with_grass", "bldg_nodes:dirt_with_coniferous_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
