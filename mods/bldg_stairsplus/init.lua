@@ -7,7 +7,7 @@ Licensed under the zlib license. See LICENSE.md for more information.
 
 -- Nodes will be called <modname>:{stair,slab,panel,micro,slope}_<subname>
 
-local modpath = minetest.get_modpath("moreblocks").. "/stairsplus"
+local modpath = minetest.get_modpath("bldg_stairsplus")
 
 stairsplus = {}
 stairsplus.expect_infinite_stacks = false
@@ -70,12 +70,12 @@ local function register_stair_slab_panel_micro(modname, subname, recipeitem, gro
 	})
 end
 
-dofile(modpath .. "/defs.lua")
-dofile(modpath .. "/common.lua")
-dofile(modpath .. "/stairs.lua")
-dofile(modpath .. "/slabs.lua")
-dofile(modpath .. "/slopes.lua")
-dofile(modpath .. "/panels.lua")
-dofile(modpath .. "/microblocks.lua")
-dofile(modpath .. "/custom.lua")
-dofile(modpath .. "/registrations.lua")
+include("defs")
+include("common")
+include("stairs")
+include("slabs")
+include("slopes")
+include("panels")
+include("microblocks")
+include("custom")
+include("registrations")
