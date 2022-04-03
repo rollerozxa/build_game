@@ -101,6 +101,10 @@ local nodes = {
 		groups = {stone=1},
 		sounds = sound_stone,
 	},
+	desert_cobble = {
+		description = "Desert Cobblestone",
+		sounds = sound_stone,
+	},
 	desert_stone_brick = {
 		description = "Desert Stone Brick",
 		paramtype2 = "facedir",
