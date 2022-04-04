@@ -259,7 +259,7 @@ insert(colors_moreblocks, "white")
 
 local moreblocks_mods = {
 	wool = colors_moreblocks,
-	moreblocks = moreblocks_nodes,
+	bldg_stairsplus = moreblocks_nodes,
 }
 
 local t = {}
