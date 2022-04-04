@@ -204,6 +204,7 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.25},
 		}),
+		no_stairs = true,
 	},
 	dirt_with_dry_grass = {
 		description = "Dirt with Savanna Grass",
@@ -215,6 +216,7 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.4},
 		}),
+		no_stairs = true,
 	},
 	dirt_with_snow = {
 		description = "Dirt with Snow",
@@ -226,6 +228,7 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_snow_footstep", gain = 0.2},
 		}),
+		no_stairs = true,
 	},
 	dirt_with_coniferous_litter = {
 		description = "Dirt with Coniferous Litter",
@@ -237,11 +240,13 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.4},
 		}),
+		no_stairs = true,
 	},
 	dry_dirt = {
 		description = "Savanna Dirt",
 		groups = {soil=1},
 		sounds = sound_dirt,
+		no_stairs = true,
 	},
 	dry_dirt_with_dry_grass = {
 		description = "Savanna Dirt with Savanna Grass",
@@ -253,10 +258,12 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.4},
 		}),
+		no_stairs = true,
 	},
 	permafrost = {
 		description = "Permafrost",
 		sounds = sound_dirt,
+		no_stairs = true,
 	},
 	permafrost_with_stones = {
 		description = "Permafrost with Stones",
@@ -265,6 +272,7 @@ local nodes = {
 			"default_permafrost.png",
 			"default_permafrost.png^default_stones_side.png"},
 		sounds = sound_gravel,
+		no_stairs = true,
 	},
 	permafrost_with_moss = {
 		description = "Permafrost with Moss",
@@ -275,29 +283,35 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.25},
 		}),
+		no_stairs = true,
 	},
 	sand = {
 		description = "Sand",
 		groups = {sand=1},
 		sounds = sound_sand,
+		no_stairs = true,
 	},
 	desert_sand = {
 		description = "Desert Sand",
 		groups = {sand=1},
 		sounds = sound_sand,
+		no_stairs = true,
 	},
 	silver_sand = {
 		description = "Silver Sand",
 		groups = {sand=1},
 		sounds = sound_sand,
+		no_stairs = true,
 	},
 	gravel = {
 		description = "Gravel",
 		sounds = sound_gravel,
+		no_stairs = true,
 	},
 	clay = {
 		description = "Clay",
 		sounds = sound_dirt,
+		no_stairs = true,
 	},
 	snow = {
 		description = "Snow",
@@ -326,6 +340,7 @@ local nodes = {
 				minetest.set_node(pos, {name = "bldg_nodes:dirt_with_snow"})
 			end
 		end,
+		no_stairs = true,
 	},
 	snowblock = {
 		description = "Snow Block",
@@ -339,6 +354,7 @@ local nodes = {
 				minetest.set_node(pos, {name = "bldg_nodes:dirt_with_snow"})
 			end
 		end,
+		no_stairs = true,
 	},
 	ice = {
 		description = "Ice",
@@ -346,6 +362,7 @@ local nodes = {
 		paramtype = "light",
 		groups = {cools_lava=1, slippery=3},
 		sounds = sound_ice,
+		no_stairs = true,
 	},
 
 	--
@@ -383,6 +400,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	sapling = {
 		description = "Apple Tree Sapling",
@@ -416,6 +434,7 @@ local nodes = {
 
 			return itemstack
 		end,
+		no_stairs = true,
 	},
 	apple = {
 		description = "Apple",
@@ -431,6 +450,7 @@ local nodes = {
 		},
 		groups = {leafdecay=3, leafdecay_drop=1},
 		sounds = sound_leaves,
+		no_stairs = true,
 	},
 
 	pine_tree = {
@@ -464,6 +484,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	pine_sapling = {
 		description = "Pine Tree Sapling",
@@ -497,6 +518,7 @@ local nodes = {
 
 			return itemstack
 		end,
+		no_stairs = true,
 	},
 
 	acacia_tree = {
@@ -531,6 +553,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	acacia_sapling = {
 		description = "Acacia Tree Sapling",
@@ -565,6 +588,7 @@ local nodes = {
 
 			return itemstack
 		end,
+		no_stairs = true,
 	},
 
 	aspen_tree = {
@@ -598,6 +622,7 @@ local nodes = {
 		sounds = bldg_sounds.sound_leaves(),
 
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	aspen_sapling = {
 		description = "Aspen Tree Sapling",
@@ -631,6 +656,7 @@ local nodes = {
 
 			return itemstack
 		end,
+		no_stairs = true,
 	},
 
 	vessels_shelf = {
@@ -640,6 +666,7 @@ local nodes = {
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		sounds = sound_wood,
+		no_stairs = true,
 	},
 
 	--
@@ -650,17 +677,20 @@ local nodes = {
 		tiles = {"default_stone.png^default_mineral_coal.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_coal",
+		no_stairs = true,
 	},
 	coal_block = {
 		description = "Coal Block",
 		sounds = sound_stone,
 		original_itemstring = "default:coalblock",
+		no_stairs = true,
 	},
 	iron_ore = {
 		description = "Iron Ore",
 		tiles = {"default_stone.png^default_mineral_iron.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_iron",
+		no_stairs = true,
 	},
 	steel_block = {
 		description = "Steel Block",
@@ -672,6 +702,7 @@ local nodes = {
 		tiles = {"default_stone.png^default_mineral_copper.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_copper",
+		no_stairs = true,
 	},
 	copper_block = {
 		description = "Copper Block",
@@ -683,6 +714,7 @@ local nodes = {
 		tiles = {"default_stone.png^default_mineral_tin.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_tin",
+		no_stairs = true,
 	},
 	tin_block = {
 		description = "Tin Block",
@@ -699,17 +731,20 @@ local nodes = {
 		tiles = {"default_stone.png^default_mineral_mese.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_mese",
+		no_stairs = true,
 	},
 	mese_block = {
 		description = "Mese Block",
 		sounds = sound_stone,
 		original_itemstring = "default:mese",
+		no_stairs = true,
 	},
 	gold_ore = {
 		description = "Gold Ore",
 		tiles = {"default_stone.png^default_mineral_gold.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_gold",
+		no_stairs = true,
 	},
 	gold_block = {
 		description = "Gold Block",
@@ -721,6 +756,7 @@ local nodes = {
 		tiles = {"default_stone.png^default_mineral_diamond.png"},
 		sounds = sound_stone,
 		original_itemstring = "default:stone_with_diamond",
+		no_stairs = true,
 	},
 	diamond_block = {
 		description = "Diamond Block",
@@ -740,6 +776,7 @@ local nodes = {
 		paramtype2 = "facedir",
 		sounds = sound_wood,
 		on_place = minetest.rotate_node,
+		no_stairs = true,
 	},
 	papyrus = {
 		description = "Papyrus",
@@ -758,6 +795,7 @@ local nodes = {
 		after_dig_node = function(pos, node, metadata, digger)
 			bldg.dig_up(pos, node, digger)
 		end,
+		no_stairs = true,
 	},
 	-- TODO: grasses in default_todo.lua
 	bush_leaves = {
@@ -768,6 +806,7 @@ local nodes = {
 		groups = {leaves=1},
 		sounds = sound_leaves,
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	blueberry_bush_leaves_with_berries = {
 		description = "Blueberry Bush Leaves with Berries",
@@ -782,6 +821,7 @@ local nodes = {
 			minetest.set_node(pos, {name = "bldg_nodes:blueberry_bush_leaves"})
 			minetest.get_node_timer(pos):start(math.random(300, 1500))
 		end,
+		no_stairs = true,
 	},
 	blueberry_bush_leaves = {
 		description = "Blueberry Bush Leaves",
@@ -800,6 +840,7 @@ local nodes = {
 		end,
 
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	acacia_bush_leaves = {
 		description = "Acacia Bush Leaves",
@@ -809,6 +850,7 @@ local nodes = {
 		groups = {leaves=1},
 		sounds = sound_leaves,
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	pine_bush_needles = {
 		description = "Pine Bush Needles",
@@ -818,6 +860,7 @@ local nodes = {
 		groups = {leaves=1},
 		sounds = sound_leaves,
 		after_place_node = after_place_leaves,
+		no_stairs = true,
 	},
 	-- TODO: kelp
 
@@ -852,6 +895,7 @@ local nodes = {
 		after_destruct  = function(pos, oldnode)
 			minetest.set_node(pos, {name = "bldg_nodes:coral_skeleton"})
 		end,
+		no_stairs = true,
 	},
 
 	coral_pink = {
@@ -882,6 +926,7 @@ local nodes = {
 		after_destruct  = function(pos, oldnode)
 			minetest.set_node(pos, {name = "bldg_nodes:coral_skeleton"})
 		end,
+		no_stairs = true,
 	},
 
 	coral_cyan = {
@@ -913,15 +958,18 @@ local nodes = {
 		after_destruct  = function(pos, oldnode)
 			minetest.set_node(pos, {name = "bldg_nodes:coral_skeleton"})
 		end,
+		no_stairs = true,
 	},
 
 	coral_brown = {
 		description = "Brown Coral",
 		sounds = sound_stone,
+		no_stairs = true,
 	},
 	coral_orange = {
 		description = "Orange Coral",
 		sounds = sound_stone,
+		no_stairs = true,
 	},
 	coral_skeleton = {
 		description = "Coral Skeleton",
@@ -938,6 +986,7 @@ local nodes = {
 			"default_wood.png", "default_bookshelf.png", "default_bookshelf.png"},
 		paramtype2 = "facedir",
 		sounds = sound_wood,
+		no_stairs = true,
 	},
 
 	ladder_wood = {
@@ -955,6 +1004,7 @@ local nodes = {
 			type = "wallmounted"
 		},
 		sounds = sound_wood,
+		no_stairs = true,
 	},
 	ladder_steel = {
 		description = "Steel Ladder",
@@ -971,6 +1021,7 @@ local nodes = {
 			type = "wallmounted"
 		},
 		sounds = sound_metal,
+		no_stairs = true,
 	},
 
 	glass = {
@@ -1020,4 +1071,31 @@ for name, def in pairs(nodes) do
 	end
 
 	minetest.register_alias(original_itemstring, "bldg_nodes:"..name)
+
+	if not def.no_stairs then
+		local ndef = table.copy(def)
+		ndef.sunlight_propagates = true
+
+		-- Stone and desert_stone drop cobble and desert_cobble respectively.
+		if type(ndef.drop) == "string" then
+			ndef.drop = ndef.drop:gsub(".+:", "")
+		end
+
+		-- Use the primary tile for all sides of cut glasslike nodes and disregard paramtype2.
+		if #ndef.tiles > 1 and ndef.drawtype and ndef.drawtype:find("glass") then
+			ndef.tiles = {ndef.tiles[1]}
+			ndef.paramtype2 = nil
+		end
+
+		stairsplus:register_all("bldg_stairsplus", name, "bldg_nodes:" .. name, ndef)
+
+		-- non-moreblocks MTG compat
+		minetest.register_alias_force("stairs:stair_" .. name, "bldg_stairsplus:stair_" .. name)
+		minetest.register_alias_force("stairs:stair_outer_" .. name, "bldg_stairsplus:stair_" .. name .. "_outer")
+		minetest.register_alias_force("stairs:stair_inner_" .. name, "bldg_stairsplus:stair_" .. name .. "_inner")
+		minetest.register_alias_force("stairs:slab_"  .. name, "bldg_stairsplus:slab_"  .. name)
+
+		-- moreblocks stairs+ compat
+		stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)
+	end
 end
