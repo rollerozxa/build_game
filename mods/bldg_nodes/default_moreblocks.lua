@@ -1,18 +1,10 @@
---[[
-More Blocks: node definitions
 
-Copyright © 2011-2020 Hugo Locurcio and contributors.
-Licensed under the zlib license. See LICENSE.md for more information.
---]]
-
-local S = minetest.get_translator("moreblocks")
-
-local sound_dirt = default.sound_dirt()
-local sound_wood = default.sound_wood()
-local sound_stone = default.sound_stone()
-local sound_glass = default.sound_glass()
-local sound_leaves = default.sound_leaves()
-local sound_metal = default.sound_metal()
+local sound_dirt = bldg_sounds.sound_dirt()
+local sound_wood = bldg_sounds.sound_wood()
+local sound_stone = bldg_sounds.sound_stone()
+local sound_glass = bldg_sounds.sound_glass()
+local sound_leaves = bldg_sounds.sound_leaves()
+local sound_metal = bldg_sounds.sound_metal()
 
 local function tile_tiles(name)
 	local tex = "moreblocks_" ..name.. ".png"
@@ -20,9 +12,9 @@ local function tile_tiles(name)
 end
 
 local nodes = {
-	["wood_tile"] = {
-		description = S("Wooden Tile"),
-		groups = {snappy = 3, wood = 1},
+	wood_tile = {
+		description = "Wooden Tile",
+		groups = {wood = 1},
 		is_ground_content = false,
 		paramtype2 = "facedir",
 		place_param2 = 0,
@@ -34,141 +26,134 @@ local nodes = {
 		"default_wood.png^moreblocks_wood_tile.png^[transformR90"},
 		sounds = sound_wood,
 	},
-	["wood_tile_center"] = {
-		description = S("Centered Wooden Tile"),
-		groups = {snappy = 3, wood = 1,},
+	wood_tile_center = {
+		description = "Centered Wooden Tile",
+		groups = {wood = 1},
 		is_ground_content = false,
 		tiles = {"default_wood.png^moreblocks_wood_tile_center.png"},
 		sounds = sound_wood,
 	},
-	["wood_tile_full"] = {
-		description = S("Full Wooden Tile"),
-		groups = {snappy = 3, wood = 1},
+	wood_tile_full = {
+		description = "Full Wooden Tile",
+		groups = {wood = 1},
 		is_ground_content = false,
 		tiles = tile_tiles("wood_tile_full"),
 		sounds = sound_wood,
 	},
-	["wood_tile_offset"] = {
-		description = S("Offset Wooden Tile"),
+	wood_tile_offset = {
+		description = "Offset Wooden Tile",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {snappy = 3, wood = 1},
+		groups = {wood = 1},
 		is_ground_content = false,
 		tiles = {"default_wood.png^moreblocks_wood_tile_offset.png"},
 		sounds = sound_wood,
 		no_stairs = true,
 	},
-	["circle_stone_bricks"] = {
-		description = S("Circle Stone Bricks"),
-		groups = {snappy = 3, stone = 1},
+	circle_stone_bricks = {
+		description = "Circle Stone Bricks",
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["grey_bricks"] = {
-		description = S("Stone Bricks"),
+	grey_bricks = {
+		description = "Stone Bricks",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {snappy = 3},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["coal_stone_bricks"] = {
-		description = S("Coal Stone Bricks"),
+	coal_stone_bricks = {
+		description = "Coal Stone Bricks",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {stone = 1, snappy = 3},
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["iron_stone_bricks"] = {
-		description = S("Iron Stone Bricks"),
+	iron_stone_bricks = {
+		description = "Iron Stone Bricks",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {stone = 1, snappy = 3},
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["stone_tile"] = {
-		description = S("Stone Tile"),
-		groups = {stone = 1, snappy = 3},
+	stone_tile = {
+		description = "Stone Tile",
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["split_stone_tile"] = {
-		description = S("Split Stone Tile"),
+	split_stone_tile = {
+		description = "Split Stone Tile",
 		paramtype2 = "facedir",
 		place_param2 = 0,
 		tiles = {"moreblocks_split_stone_tile_top.png",
 			"moreblocks_split_stone_tile.png"},
-		groups = {stone = 1, snappy = 3},
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["checker_stone_tile"] = {
-		description = S("Checker Stone Tile"),
-		groups = {stone = 1, snappy = 3},
+	checker_stone_tile = {
+		description = "Checker Stone Tile",
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["tar"] = {
-		description = S("Tar"),
-		groups = {snappy = 3},
+	tar = {
+		description = "Tar",
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["plankstone"] = {
-		description = S("Plankstone"),
+	plankstone = {
+		description = "Plankstone",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {snappy = 3},
 		is_ground_content = false,
 		tiles = tile_tiles("plankstone"),
 		sounds = sound_stone,
 	},
-	["iron_glass"] = {
-		description = S("Iron Glass"),
+	iron_glass = {
+		description = "Iron Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"default_glass.png^[colorize:#DEDEDE", "default_glass_detail.png^[colorize:#DEDEDE"},
 		use_texture_alpha = "clip",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
-		groups = {snappy = 3},
 		sounds = sound_glass,
 	},
-	["coal_glass"] = {
-		description = S("Coal Glass"),
+	coal_glass = {
+		description = "Coal Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"default_glass.png^[colorize:#828282", "default_glass_detail.png^[colorize:#828282"},
 		use_texture_alpha = "clip",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
-		groups = {snappy = 3},
 		sounds = sound_glass,
 	},
-	["clean_glass"] = {
-		description = S("Clean Glass"),
+	clean_glass = {
+		description = "Clean Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"moreblocks_clean_glass.png", "moreblocks_clean_glass_detail.png"},
 		use_texture_alpha = "clip",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
-		groups = {snappy = 3},
 		sounds = sound_glass,
 	},
-	["cactus_brick"] = {
-		description = S("Cactus Brick"),
+	cactus_brick = {
+		description = "Cactus Brick",
 		paramtype2 = "facedir",
 		place_param2 = 0,
-		groups = {snappy = 3},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["cactus_checker"] = {
-		description = S("Cactus Checker"),
-		groups = {stone = 1, snappy = 3},
+	cactus_checker = {
+		description = "Cactus Checker",
+		groups = {stone = 1},
 		is_ground_content = false,
 		tiles = {"default_stone.png^moreblocks_cactus_checker.png",
 		"default_stone.png^moreblocks_cactus_checker.png",
@@ -178,83 +163,78 @@ local nodes = {
 		"default_stone.png^moreblocks_cactus_checker.png^[transformR90"},
 		sounds = sound_stone,
 	},
-	["empty_shelf"] = {
-		description = S("Empty Shelf"),
+	empty_shelf = {
+		description = "Empty Shelf",
 		paramtype2 = "facedir",
 		tiles = {"default_wood.png", "default_wood.png", "default_wood.png",
 		"default_wood.png", "moreblocks_empty_shelf.png", "moreblocks_empty_shelf.png"},
-		groups = {snappy = 3},
 		is_ground_content = false,
 		sounds = sound_wood,
 		furnace_burntime = 15,
 		no_stairs = true,
 	},
-	["coal_stone"] = {
-		description = S("Coal Stone"),
-		groups = {stone = 1, snappy = 3},
+	coal_stone = {
+		description = "Coal Stone",
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["iron_stone"] = {
-		description = S("Iron Stone"),
-		groups = {stone = 1, snappy = 3},
+	iron_stone = {
+		description = "Iron Stone",
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["coal_checker"] = {
-		description = S("Coal Checker"),
+	coal_checker = {
+		description = "Coal Checker",
 		tiles = {"default_stone.png^moreblocks_coal_checker.png",
 		"default_stone.png^moreblocks_coal_checker.png",
 		"default_stone.png^moreblocks_coal_checker.png",
 		"default_stone.png^moreblocks_coal_checker.png",
 		"default_stone.png^moreblocks_coal_checker.png^[transformR90",
 		"default_stone.png^moreblocks_coal_checker.png^[transformR90"},
-		groups = {stone = 1, snappy = 3},
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["iron_checker"] = {
-		description = S("Iron Checker"),
+	iron_checker = {
+		description = "Iron Checker",
 		tiles = {"default_stone.png^moreblocks_iron_checker.png",
 		"default_stone.png^moreblocks_iron_checker.png",
 		"default_stone.png^moreblocks_iron_checker.png",
 		"default_stone.png^moreblocks_iron_checker.png",
 		"default_stone.png^moreblocks_iron_checker.png^[transformR90",
 		"default_stone.png^moreblocks_iron_checker.png^[transformR90"},
-		groups = {stone = 1, snappy = 3},
+		groups = {stone = 1},
 		is_ground_content = false,
 		sounds = sound_stone,
 	},
-	["all_faces_tree"] = {
-		description = S("All-faces Tree"),
+	all_faces_tree = {
+		description = "All-faces Tree",
 		tiles = {"default_tree_top.png"},
-		groups = {tree = 1, snappy = 3},
+		groups = {tree = 1},
 		sounds = sound_wood,
-		furnace_burntime = 30,
 	},
-	["all_faces_pine_tree"] = {
-		description = S("All-faces Pine Tree"),
+	all_faces_pine_tree = {
+		description = "All-faces Pine Tree",
 		tiles = {"default_pine_tree_top.png"},
-		groups = {tree = 1, snappy = 3},
+		groups = {tree = 1},
 		sounds = sound_wood,
-		furnace_burntime = 26,
 	},
-	["all_faces_acacia_tree"] = {
-		description = S("All-faces Acacia Tree"),
+	all_faces_acacia_tree = {
+		description = "All-faces Acacia Tree",
 		tiles = {"default_acacia_tree_top.png"},
-		groups = {tree = 1, snappy = 3},
+		groups = {tree = 1},
 		sounds = sound_wood,
-		furnace_burntime = 34,
 	},
-	["all_faces_aspen_tree"] = {
-		description = S("All-faces Aspen Tree"),
+	all_faces_aspen_tree = {
+		description = "All-faces Aspen Tree",
 		tiles = {"default_aspen_tree_top.png"},
-		groups = {tree = 1, snappy = 3},
+		groups = {tree = 1},
 		sounds = sound_wood,
-		furnace_burntime = 22,
 	},
-	["glow_glass"] = {
-		description = S("Glow Glass"),
+	glow_glass = {
+		description = "Glow Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"default_glass.png^[colorize:#E9CD61", "default_glass_detail.png^[colorize:#E9CD61"},
 		use_texture_alpha = "clip",
@@ -262,11 +242,10 @@ local nodes = {
 		sunlight_propagates = true,
 		is_ground_content = false,
 		light_source = 11,
-		groups = {snappy = 3},
 		sounds = sound_glass,
 	},
-	["clean_glow_glass"] = {
-		description = S("Clean Glow Glass"),
+	clean_glow_glass = {
+		description = "Clean Glow Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"moreblocks_clean_glass.png^[colorize:#E9CD61", "moreblocks_clean_glass_detail.png^[colorize:#E9CD61"},
 		use_texture_alpha = "clip",
@@ -274,35 +253,32 @@ local nodes = {
 		sunlight_propagates = true,
 		is_ground_content = false,
 		light_source = 11,
-		groups = {snappy = 3},
 		sounds = sound_glass,
 	},
-	["super_glow_glass"] = {
-		description = S("Super Glow Glass"),
+	super_glow_glass = {
+		description = "Super Glow Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"default_glass.png^[colorize:#FFFF78", "default_glass_detail.png^[colorize:#FFFF78"},
 		use_texture_alpha = "clip",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
-		light_source = default.LIGHT_MAX,
-		groups = {snappy = 3},
+		light_source = minetest.LIGHT_MAX,
 		sounds = sound_glass,
 	},
-	["clean_super_glow_glass"] = {
-		description = S("Clean Super Glow Glass"),
+	clean_super_glow_glass = {
+		description = "Clean Super Glow Glass",
 		drawtype = "glasslike_framed_optional",
 		tiles = {"moreblocks_clean_glass.png^[colorize:#FFFF78", "moreblocks_clean_glass_detail.png^[colorize:#FFFF78"},
 		use_texture_alpha = "clip",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
-		light_source = default.LIGHT_MAX,
-		groups = {snappy = 3},
+		light_source = minetest.LIGHT_MAX,
 		sounds = sound_glass,
 	},
-	["rope"] = {
-		description = S("Rope"),
+	rope = {
+		description = "Rope",
 		drawtype = "signlike",
 		inventory_image = "moreblocks_rope.png",
 		wield_image = "moreblocks_rope.png",
@@ -312,14 +288,12 @@ local nodes = {
 		paramtype2 = "wallmounted",
 		walkable = false,
 		climbable = true,
-		selection_box = {type = "wallmounted",},
-		groups = {snappy = 3},
+		selection_box = {type = "wallmounted"},
 		sounds = sound_leaves,
 		no_stairs = true,
 	},
-	["copperpatina"] = {
-		description = S("Copper Patina Block"),
-		groups = {snappy = 3},
+	copperpatina = {
+		description = "Copper Patina Block",
 		is_ground_content = false,
 		sounds = sound_metal,
 	},
@@ -327,8 +301,7 @@ local nodes = {
 
 for name, def in pairs(nodes) do
 	def.tiles = def.tiles or {"moreblocks_" ..name.. ".png"}
-	minetest.register_node("moreblocks:" ..name, def)
-	minetest.register_alias(name, "moreblocks:" ..name)
+	minetest.register_node("bldg_nodes:" ..name, def)
 
 	def_copy = table.copy(def)
 
@@ -343,11 +316,10 @@ for name, def in pairs(nodes) do
 		def.tiles = {def_copy.tiles[1]}
 	end
 
-
 	if not def.no_stairs then
 		local groups = {}
 		for k, v in pairs(def.groups) do groups[k] = v end
-		stairsplus:register_all("moreblocks", name, "moreblocks:" ..name, {
+		stairsplus:register_all("bldg_stairsplus", name, "moreblocks:" ..name, {
 			description = def.description,
 			groups = groups,
 			tiles = def.tiles,
@@ -355,5 +327,6 @@ for name, def in pairs(nodes) do
 			light_source = def.light_source,
 			sounds = def.sounds,
 		})
+		stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)
 	end
 end
