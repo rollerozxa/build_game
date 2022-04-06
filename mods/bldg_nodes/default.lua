@@ -354,7 +354,6 @@ local nodes = {
 				minetest.set_node(pos, {name = "bldg_nodes:dirt_with_snow"})
 			end
 		end,
-		no_stairs = true,
 	},
 	ice = {
 		description = "Ice",
@@ -362,7 +361,6 @@ local nodes = {
 		paramtype = "light",
 		groups = {cools_lava=1, slippery=3},
 		sounds = sound_ice,
-		no_stairs = true,
 	},
 
 	--
@@ -1089,13 +1087,15 @@ for name, def in pairs(nodes) do
 
 		stairsplus:register_all("bldg_stairsplus", name, "bldg_nodes:" .. name, ndef)
 
+		local origname = original_itemstring:gsub("default:", "")
+
 		-- non-moreblocks MTG compat
-		minetest.register_alias_force("stairs:stair_" .. name, "bldg_stairsplus:stair_" .. name)
-		minetest.register_alias_force("stairs:stair_outer_" .. name, "bldg_stairsplus:stair_" .. name .. "_outer")
-		minetest.register_alias_force("stairs:stair_inner_" .. name, "bldg_stairsplus:stair_" .. name .. "_inner")
-		minetest.register_alias_force("stairs:slab_"  .. name, "bldg_stairsplus:slab_"  .. name)
+		minetest.register_alias_force("stairs:stair_" .. origname, "bldg_stairsplus:stair_" .. name)
+		minetest.register_alias_force("stairs:stair_outer_" .. origname, "bldg_stairsplus:stair_" .. name .. "_outer")
+		minetest.register_alias_force("stairs:stair_inner_" .. origname, "bldg_stairsplus:stair_" .. name .. "_inner")
+		minetest.register_alias_force("stairs:slab_"  .. origname, "bldg_stairsplus:slab_"  .. name)
 
 		-- moreblocks stairs+ compat
-		stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)
+		stairsplus:register_alias_all("moreblocks", origname, "bldg_stairsplus", name)
 	end
 end
