@@ -56,7 +56,7 @@ local to_compress = {
 		by = wood_types,
 	},
 
-	["wool:white"] = {
+	["bldg_nodes:white"] = {
 		replace = "white",
 		by = colors
 	},

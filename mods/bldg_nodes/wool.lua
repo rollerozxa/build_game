@@ -1,4 +1,3 @@
-
 local dyes = {
 	{"white",      "White"},
 	{"grey",       "Grey"},
@@ -19,12 +18,21 @@ local dyes = {
 
 for i = 1, #dyes do
 	local name, desc = unpack(dyes[i])
+	local nodename = "bldg_nodes:wool_" .. name
 
-	minetest.register_node("wool:" .. name, {
+	minetest.register_node(nodename, {
 		description = desc .. " Wool",
 		tiles = {"wool_" .. name .. ".png"},
-		is_ground_content = false,
 		groups = {snappy=3, wool=1},
 		sounds = bldg_sounds.sound(),
 	})
+
+	minetest.register_alias("wool:"..name, "bldg_nodes:wool_"..name)
+
+	local ndef = table.copy(minetest.registered_nodes[nodename])
+	ndef.sunlight_propagates = true
+
+	stairsplus:register_all("bldg_nodes", name, nodename, ndef)
+
+	stairsplus:register_alias_all("wool", name, "bldg_nodes", "wool_"..name)
 end
