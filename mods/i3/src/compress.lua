@@ -25,6 +25,11 @@ local colors = {
 	"grey", "magenta", "orange", "pink", "red", "violet", "yellow",
 }
 
+local wool_colours = {}
+for _,colour in pairs(colors) do
+	table.insert(wool_colours, "wool_"..colour)
+end
+
 local to_compress = {
 	["bldg_nodes:wood"] = {
 		replace = "wood",
@@ -56,9 +61,9 @@ local to_compress = {
 		by = wood_types,
 	},
 
-	["bldg_nodes:white"] = {
-		replace = "white",
-		by = colors
+	["bldg_nodes:wool_white"] = {
+		replace = "wool_white",
+		by = wool_colours
 	},
 
 	["bldg_nodes:axe_steel"] = {
@@ -254,8 +259,8 @@ local moreblocks_nodes = {
 	"straw",
 }
 
-local colors_moreblocks = copy(colors)
-insert(colors_moreblocks, "white")
+local colors_moreblocks = copy(wool_colours)
+insert(colors_moreblocks, "wool_white")
 
 local moreblocks_mods = {
 	wool = colors_moreblocks,
@@ -265,6 +270,7 @@ local moreblocks_mods = {
 local t = {}
 
 for mod, v in pairs(moreblocks_mods) do
+mod = "bldg_stairsplus"
 for _, nodename in ipairs(v) do
 	t[nodename] = {}
 
