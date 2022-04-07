@@ -194,6 +194,7 @@ local moreblocks_nodes = {
 
 	"dirt",
 	"ice",
+	"snowblock",
 
 	"tree",
 	"wood",

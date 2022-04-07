@@ -179,6 +179,7 @@ local nodes = {
 		place_param2 = 0,
 		is_ground_content = false,
 		sounds = sound_stone,
+		original_itemstring = "default:obsidianbrick"
 	},
 	obsidian_block = {
 		description = "Obsidian Block",
