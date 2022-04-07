@@ -8,34 +8,6 @@ local operators = {
 	["([%+%-%*%^/&|])="] = function(a, b, c)
 		return fmt("%s = %s %s %s", a, a, b, c)
 	end,
-
-	["+%+"] = function(a, b)
-		return fmt("%s = %s + 1\n%s", a, a, b)
-	end,
-
-	["&"] = function(a, b)
-		return fmt("bit.band(%s, %s)", a, b)
-	end,
-
-	["|"] = function(a, b)
-		return fmt("bit.bor(%s, %s)", a, b)
-	end,
-
-	["<<"] = function(a, b)
-		return fmt("bit.lshift(%s, %s)", a, b)
-	end,
-
-	[">>"] = function(a, b)
-		return fmt("bit.rshift(%s, %s)", a, b)
-	end,
-
-	["<<="] = function(a, b)
-		return fmt("%s = bit.lshift(%s, %s)", a, a, b)
-	end,
-
-	[">>="] = function(a, b)
-		return fmt("%s = bit.rshift(%s, %s)", a, a, b)
-	end,
 }
 
 local function compile(data)
