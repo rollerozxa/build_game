@@ -109,7 +109,7 @@ local function search(data)
 						temp[item] = true
 					end
 
-					j++
+					j = j + 1
 				end
 			end
 		else
@@ -128,7 +128,7 @@ local function search(data)
 		end
 
 		if to_add then
-			c++
+			c = c + 1
 			filtered_list[c] = item
 		end
 	end
@@ -156,38 +156,12 @@ local function table_merge(t1, t2, hash)
 		local c = #t1
 
 		for i = 1, #t2 do
-			c++
+			c = c + 1
 			t1[c] = t2[i]
 		end
 	end
 
 	return t1
-end
-
-local function array_diff(t1, t2)
-	local hash = {}
-
-	for i = 1, #t1 do
-		local v = t1[i]
-		hash[v] = true
-	end
-
-	for i = 1, #t2 do
-		local v = t2[i]
-		hash[v] = nil
-	end
-
-	local diff, c = {}, 0
-
-	for i = 1, #t1 do
-		local v = t1[i]
-		if hash[v] then
-			c++
-			diff[c] = v
-		end
-	end
-
-	return diff
 end
 
 local function rcp_eq(rcp, rcp2)
@@ -605,7 +579,6 @@ local _ = {
 	table_merge = table_merge,
 	table_replace = table_replace,
 	rcp_eq = rcp_eq,
-	array_diff = array_diff,
 
 	-- Math
 	round = round,

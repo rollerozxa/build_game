@@ -245,7 +245,7 @@ local function select_item(player, data, _f)
 				for _, v in ipairs(items) do
 					if valid_item(reg_items[clean_name(v)]) then
 						insert(data.alt_items, idx + i, v)
-						i++
+						i = i + 1
 					end
 				end
 			end

@@ -105,7 +105,7 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 				size -= 0.05
 			end
 
-			cubes++
+			cubes = cubes + 1
 			insert(t[depth], {x + X, y + Y, size, size, img})
 		end
 	end
@@ -319,7 +319,7 @@ local function show_popup(fs, data)
 			if data.home then
 				str = data.home:gsub(",", "  "):sub(2,-2):gsub("%.%d", ""):gsub(
 					"(%-?%d+)", function(a)
-						c++
+						c = c + 1
 						return fmt("<b>%s: <style color=%s font=mono>%s</style></b>",
 							coords[c], colors.black, a)
 					end)
@@ -601,7 +601,7 @@ local function get_tabs_fs(fs, player, data, full_height)
 				Y + 0.05, 0.35, 0.35, fmt("%s^\\[resize:16x16", def.image))
 		end
 
-		c++
+		c = c + 1
 	end
 end
 
@@ -616,7 +616,7 @@ local function get_debug_grid(data, fs, full_height)
 	for x = 0, data.inv_width + 8, spacing do
 		fs("box", x, 0, 0.01, full_height, "#ff0")
 		fs("label", x, full_height + 0.1, tostring(i))
-		i++
+		i = i + 1
 	end
 
 	i = 61
