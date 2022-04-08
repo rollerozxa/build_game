@@ -1312,3 +1312,5 @@ minetest.clear_registered_decorations()
 register_biomes()
 register_ores()
 register_decorations()
+
+include("flowers")

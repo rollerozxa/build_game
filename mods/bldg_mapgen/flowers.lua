@@ -1,7 +1,7 @@
 
 local function register_flower(seed, flower_name)
 	minetest.register_decoration({
-		name = "flowers:"..flower_name,
+		name = "bldg_nodes:"..flower_name,
 		deco_type = "simple",
 		place_on = {"bldg_nodes:dirt_with_grass"},
 		sidelen = 16,
@@ -16,13 +16,13 @@ local function register_flower(seed, flower_name)
 		biomes = {"grassland", "deciduous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		decoration = "flowers:"..flower_name,
+		decoration = "bldg_nodes:"..flower_name,
 	})
 end
 
 local function register_mushroom(mushroom_name)
 	minetest.register_decoration({
-		name = "flowers:"..mushroom_name,
+		name = "bldg_nodes:"..mushroom_name,
 		deco_type = "simple",
 		place_on = {"bldg_nodes:dirt_with_grass", "bldg_nodes:dirt_with_coniferous_litter"},
 		sidelen = 16,
@@ -37,11 +37,11 @@ local function register_mushroom(mushroom_name)
 		biomes = {"deciduous_forest", "coniferous_forest"},
 		y_max = 31000,
 		y_min = 1,
-		decoration = "flowers:"..mushroom_name,
+		decoration = "bldg_nodes:"..mushroom_name,
 	})
 end
 
-function flowers.register_decorations()
+local function register_flower_decorations()
 	register_flower(436,     "rose")
 	register_flower(19822,   "tulip")
 	register_flower(1220999, "dandelion_yellow")
@@ -55,4 +55,4 @@ function flowers.register_decorations()
 	register_mushroom("mushroom_red")
 end
 
-flowers.register_decorations()
+register_flower_decorations()

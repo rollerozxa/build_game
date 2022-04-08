@@ -186,4 +186,20 @@ Contains the core of Build Game's nodes. All built-in simple full-sized nodes li
 - Extex101 (CC BY-SA 3.0)
 	- default_dry_shrub.png -- Derived from the original texture by celeron55
 
--
+### Textures (flowers/)
+
+- RHRhino (CC BY-SA 3.0):
+	- flowers_dandelion_white.png
+	- flowers_geranium.png
+	- flowers_rose.png
+	- flowers_tulip.png
+	- flowers_viola.png
+
+- Gambit (CC BY-SA 3.0):
+	- flowers_mushroom_brown.png
+	- flowers_mushroom_red.png
+
+- paramat (CC BY-SA 3.0):
+	- flowers_dandelion_yellow.png -- Derived from RHRhino's texture
+	- flowers_tulip_black.png -- Derived from RHRhino's texture
+	- flowers_chrysanthemum_green.png
