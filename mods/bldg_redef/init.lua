@@ -6,7 +6,7 @@ minetest.register_on_mods_loaded(function()
 		local origin = definition.mod_origin
 
 		local stair_or_slab = groups.stair or groups.slab
-		local moreblocks_object = origin == 'moreblocks'
+		local moreblocks_object = origin == 'bldg_nodes'
 
 		if stair_or_slab or moreblocks_object then
 			local tiles = definition.tiles
