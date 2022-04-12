@@ -100,7 +100,7 @@ local function register_fence_rail(name, def)
 		tiles = {def.texture},
 		sunlight_propagates = true,
 		is_ground_content = false,
-		groups = {},
+		groups = {snappy=3},
 	}
 	for k, v in pairs(default_fields) do
 		if def[k] == nil then
@@ -124,7 +124,6 @@ register_fence("fence_wood", {
 				"default_fence_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_overlay.png^default_wood.png^" ..
 				"default_fence_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -135,7 +134,6 @@ register_fence("fence_acacia_wood", {
 				"default_fence_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_overlay.png^default_acacia_wood.png^" ..
 				"default_fence_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -146,7 +144,6 @@ register_fence("fence_pine_wood", {
 				"default_fence_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_overlay.png^default_pine_wood.png^" ..
 				"default_fence_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -157,7 +154,6 @@ register_fence("fence_aspen_wood", {
 				"default_fence_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_overlay.png^default_aspen_wood.png^" ..
 				"default_fence_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -168,7 +164,6 @@ register_fence_rail("fence_rail_wood", {
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_rail_overlay.png^default_wood.png^" ..
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -179,7 +174,6 @@ register_fence_rail("fence_rail_acacia_wood", {
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_rail_overlay.png^default_acacia_wood.png^" ..
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -190,7 +184,6 @@ register_fence_rail("fence_rail_pine_wood", {
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_rail_overlay.png^default_pine_wood.png^" ..
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
 
@@ -201,6 +194,5 @@ register_fence_rail("fence_rail_aspen_wood", {
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_rail_overlay.png^default_aspen_wood.png^" ..
 				"default_fence_rail_overlay.png^[makealpha:255,126,126",
-	groups = {snappy=3},
 	sounds = bldg_sounds.sound_wood()
 })
