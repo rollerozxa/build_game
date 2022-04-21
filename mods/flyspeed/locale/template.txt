@@ -1,0 +1,5 @@
+# textdomain: flyspeed
+
+Change the flight speed.=
+Set flight speed to @1=
+Invalid speed.=
