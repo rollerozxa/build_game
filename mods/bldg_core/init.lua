@@ -3,7 +3,6 @@
 -- global build game namespace
 bldg = {}
 
-
 minetest.override_item("", {
 	wield_scale = { x = 1, y = 1, z = 2.5 },
 	tool_capabilities = {
@@ -27,3 +26,5 @@ minetest.register_on_joinplayer(function(player)
 	end
 	player:set_formspec_prepend(formspec)
 end)
+
+dofile(minetest.get_modpath('bldg_core').."/creative.lua")
