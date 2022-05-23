@@ -1,7 +1,7 @@
 local set_fs = i3.set_fs
-IMPORT("fmt", "play_sound", "create_inventory")
+local fmt, play_sound = i3.get("fmt", "play_sound")
 
-local trash = create_inventory("i3_trash", {
+local trash = minetest.create_detached_inventory("i3_trash", {
 	allow_put = function(_, _, _, stack)
 		return stack:get_count()
 	end,
@@ -12,7 +12,7 @@ local trash = create_inventory("i3_trash", {
 		local name = player:get_player_name()
 		play_sound(name, "i3_trash", 1.0)
 
-		if not core.is_creative_enabled(name) then
+		if not minetest.is_creative_enabled(name) then
 			set_fs(player)
 		end
 	end,

@@ -1,13 +1,10 @@
 local set_fs = i3.set_fs
 
-IMPORT("vec_eq", "vec_round")
-IMPORT("reg_items", "reg_aliases")
-IMPORT("S", "random", "translate", "ItemStack")
-IMPORT("sort", "copy", "insert", "remove", "indexof")
-IMPORT("fmt", "find", "match", "sub", "lower", "split", "toupper")
-IMPORT("msg", "pos_to_str", "str_to_pos", "add_hud_waypoint", "play_sound", "reset_data")
-IMPORT("search", "get_sorting_idx", "sort_inventory", "sort_by_category", "get_recipes", "get_detached_inv")
-IMPORT("valid_item", "get_stack", "clean_name", "compressible", "check_privs", "safe_teleport")
+local S = i3.get("S")
+local fmt, sub, toupper = i3.get("fmt", "toupper")
+local msg, add_hud_waypoint, play_sound, reset_data = i3.get("msg", "add_hud_waypoint", "play_sound", "reset_data")
+local search, get_sorting_idx, sort_inventory, sort_by_category, get_recipes, get_detached_inv = i3.get("search", "get_sorting_idx", "sort_inventory", "sort_by_category", "get_recipes", "get_detached_inv")
+local valid_item, get_stack, clean_name, compressible, safe_teleport = i3.get("valid_item", "get_stack", "clean_name", "compressible", "safe_teleport")
 
 local function inv_fields(player, data, fields)
 	local name = data.player_name
@@ -20,29 +17,24 @@ local function inv_fields(player, data, fields)
 		skins.set_player_skin(player, _skins[id])
 	end
 
-	if fields.drop_items then
-		local items = split(fields.drop_items, ",")
-		data.drop_items = items
-	end
-
 	for field in pairs(fields) do
-		if sub(field, 1, 4) == "btn_" then
-			data.subcat = indexof(i3.categories, sub(field, 5))
+		if string.sub(field, 1, 4) == "btn_" then
+			data.subcat = table.indexof(i3.categories, string.sub(field, 5))
 			break
 
-		elseif sub(field, 1, 3) == "cb_" then
-			local str = sub(field, 4)
+		elseif string.sub(field, 1, 3) == "cb_" then
+			local str = string.sub(field, 4)
 			data[str] = false
 
 			if fields[field] == "true" then
 				data[str] = true
 			end
 
-		elseif sub(field, 1, 8) == "setting_" then
-			data.show_setting = match(field, "_(%w+)$")
+		elseif string.sub(field, 1, 8) == "setting_" then
+			data.show_setting = string.match(field, "_(%w+)$")
 
-		elseif find(field, "waypoint_%d+") then
-			local id, action = match(field, "_(%d+)_(%w+)$")
+		elseif string.find(field, "waypoint_%d+") then
+			local id, action = string.match(field, "_(%d+)_(%w+)$")
 			      id = tonumber(id)
 			local waypoint = data.waypoints[id]
 			if not waypoint then return end
@@ -56,22 +48,22 @@ local function inv_fields(player, data, fields)
 
 			elseif action == "delete" then
 				player:hud_remove(waypoint.id)
-				remove(data.waypoints, id)
+				table.remove(data.waypoints, id)
 
 			elseif action == "teleport" then
-				local pos = str_to_pos(waypoint.pos)
+				local pos = minetest.string_to_pos(waypoint.pos)
 				safe_teleport(player, pos)
 				msg(name, S("Teleported to: @1", waypoint.name))
 
 			elseif action == "refresh" then
-				local color = random(0xffffff)
+				local color = math.random(0xffffff)
 				waypoint.color = color
 				player:hud_change(waypoint.id, "number", color)
 
 			elseif action == "hide" then
 				if waypoint.hide then
 					local new_id = add_hud_waypoint(
-						player, waypoint.name, str_to_pos(waypoint.pos), waypoint.color)
+						player, waypoint.name, minetest.string_to_pos(waypoint.pos), waypoint.color)
 
 					waypoint.id = new_id
 					waypoint.hide = nil
@@ -123,7 +115,7 @@ local function inv_fields(player, data, fields)
 		local idx = get_sorting_idx(data.sort)
 		local tot = #i3.sorting_methods
 
-		idx -= (fields.prev_sort and 1 or -1)
+		idx = idx - (fields.prev_sort and 1 or -1)
 
 		if idx > tot then
 			idx = 1
@@ -136,18 +128,18 @@ local function inv_fields(player, data, fields)
 	elseif fields.home then
 		if not data.home then
 			return msg(name, "No home set")
-		elseif not check_privs(name, {home = true}) then
+		elseif not minetest.check_player_privs(name, {home = true}) then
 			return msg(name, "'home' privilege missing")
 		end
 
-		safe_teleport(player, str_to_pos(data.home))
+		safe_teleport(player, minetest.string_to_pos(data.home))
 		msg(name, S"Welcome back home!")
 
 	elseif fields.set_home then
-		data.home = pos_to_str(player:get_pos(), 1)
+		data.home = minetest.pos_to_string(player:get_pos(), 1)
 
-	elseif sb_inv and sub(sb_inv, 1, 3) == "CHG" then
-		data.scrbar_inv = tonumber(match(sb_inv, "%d+"))
+	elseif sb_inv and string.sub(sb_inv, 1, 3) == "CHG" then
+		data.scrbar_inv = tonumber(string.match(sb_inv, "%d+"))
 		return
 
 	elseif fields.waypoint_add then
@@ -161,7 +153,7 @@ local function inv_fields(player, data, fields)
 		local pos = player:get_pos()
 
 		for _, v in ipairs(data.waypoints) do
-			if vec_eq(vec_round(pos), vec_round(str_to_pos(v.pos))) then
+			if vector.equals(vector.round(pos), vector.round(minetest.string_to_pos(v.pos))) then
 				play_sound(name, "i3_cannot", 0.8)
 				return msg(name, S"You already set a waypoint at this position")
 			end
@@ -173,17 +165,17 @@ local function inv_fields(player, data, fields)
 			waypoint = "Waypoint"
 		end
 
-		local color = random(0xffffff)
+		local color = math.random(0xffffff)
 		local id = add_hud_waypoint(player, waypoint, pos, color)
 
-		insert(data.waypoints, {
+		table.insert(data.waypoints, {
 			name  = waypoint,
-			pos   = pos_to_str(pos, 1),
+			pos   = minetest.pos_to_string(pos, 1),
 			color = color,
 			id    = id,
 		})
 
-		data.scrbar_inv += 1000
+		data.scrbar_inv = data.scrbar_inv + 1000
 
 	elseif fields.hide_debug_grid then
 		data.hide_debug_grid = not data.hide_debug_grid
@@ -196,7 +188,7 @@ local function select_item(player, data, _f)
 	local item
 
 	for field in pairs(_f) do
-		if find(field, ":") then
+		if string.find(field, ":") then
 			item = field
 			break
 		end
@@ -225,14 +217,14 @@ local function select_item(player, data, _f)
 		end
 
 		if idx and item ~= data.expand then
-			data.alt_items = copy(data.items)
+			data.alt_items = table.copy(data.items)
 			data.expand = item
 
 			if i3.compress_groups[item] then
-				local items = copy(i3.compress_groups[item])
-				insert(items, fmt("_%s", item))
+				local items = table.copy(i3.compress_groups[item])
+				table.insert(items, fmt("_%s", item))
 
-				sort(items, function(a, b)
+				table.sort(items, function(a, b)
 					if a:sub(1, 1) == "_" then
 						a = a:sub(2)
 					end
@@ -243,24 +235,24 @@ local function select_item(player, data, _f)
 				local i = 1
 
 				for _, v in ipairs(items) do
-					if valid_item(reg_items[clean_name(v)]) then
-						insert(data.alt_items, idx + i, v)
+					if valid_item(minetest.registered_items[clean_name(v)]) then
+						table.insert(data.alt_items, idx + i, v)
 						i = i + 1
 					end
 				end
 			end
 		end
 	else
-		if sub(item, 1, 1) == "_" then
-			item = sub(item, 2)
-		elseif sub(item, 1, 6) == "group!" then
-			item = match(item, "([%w:_]+)$")
+		if string.sub(item, 1, 1) == "_" then
+			item = string.sub(item, 2)
+		elseif string.sub(item, 1, 6) == "group!" then
+			item = string.match(item, "([%w:_]+)$")
 		end
 
-		item = reg_aliases[item] or item
-		if not reg_items[item] then return end
+		item = minetest.registered_aliases[item] or item
+		if not minetest.registered_items[item] then return end
 
-		if core.is_creative_enabled(data.player_name) then
+		if minetest.is_creative_enabled(data.player_name) then
 			local stack = ItemStack(item)
 			local stackmax = stack:get_stack_max()
 			      stack = fmt("%s %s", item, stackmax)
@@ -298,7 +290,7 @@ local function rcp_fields(player, data, fields)
 			return set_fs(player)
 		end
 
-		local str = lower(fields.filter)
+		local str = string.lower(fields.filter)
 		if data.filter == str then return end
 
 		data.filter = str
@@ -312,7 +304,7 @@ local function rcp_fields(player, data, fields)
 
 	elseif fields.prev_page or fields.next_page then
 		if data.pagemax == 1 then return end
-		data.pagenum -= (fields.prev_page and 1 or -1)
+		data.pagenum = data.pagenum - (fields.prev_page and 1 or -1)
 
 		if data.pagenum > data.pagemax then
 			data.pagenum = 1
@@ -337,11 +329,11 @@ local function rcp_fields(player, data, fields)
 	end
 end
 
-core.register_on_player_receive_fields(function(player, formname, fields)
+minetest.register_on_player_receive_fields(function(player, formname, fields)
 	local name = player:get_player_name()
 
 	if formname == "i3_outdated" then
-		return false, core.kick_player(name,
+		return false, minetest.kick_player(name,
 			S"Come back when your Minetest client is up-to-date (www.minetest.net).")
 	elseif formname ~= "" then
 		return false
@@ -359,11 +351,11 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 	if not data then return end
 
 	for f in pairs(fields) do
-		if sub(f, 1, 4) == "tab_" then
-			local tabname = sub(f, 5)
+		if string.sub(f, 1, 4) == "tab_" then
+			local tabname = string.sub(f, 5)
 			i3.set_tab(player, tabname)
 			break
-		elseif sub(f, 1, 5) == "itab_" then
+		elseif string.sub(f, 1, 5) == "itab_" then
 			data.pagenum = 1
 			data.itab = tonumber(f:sub(-1))
 			sort_by_category(data)

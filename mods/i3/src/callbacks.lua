@@ -4,39 +4,38 @@ local init_detached = i3.files.detached()
 local init_hud = i3.files.hud()
 local set_fs = i3.set_fs
 
-IMPORT("slz", "min", "copy", "ItemStack")
-IMPORT("spawn_item", "reset_data", "get_detached_inv")
+local spawn_item, reset_data, get_detached_inv = i3.get("spawn_item", "reset_data", "get_detached_inv")
 
-core.register_on_player_hpchange(function(player, hpchange)
+minetest.register_on_player_hpchange(function(player, hpchange)
 	local name = player:get_player_name()
 	local data = i3.data[name]
 	if not data then return end
 
 	local hp_max = player:get_properties().hp_max
-	data.hp = min(hp_max, player:get_hp() + hpchange)
+	data.hp = math.min(hp_max, player:get_hp() + hpchange)
 
 	set_fs(player)
 end)
 
-core.register_on_chatcommand(function(name)
-	local player = core.get_player_by_name(name)
-	core.after(0, set_fs, player)
+minetest.register_on_chatcommand(function(name)
+	local player = minetest.get_player_by_name(name)
+	minetest.after(0, set_fs, player)
 end)
 
-core.register_on_priv_grant(function(name, _, priv)
+minetest.register_on_priv_grant(function(name, _, priv)
 	if priv == "creative" or priv == "all" then
 		local data = i3.data[name]
 		reset_data(data)
 
-		local player = core.get_player_by_name(name)
-		core.after(0, set_fs, player)
+		local player = minetest.get_player_by_name(name)
+		minetest.after(0, set_fs, player)
 	end
 end)
 
-core.register_on_player_inventory_action(function(player, _, _, info)
+minetest.register_on_player_inventory_action(function(player, _, _, info)
 	local name = player:get_player_name()
 
-	if not core.is_creative_enabled(name) and
+	if not minetest.is_creative_enabled(name) and
 	  ((info.from_list == "main"  and info.to_list == "craft") or
 	   (info.from_list == "craft" and info.to_list == "main")  or
 	   (info.from_list == "craftresult" and info.to_list == "main")) then
@@ -44,7 +43,7 @@ core.register_on_player_inventory_action(function(player, _, _, info)
 	end
 end)
 
-if core.global_exists("skins") then
+if minetest.global_exists("skins") then
 	i3.modules.skins = true
 end
 
@@ -59,7 +58,7 @@ local function disable_inventories()
 	end
 end
 
-core.register_on_mods_loaded(function()
+minetest.register_on_mods_loaded(function()
 	fill_caches()
 	disable_inventories()
 end)
@@ -73,7 +72,7 @@ local function get_formspec_version(info)
 end
 
 local function outdated(name)
-	core.show_formspec(name, "i3_outdated",
+	minetest.show_formspec(name, "i3_outdated",
 		("size[6.5,1.3]image[0,0;1,1;i3_cancel.png]label[1,0;%s]button_exit[2.6,0.8;1,1;;OK]"):format(
 		"Your Minetest client is outdated.\nGet the latest version on minetest.net to play the game."))
 end
@@ -105,11 +104,11 @@ local function init_data(player, info)
 	local inv = player:get_inventory()
 	inv:set_size("main", i3.settings.inv_size)
 
-	core.after(0, set_fs, player)
+	minetest.after(0, set_fs, player)
 end
 
 local function save_data(player_name)
-	local _data = copy(i3.data)
+	local _data = table.copy(i3.data)
 
 	for name, v in pairs(_data) do
 	for dat in pairs(v) do
@@ -123,14 +122,14 @@ local function save_data(player_name)
 	end
 	end
 
-	storage:set_string("data", slz(_data))
+	storage:set_string("data", minetest.serialize(_data))
 end
 
-core.register_on_joinplayer(function(player)
+minetest.register_on_joinplayer(function(player)
 	local name = player:get_player_name()
-	local info = core.get_player_information and core.get_player_information(name)
+	local info = minetest.get_player_information and minetest.get_player_information(name)
 
-	if not info or get_formspec_version(info) < i3.settings.min_fs_version then
+	if not info or get_formspec_version(info) < 4 then
 		return outdated(name)
 	end
 
@@ -138,16 +137,16 @@ core.register_on_joinplayer(function(player)
 	init_hud(player)
 end)
 
-core.register_on_leaveplayer(function(player)
+minetest.register_on_leaveplayer(function(player)
 	local name = player:get_player_name()
 	save_data(name)
 end)
 
-core.register_on_shutdown(save_data)
+minetest.register_on_shutdown(save_data)
 
 local function routine()
 	save_data()
-	core.after(i3.settings.save_interval, routine)
+	minetest.after(i3.settings.save_interval, routine)
 end
 
-core.after(i3.settings.save_interval, routine)
+minetest.after(i3.settings.save_interval, routine)

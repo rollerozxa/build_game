@@ -6,17 +6,15 @@ local PNG, styles, fs_elements, colors = i3.files.styles()
 local sprintf = string.format
 local VoxelArea, VoxelManip = VoxelArea, VoxelManip
 
-IMPORT("find", "match", "sub", "upper")
-IMPORT("vec_new", "vec_sub", "vec_round")
-IMPORT("clr", "ESC", "msg", "check_privs")
-IMPORT("min", "max", "floor", "ceil", "round")
-IMPORT("reg_items", "reg_tools", "reg_entities")
-IMPORT("get_detached_inv")
-IMPORT("S", "ES", "translate", "ItemStack", "toupper")
-IMPORT("compression_active", "compressible")
-IMPORT("true_str", "is_num", "get_group", "str_to_pos")
-IMPORT("maxn", "sort", "concat", "copy", "insert", "remove", "unpack")
-IMPORT("get_sorting_idx", "get_recipes")
+local upper = i3.get("upper")
+local msg = i3.get("msg")
+local round = i3.get("round")
+local get_detached_inv = i3.get("get_detached_inv")
+local S, ES, toupper = i3.get("S", "ES", "toupper")
+local compression_active, compressible = i3.get("compression_active", "compressible")
+local true_str, is_num = i3.get("true_str", "is_num")
+local unpack = i3.get("unpack")
+local get_sorting_idx, get_recipes = i3.get("get_sorting_idx", "get_recipes")
 
 local function fmt(elem, ...)
 	if not fs_elements[elem] then
@@ -27,7 +25,7 @@ local function fmt(elem, ...)
 end
 
 local function snip(str, limit)
-	return #str > limit and fmt("%s...", sub(str, 1, limit - 3)) or str
+	return #str > limit and fmt("%s...", string.sub(str, 1, limit - 3)) or str
 end
 
 local function get_inv_slots(fs)
@@ -54,7 +52,7 @@ end
 
 local function add_subtitle(fs, name, y, ctn_len, font_size, sep, label)
 	fs(fmt("style[%s;font=bold;font_size=%u]", name, font_size))
-	fs("button", 0, y, ctn_len, 0.5, name, ESC(label))
+	fs("button", 0, y, ctn_len, 0.5, name, minetest.formspec_escape(label))
 
 	if sep then
 		fs("image", 0, y + 0.55, ctn_len, 0.035, PNG.bar)
@@ -62,7 +60,7 @@ local function add_subtitle(fs, name, y, ctn_len, font_size, sep, label)
 end
 
 local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
-	pos   = vec_round(pos)
+	pos   = vector.round(pos)
 	cubes = cubes or 0
 	depth = depth or -1
 	high  = high or math.huge
@@ -76,8 +74,8 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 	local max_depth = -7
 	local height = base_depth and (base_height - 1) or depth
 
-	local pos1 = vec_new(pos.x - width, pos.y + depth, pos.z - width)
-	local pos2 = vec_new(pos.x + width, pos.y + height, pos.z + width)
+	local pos1 = vector.new(pos.x - width, pos.y + depth, pos.z - width)
+	local pos2 = vector.new(pos.x + width, pos.y + height, pos.z + width)
 
 	local vm = VoxelManip(pos1, pos2)
 	local emin, emax = vm:get_emerged_area()
@@ -91,7 +89,7 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 
 		if img then
 			local p = area:position(idx)
-			      p = vec_sub(p, pos)
+			      p = vector.subtract(p, pos)
 
 			local size = 0.25
 			local x = 2 + (size / 2 * (p.z - p.x))
@@ -102,11 +100,11 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 			end
 
 			if plant then
-				size -= 0.05
+				size = size - 0.05
 			end
 
 			cubes = cubes + 1
-			insert(t[depth], {x + X, y + Y, size, size, img})
+			table.insert(t[depth], {x + X, y + Y, size, size, img})
 		end
 	end
 
@@ -114,7 +112,7 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 
 	if cubes < maxc and depth > max_depth then
 		-- if there's not enough map to preview, go deeper
-		depth -= 1
+		depth = depth - 1
 		return get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 	end
 
@@ -126,13 +124,13 @@ local function get_isometric_view(fs, pos, X, Y, t, cubes, depth, high)
 			dth[0] = #dth
 			for j = 1, dth[0] do
 				local params = dth[j]
-				      params[2] += shift
-				insert(fs, fmt("image[%f,%f;%.1f,%.1f;%s]", unpack(params)))
+				      params[2] = params[2] + shift
+				table.insert(fs, fmt("image[%f,%f;%.1f,%.1f;%s]", unpack(params)))
 			end
 		end
 	end
 
-	shift += (base_depth and 0.45 or 0.95)
+	shift = shift + (base_depth and 0.45 or 0.95)
 	fs("image", 2.7, Y + shift, 0.3, 0.3, PNG.flag)
 end
 
@@ -165,16 +163,16 @@ local function get_waypoint_fs(fs, data, player, yextra, ctn_len)
 			hex = "0" .. hex
 		end
 
-		local teleport_priv = check_privs(player, {teleport = true})
+		local teleport_priv = minetest.check_player_privs(player, {teleport = true})
 		local waypoint_preview = data.waypoint_see and data.waypoint_see == i
 
-		fs("label", 0.15, y + 0.33, clr(fmt("#%s", hex), waypoint_name))
+		fs("label", 0.15, y + 0.33, minetest.colorize(fmt("#%s", hex), waypoint_name))
 
-		local tooltip = fmt("Name: %s\nPosition:%s", clr("#dbeeff", v.name),
-				v.pos:sub(2,-2):gsub("(%-*%d*%.?%d+)", clr("#dbeeff", " %1")))
+		local tooltip = fmt("Name: %s\nPosition:%s", minetest.colorize("#dbeeff", v.name),
+				v.pos:sub(2,-2):gsub("(%-*%d*%.?%d+)", minetest.colorize("#dbeeff", " %1")))
 
 		if teleport_priv then
-			tooltip = fmt("%s\n%s", tooltip, clr("#ff0", ES"[Click to teleport]"))
+			tooltip = fmt("%s\n%s", tooltip, minetest.colorize("#ff0", ES"[Click to teleport]"))
 		end
 
 		fs("tooltip", 0, y, ctn_len - 2.1, 0.65, tooltip)
@@ -211,7 +209,7 @@ local function get_waypoint_fs(fs, data, player, yextra, ctn_len)
 			fs("image_button", 4.65, y - 3.25, 0.25, 0.25,
 				PNG.cancel_hover .. "^\\[brighten", "close_preview", "")
 
-			local pos = str_to_pos(data.waypoints[i].pos)
+			local pos = minetest.string_to_pos(data.waypoints[i].pos)
 			get_isometric_view(fs, pos, 0.6, y - 2.5)
 		end
 	end
@@ -221,11 +219,11 @@ end
 
 local function get_container(fs, data, player, yoffset, ctn_len)
 	local name = data.player_name
-	local esc_name = ESC(name)
+	local esc_name = minetest.formspec_escape(name)
 
 	add_subtitle(fs, "player_name", 0, ctn_len, 22, true, esc_name)
 
-	yoffset -= 0.5
+	yoffset = yoffset - 0.5
 
 	local yextra = 1
 
@@ -264,10 +262,10 @@ local function get_container(fs, data, player, yoffset, ctn_len)
 				id = i
 			end
 
-			insert(sks, skin.name)
+			table.insert(sks, skin.name)
 		end
 
-		sks = concat(sks, ","):gsub(";", "")
+		sks = table.concat(sks, ","):gsub(";", "")
 		fs("label", 0, yextra + 0.85, fmt("%s:", ES"Select a skin"))
 		fs(fmt("dropdown[0,%f;4,0.6;skins;%s;%u;true]", yextra + 1.1, sks, id))
 	end
@@ -357,11 +355,6 @@ local function show_popup(fs, data)
 				fs("box", 5.4, 10.68, 2.4, 0.45, "#707070")
 			end
 
-			fs("style[drop_items;font_size=15;font=mono;textcolor=#dbeeff]",
-			   fmt("field[5.4,10.68;2.4,0.45;drop_items;Drop items:;%s]",
-				ESC(concat(data.drop_items or {}, ","))),
-			   "field_close_on_enter[drop_items;false]")
-
 			fs(fmt("tooltip[cb_inv_compress;%s;#707070;#fff]",
 				ES"Enable this option to compress your inventory"),
 			   fmt("tooltip[cb_reverse_sorting;%s;#707070;#fff]",
@@ -369,10 +362,7 @@ local function show_popup(fs, data)
 			   fmt("tooltip[cb_ignore_hotbar;%s;#707070;#fff]",
 				ES"Enable this option to sort your inventory except the hotbar slots"),
 			   fmt("tooltip[cb_auto_sorting;%s;#707070;#fff]",
-				ES"Enable this option to sort your inventory automatically"),
-			   fmt("tooltip[drop_items;%s;#707070;#fff]",
-				"Add a comma-separated list of items to drop on inventory sorting.\n" ..
-				"Format: " .. ("mod:item,mod:item, ..."):gsub("(%a+:%a+)", clr("#bddeff", "%1"))))
+				ES"Enable this option to sort your inventory automatically"))
 		end
 	end
 end
@@ -391,10 +381,10 @@ local function get_inventory_fs(player, data, fs)
 		local t = {}
 
 		for _, v in ipairs(props.textures) do
-			insert(t, (ESC(v):gsub(",", "!")))
+			table.insert(t, (minetest.formspec_escape(v):gsub(",", "!")))
 		end
 
-		local textures = concat(t, ","):gsub("!", ",")
+		local textures = table.concat(t, ","):gsub("!", ",")
 
 		--fs("style[player_model;bgcolor=black]")
 		fs("model", 0.2, 0.2, armor_skin and 4 or 3.4, ctn_hgt,
@@ -412,7 +402,7 @@ local function get_inventory_fs(player, data, fs)
 
 		if wp > 0 then
 			local mul = (wp > 8 and 7) or (wp > 4 and 6) or 5
-			max_val += 11 + (wp * mul)
+			max_val = max_val + 11 + (wp * mul)
 		end
 	end
 
@@ -452,14 +442,14 @@ local function hide_items(player, data)
 		for i = 1, #data.items do
 			local item = data.items[i]
 			if not i3.compressed[item] then
-				insert(new, item)
+				table.insert(new, item)
 			end
 		end
 
 		data.items = new
 	end
 
-	if not core.is_creative_enabled(data.player_name) then
+	if not minetest.is_creative_enabled(data.player_name) then
 		local new = {}
 
 		for i = 1, #data.items do
@@ -467,7 +457,7 @@ local function hide_items(player, data)
 			local recipes, usages = get_recipes(player, item)
 
 			if recipes or usages then
-				insert(new, item)
+				table.insert(new, item)
 			end
 		end
 
@@ -487,7 +477,7 @@ local function get_items_fs(fs, data, player, full_height)
 
 	fs(fmt("box[%f,0.2;4.05,0.6;#bababa25]", data.inv_width + 0.3),
 	   "set_focus[filter]",
-	   fmt("field[%f,0.2;2.95,0.6;filter;;%s]", data.inv_width + 0.35, ESC(data.filter)),
+	   fmt("field[%f,0.2;2.95,0.6;filter;;%s]", data.inv_width + 0.35, minetest.formspec_escape(data.filter)),
 	   "field_close_on_enter[filter;false]")
 
 	fs("image_button", data.inv_width + 3.35, 0.35, 0.3,  0.3,  "", "cancel", "")
@@ -495,10 +485,10 @@ local function get_items_fs(fs, data, player, full_height)
 	fs("image_button", data.inv_width + 5.27, 0.3,  0.35, 0.35, "", "prev_page", "")
 	fs("image_button", data.inv_width + 7.45, 0.3,  0.35, 0.35, "", "next_page", "")
 
-	data.pagemax = max(1, ceil(#items / ipp))
+	data.pagemax = math.max(1, math.ceil(#items / ipp))
 
 	fs("button", data.inv_width + 5.6, 0.14, 1.88, 0.7, "pagenum",
-		fmt("%s / %u", clr(colors.yellow, data.pagenum), data.pagemax))
+		fmt("%s / %u", minetest.colorize(colors.yellow, data.pagenum), data.pagemax))
 
 	if #items == 0 then
 		local lbl = ES"No item to show"
@@ -523,12 +513,12 @@ local function get_items_fs(fs, data, player, full_height)
 			local name = _compressed and item:sub(2) or item
 
 			local X = i % rows
-			      X -= (X * 0.045) + data.inv_width + 0.28
+			      X = X - (X * 0.045) + data.inv_width + 0.28
 
 			local Y = round((i % ipp - X) / rows + 1, 0)
-			      Y -= (Y * 0.085) + 0.95
+			      Y = Y - (Y * 0.085) + 0.95
 
-			insert(fs, fmt("item_image_button", X, Y, size, size, name, item, ""))
+			table.insert(fs, fmt("item_image_button", X, Y, size, size, name, item, ""))
 
 			if compressible(item, data) then
 				local expand = data.expand == name
@@ -547,7 +537,7 @@ local function get_items_fs(fs, data, player, full_height)
 	for i, title in ipairs(_tabs) do
 		local selected = i == data.itab
 		fs(fmt([[style_type[image_button;fgimg=%s;fgimg_hovered=%s;noclip=true;
-			font_size=16;textcolor=%s;content_offset=0;sound=i3_tab] ]],
+			font_size=16;textcolor=%s;content_offset=0] ]],
 		selected and PNG.tab_small_hover or PNG.tab_small,
 		PNG.tab_small_hover, selected and "#fff" or "#ddd"))
 
@@ -559,15 +549,15 @@ end
 
 local function get_tabs_fs(fs, player, data, full_height)
 	local tab_len, tab_hgh, c, over = 3, 0.5, 0
-	local _tabs = copy(i3.tabs)
+	local _tabs = table.copy(i3.tabs)
 
 	for i, def in ipairs(i3.tabs) do
 		if def.access and not def.access(player, data) then
-			remove(_tabs, i)
+			table.remove(_tabs, i)
 		end
 	end
 
-	local shift = min(3, #_tabs)
+	local shift = math.min(3, #_tabs)
 
 	for i, def in ipairs(_tabs) do
 		if not over and c > 2 then
@@ -584,7 +574,7 @@ local function get_tabs_fs(fs, player, data, full_height)
 		local selected = i == data.tab
 
 		fs(fmt([[style_type[image_button;fgimg=%s;fgimg_hovered=%s;noclip=true;
-			font_size=16;textcolor=%s;content_offset=0;sound=i3_tab] ]],
+			font_size=16;textcolor=%s;content_offset=0] ]],
 		selected and (btm and PNG.tab_hover or PNG.tab_hover_top) or (btm and PNG.tab or PNG.tab_top),
 		btm and PNG.tab_hover or PNG.tab_hover_top, selected and "#fff" or "#ddd"))
 
@@ -592,10 +582,10 @@ local function get_tabs_fs(fs, player, data, full_height)
 		local Y = btm and full_height or -tab_hgh
 
 		fs"style_type[image_button:hovered;textcolor=#fff]"
-		fs("image_button", X, Y, tab_len, tab_hgh, "", fmt("tab_%s", def.name), ESC(def.description))
+		fs("image_button", X, Y, tab_len, tab_hgh, "", fmt("tab_%s", def.name), minetest.formspec_escape(def.description))
 
 		if true_str(def.image) then
-			local desc = translate(data.lang_code, def.description)
+			local desc = minetest.get_translated_string(data.lang_code, def.description)
 			fs("style_type[image;noclip=true]")
 			fs("image", X + (tab_len / 2) - ((#desc * 0.1) / 2) - 0.55,
 				Y + 0.05, 0.35, 0.35, fmt("%s^\\[resize:16x16", def.image))
@@ -624,7 +614,7 @@ local function get_debug_grid(data, fs, full_height)
 	for y = 0, full_height, spacing do
 		fs("box", 0, y, data.inv_width + 8, 0.01, "#ff0")
 		fs("label", -0.15, y, tostring(i))
-		i -= 1
+		i = i - 1
 	end
 
 	fs("box", data.inv_width / 2, 0, 0.01, full_height, "#f00")
@@ -633,7 +623,7 @@ local function get_debug_grid(data, fs, full_height)
 end
 
 local function make_fs(player, data)
-	local start = debug_mode and core.get_us_time() or nil
+	local start = debug_mode and minetest.get_us_time() or nil
 
 	local fs = setmetatable({}, {
 		__call = function(t, ...)
@@ -641,9 +631,9 @@ local function make_fs(player, data)
 			local elem = fs_elements[args[1]]
 
 			if elem then
-				insert(t, fmt(elem, select(2, ...)))
+				table.insert(t, fmt(elem, select(2, ...)))
 			else
-				insert(t, concat(args))
+				table.insert(t, table.concat(args))
 			end
 		end
 	})
@@ -651,8 +641,8 @@ local function make_fs(player, data)
 	data.inv_width = 10.23
 	local full_height = 12
 
-	fs(fmt("formspec_version[%u]size[%f,%f]no_prepend[]bgcolor[#0000]",
-		i3.settings.min_fs_version, data.inv_width + 8, full_height), styles)
+	fs(fmt("formspec_version[4]size[%f,%f]no_prepend[]bgcolor[#0000]",
+		data.inv_width + 8, full_height), styles)
 
 	fs("bg9", 0, 0, data.inv_width, full_height, PNG.bg_full, 10)
 
@@ -669,11 +659,11 @@ local function make_fs(player, data)
 
 	if debug_mode then
 		get_debug_grid(data, fs, full_height)
-		msg(data.player_name, fmt("make_fs(): %.2f ms", (core.get_us_time() - start) / 1000))
+		msg(data.player_name, fmt("make_fs(): %.2f ms", (minetest.get_us_time() - start) / 1000))
 		msg(data.player_name, fmt("#fs elements: %u", #fs))
 	end
 
-	return concat(fs)
+	return table.concat(fs)
 end
 
 return make_fs, get_inventory_fs

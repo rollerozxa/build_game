@@ -10,22 +10,18 @@ print[[
 	╚═╝╚═════╝
 ]]
 
-local modpath = core.get_modpath"i3"
-local storage = core.get_mod_storage()
-local _loadfile = dofile(modpath .. "/src/operators.lua")
+local storage = minetest.get_mod_storage()
 
 local function lf(path)
-	return assert(_loadfile(modpath .. path))
+	return assert(loadfile(minetest.get_modpath("i3") .. path))
 end
 
 i3 = {
-	data = core.deserialize(storage:get_string"data") or {},
+	data = minetest.deserialize(storage:get_string"data") or {},
 
 	settings = {
 		debug_mode = false,
 		max_waypoints = 15,
-		min_fs_version = 4,
-		item_btn_size = 1.1,
 		save_interval = 600, -- Player data save interval (in seconds)
 
 		hud_speed = 1,
@@ -35,14 +31,12 @@ i3 = {
 	categories = {
 		"waypoints",
 		"skins",
-
 	},
 
 	saves = { -- Metadata to save
 		home = true,
 		waypoints = true,
 		inv_items = true,
-		drop_items = true,
 		known_recipes = true,
 	},
 

@@ -1,10 +1,8 @@
 local make_fs, get_inventory_fs = i3.files.gui()
 
-IMPORT("gmatch", "split")
-IMPORT("S", "err", "fmt", "reg_items")
-IMPORT("sorter", "sort_inventory")
-IMPORT("sort", "concat", "copy", "insert", "remove")
-IMPORT("true_str", "true_table", "is_str", "is_func", "is_table", "clean_name")
+local S, err, fmt = i3.get("S", "err", "fmt")
+local sorter, sort_inventory = i3.get("sorter", "sort_inventory")
+local true_str, true_table, is_str, is_func, is_table, clean_name = i3.get("true_str", "true_table", "is_str", "is_func", "is_table", "clean_name")
 
 function i3.add_recipe_filter(name, f)
 	if not true_str(name) then
@@ -37,7 +35,7 @@ function i3.add_search_filter(name, f)
 end
 
 function i3.get_recipes(item)
-	item = core.registered_aliases[item] or item
+	item = minetest.registered_aliases[item] or item
 	local recipes = i3.recipes_cache[item]
 	local usages = i3.usages_cache[item]
 
@@ -70,7 +68,7 @@ function i3.new_tab(name, def)
 	end
 
 	def.name = name
-	insert(i3.tabs, def)
+	table.insert(i3.tabs, def)
 end
 
 i3.new_tab("inventory", {
@@ -86,7 +84,7 @@ function i3.remove_tab(name)
 
 	for i, def in ipairs(i3.tabs) do
 		if name == def.name then
-			remove(i3.tabs, i)
+			table.remove(i3.tabs, i)
 			break
 		end
 	end
@@ -138,7 +136,7 @@ function i3.override_tab(name, newdef)
 end
 
 i3.add_search_filter("groups", function(item, groups)
-	local def = reg_items[item]
+	local def = minetest.registered_items[item]
 	local has_groups = true
 
 	for _, group in ipairs(groups) do
@@ -170,8 +168,8 @@ function i3.compress(item, def)
 	for _, str in ipairs(def.by) do
 		local it = item:gsub(def.replace, str)
 
-		insert(t, it)
-		insert(i3.compress_groups[item], it)
+		table.insert(t, it)
+		table.insert(i3.compress_groups[item], it)
 
 		i3.compressed[it] = true
 	end
@@ -208,7 +206,7 @@ function i3.add_sorting_method(name, def)
 	end
 
 	def.name = name
-	insert(i3.sorting_methods, def)
+	table.insert(i3.sorting_methods, def)
 end
 
 i3.add_sorting_method("alphabetical", {

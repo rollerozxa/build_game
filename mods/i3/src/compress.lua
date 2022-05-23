@@ -1,4 +1,4 @@
-IMPORT("fmt", "copy", "insert")
+local fmt = i3.get("fmt")
 
 local wood_types = {
 	"acacia_wood", "aspen_wood", "junglewood", "pine_wood",
@@ -260,8 +260,8 @@ local moreblocks_nodes = {
 	"straw",
 }
 
-local colors_moreblocks = copy(wool_colours)
-insert(colors_moreblocks, "wool_white")
+local colors_moreblocks = table.copy(wool_colours)
+table.insert(colors_moreblocks, "wool_white")
 
 local moreblocks_mods = {
 	wool = colors_moreblocks,
@@ -277,7 +277,7 @@ for _, nodename in ipairs(v) do
 
 	for _, shape in ipairs(circular_saw_names) do
 		if shape[1] ~= "slope" or shape[2] ~= "" then
-			insert(t[nodename], fmt("%s_%s%s", shape[1], nodename, shape[2]))
+			table.insert(t[nodename], fmt("%s_%s%s", shape[1], nodename, shape[2]))
 		end
 	end
 
@@ -297,7 +297,7 @@ for k, v in pairs(to_compress) do
 
 	for _, str in ipairs(v.by) do
 		local it = k:gsub(v.replace, str)
-		insert(compressed[k], it)
+		table.insert(compressed[k], it)
 	end
 end
 

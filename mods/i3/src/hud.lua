@@ -1,4 +1,4 @@
-IMPORT("get_connected_players", "str_to_pos", "add_hud_waypoint")
+local get_connected_players,add_hud_waypoint = i3.get("get_connected_players", "add_hud_waypoint")
 
 local function init_hud(player)
 	local name = player:get_player_name()
@@ -84,8 +84,8 @@ local function show_hud(player, data)
 	end
 end
 
-core.register_globalstep(function()
-	local players = get_connected_players()
+minetest.register_globalstep(function()
+	local players = minetest.get_connected_players()
 	players[0] = #players
 
 	for i = 1, players[0] do
@@ -106,7 +106,7 @@ local function init_waypoints(player)
 
 	for _, v in ipairs(data.waypoints) do
 		if not v.hide then
-			local id = add_hud_waypoint(player, v.name, str_to_pos(v.pos), v.color)
+			local id = add_hud_waypoint(player, v.name, minetest.string_to_pos(v.pos), v.color)
 			v.id = id
 		end
 	end
