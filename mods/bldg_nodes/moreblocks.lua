@@ -301,6 +301,10 @@ local nodes = {
 
 for name, def in pairs(nodes) do
 	def.tiles = def.tiles or {"moreblocks_" ..name.. ".png"}
+
+	if not def.groups then def.groups = {} end
+	def.groups.snappy = 3
+
 	minetest.register_node("bldg_nodes:" ..name, def)
 
 	def_copy = table.copy(def)
