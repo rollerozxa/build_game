@@ -1,2 +1,2 @@
 # Build Game
-Minetest Game Mod soup #423723984723498, intended to be purely for building.
+A game centered around creative building with no survival elements and with a focus on basic building blocks.
