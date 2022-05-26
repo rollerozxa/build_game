@@ -9,3 +9,4 @@ include("moreblocks")
 include("wool")
 
 include("build_game")
+include("bldg_colouredblocks")
