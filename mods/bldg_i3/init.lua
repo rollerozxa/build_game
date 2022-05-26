@@ -13,7 +13,7 @@ print[[
 local storage = minetest.get_mod_storage()
 
 local function lf(path)
-	return assert(loadfile(minetest.get_modpath("i3") .. path))
+	return assert(loadfile(minetest.get_modpath("bldg_i3") .. path))
 end
 
 i3 = {
