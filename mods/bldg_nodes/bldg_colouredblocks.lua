@@ -53,6 +53,8 @@ for name, def in pairs(nodes) do
 	if not def.groups then def.groups = {} end
 	def.groups.snappy = 3
 
+	local compressions = {}
+
 	for _, colour in pairs(dyes) do
 		local ndef = table.copy(def)
 
@@ -64,6 +66,16 @@ for name, def in pairs(nodes) do
 		ndef.description = cl_name.." "..ndef.description
 		ndef.tiles[1] = ndef.tiles[1].."^[multiply:#"..cl_colour
 
-		minetest.register_node("bldg_nodes:"..name2, ndef)
+		local itemstring = "bldg_nodes:"..name2
+		minetest.register_node(itemstring, ndef)
+
+		if cl_id ~= "red" then
+			table.insert(compressions, itemstring)
+		end
 	end
+
+	i3.compress("bldg_nodes:"..name.."_red", {
+		replace = "bldg_nodes:"..name.."_red",
+		by = compressions
+	})
 end
