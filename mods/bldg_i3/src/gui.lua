@@ -251,7 +251,7 @@ local function get_container(fs, data, player, yoffset, ctn_len)
 	if data.subcat == 1 then
 		get_waypoint_fs(fs, data, player, yextra, ctn_len)
 
-	elseif data.subcat == 2 then
+	--[[elseif data.subcat == 2 then
 		if not i3.modules.skins then
 			return not_installed "skinsdb"
 		end
@@ -270,7 +270,7 @@ local function get_container(fs, data, player, yoffset, ctn_len)
 
 		sks = table.concat(sks, ","):gsub(";", "")
 		fs("label", 0, yextra + 0.85, fmt("%s:", ES"Select a skin"))
-		fs(fmt("dropdown[0,%f;4,0.6;skins;%s;%u;true]", yextra + 1.1, sks, id))
+		fs(fmt("dropdown[0,%f;4,0.6;skins;%s;%u;true]", yextra + 1.1, sks, id))]]
 	end
 end
 

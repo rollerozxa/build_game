@@ -30,7 +30,7 @@ i3 = {
 
 	categories = {
 		"waypoints",
-		"skins",
+		--"skins",
 	},
 
 	saves = { -- Metadata to save
