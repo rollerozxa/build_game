@@ -225,7 +225,10 @@ local function get_container(fs, data, player, yoffset, ctn_len)
 
 	yoffset = yoffset - 0.5
 
-	local yextra = 1
+	fs(fmt("list[detached:i3_trash;main;%f,%f;1,1;]", 4.45, yoffset + 1.25))
+	fs("image", 4.45, yoffset + 1.25, 1, 1, PNG.trash)
+
+	local yextra = 2
 
 	for i, title in ipairs(i3.categories) do
 		local btn_name = fmt("btn_%s", title)
