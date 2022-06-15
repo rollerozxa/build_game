@@ -1,0 +1,5 @@
+
+#	Specify which biomes Build Game should generate. You probably should not
+#	change this on an existing world as it will cause issues in mapgen, only
+#	use it on a new world or one where you've nuked the map database.
+bldg_biomes (Biomes) string icesheet,taiga,snowy_grassland,grassland,coniferous_forest,deciduous_forest,desert,sandstone_desert

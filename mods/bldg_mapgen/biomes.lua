@@ -3,6 +3,16 @@
 -- Register biomes
 --
 
+-- Turn the comma-separated settings value into an easier to work with
+-- table.
+local biomes_str = minetest.settings:get('bldg_biomes') or 'icesheet,taiga,snowy_grassland,grassland,coniferous_forest,deciduous_forest,desert,sandstone_desert'
+local biomes = {}
+for biome in biomes_str:gmatch('[^,%s]+') do
+	biomes[biome] = true
+end
+
+
+if biomes.icesheet then
 -- Icesheet
 
 minetest.register_biome({
@@ -57,7 +67,9 @@ minetest.register_biome({
 	humidity_point = 73,
 })
 
+end
 
+if biomes.taiga then
 -- Taiga
 
 minetest.register_biome({
@@ -110,6 +122,9 @@ minetest.register_biome({
 	humidity_point = 70,
 })
 
+end
+
+if biomes.snowy_grassland then
 -- Snowy grassland
 
 minetest.register_biome({
@@ -162,6 +177,9 @@ minetest.register_biome({
 	humidity_point = 35,
 })
 
+end
+
+if biomes.grassland then
 -- Grassland
 
 minetest.register_biome({
@@ -229,6 +247,9 @@ minetest.register_biome({
 	humidity_point = 35,
 })
 
+end
+
+if biomes.coniferous_forest then
 -- Coniferous forest
 
 minetest.register_biome({
@@ -296,6 +317,9 @@ minetest.register_biome({
 	humidity_point = 70,
 })
 
+end
+
+if biomes.deciduous_forest then
 -- Deciduous forest
 
 minetest.register_biome({
@@ -363,6 +387,9 @@ minetest.register_biome({
 	humidity_point = 68,
 })
 
+end
+
+if biomes.desert then
 -- Desert
 
 minetest.register_biome({
@@ -413,6 +440,9 @@ minetest.register_biome({
 	humidity_point = 16,
 })
 
+end
+
+if biomes.sandstone_desert then
 -- Sandstone desert
 
 minetest.register_biome({
@@ -461,3 +491,5 @@ minetest.register_biome({
 	heat_point = 60,
 	humidity_point = 0,
 })
+
+end
