@@ -12,6 +12,7 @@ local include = rawget(_G, "include") or function(...)
 end
 rawset(_G, "include", include)
 
+include('conf')
 include('leafdecay')
 
 --
