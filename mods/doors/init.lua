@@ -146,10 +146,6 @@ function doors.door_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not bldg.can_interact_with_node(clicker, pos) then
-		return false
-	end
-
 	-- until Lua-5.2 we have no bitwise operators :(
 	if state % 2 == 1 then
 		state = state - 1
@@ -207,7 +203,7 @@ end
 
 local function can_dig_door(pos, digger)
 	replace_old_owner_information(pos)
-	return bldg.can_interact_with_node(digger, pos)
+	return true
 end
 
 function doors.register(name, def)
@@ -429,10 +425,6 @@ function doors.trapdoor_toggle(pos, node, clicker)
 	node = node or minetest.get_node(pos)
 
 	replace_old_owner_information(pos)
-
-	if clicker and not bldg.can_interact_with_node(clicker, pos) then
-		return false
-	end
 
 	local def = minetest.registered_nodes[node.name]
 
