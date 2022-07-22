@@ -5,7 +5,7 @@
 
 -- Turn the comma-separated settings value into an easier to work with
 -- table.
-local biomes_str = minetest.settings:get('bldg_biomes') or 'icesheet,taiga,snowy_grassland,grassland,coniferous_forest,deciduous_forest,desert,sandstone_desert'
+local biomes_str = bldg.conf:get('bldg_biomes') or 'icesheet,taiga,snowy_grassland,grassland,coniferous_forest,deciduous_forest,desert,sandstone_desert'
 local biomes = {}
 for biome in biomes_str:gmatch('[^,%s]+') do
 	biomes[biome] = true

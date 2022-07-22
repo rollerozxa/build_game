@@ -10,8 +10,14 @@ bldg.conf_world = Settings(minetest.get_worldpath()..'/minetest.conf')
 -- then the per-world config overriding any potential overlap.
 bldg.conf = Settings(minetest.get_worldpath()..'/blackhole') -- Just anything to please sandboxer
 for k,v in pairs(global_conf:to_table()) do
-	bldg.conf:set(k,v)
+	if type(v) ~= "table" then
+		bldg.conf:set(k,v)
+	end
 end
 for k,v in pairs(bldg.conf_world:to_table()) do
-	bldg.conf:set(k,v)
+	if type(v) ~= "table" then
+		bldg.conf:set(k,v)
+	end
 end
+
+

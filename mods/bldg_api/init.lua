@@ -1,4 +1,4 @@
-
+bldg = {}
 
 -- Less verbose file include function taken from NodeCore
 -- https://gitlab.com/sztest/nodecore/-/blob/master/mods/nc_api/init.lua
