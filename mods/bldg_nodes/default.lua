@@ -418,7 +418,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		on_construct = function(pos)
-			minetest.get_node_timer(pos):start(math.random(300, 1500))
+			minetest.get_node_timer(pos):start(0.1)
 		end,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -502,7 +502,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		on_construct = function(pos)
-			minetest.get_node_timer(pos):start(math.random(300, 1500))
+			minetest.get_node_timer(pos):start(0.1)
 		end,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -572,7 +572,7 @@ local nodes = {
 		sounds = sound_leaves,
 
 		on_construct = function(pos)
-			minetest.get_node_timer(pos):start(math.random(300, 1500))
+			minetest.get_node_timer(pos):start(0.1)
 		end,
 
 		on_place = function(itemstack, placer, pointed_thing)
@@ -640,7 +640,7 @@ local nodes = {
 		sounds = bldg_sounds.sound_leaves(),
 
 		on_construct = function(pos)
-			minetest.get_node_timer(pos):start(math.random(300, 1500))
+			minetest.get_node_timer(pos):start(0.1)
 		end,
 
 		on_place = function(itemstack, placer, pointed_thing)

@@ -20,7 +20,7 @@ local function leafdecay_after_destruct(pos, oldnode, def)
 		local node = minetest.get_node(v)
 		local timer = minetest.get_node_timer(v)
 		if node.param2 ~= 1 and not timer:is_started() then
-			timer:start(math.random(20, 120) / 10)
+			timer:start(math.random(10, 90) / 100)
 		end
 	end
 end
@@ -28,25 +28,6 @@ end
 local function leafdecay_on_timer(pos, def)
 	if minetest.find_node_near(pos, def.radius, def.trunks) then
 		return false
-	end
-
-	local node = minetest.get_node(pos)
-	local drops = minetest.get_node_drops(node.name)
-	for _, item in ipairs(drops) do
-		local is_leaf
-		for _, v in pairs(def.leaves) do
-			if v == item then
-				is_leaf = true
-			end
-		end
-		if minetest.get_item_group(item, "leafdecay_drop") ~= 0 or
-				not is_leaf then
-			minetest.add_item({
-				x = pos.x - 0.5 + math.random(),
-				y = pos.y - 0.5 + math.random(),
-				z = pos.z - 0.5 + math.random(),
-			}, item)
-		end
 	end
 
 	minetest.remove_node(pos)
