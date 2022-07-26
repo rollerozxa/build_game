@@ -1,4 +1,4 @@
-local get_connected_players,add_hud_waypoint = i3.get("get_connected_players", "add_hud_waypoint")
+local add_hud_waypoint = i3.get("add_hud_waypoint")
 
 local function init_hud(player)
 	local name = player:get_player_name()

@@ -1,5 +1,5 @@
 local set_fs = i3.set_fs
-local fmt, play_sound = i3.get("fmt", "play_sound")
+local play_sound = i3.get("play_sound")
 
 local trash = minetest.create_detached_inventory("i3_trash", {
 	allow_put = function(_, _, _, stack)
@@ -19,5 +19,3 @@ local trash = minetest.create_detached_inventory("i3_trash", {
 })
 
 trash:set_size("main", 1)
-
-return init_detached

@@ -1,6 +1,6 @@
 
 if minetest.is_creative_enabled("") then
-	local instant = {times = {[2] = digtime, [3] = 0}, uses = 0, maxlevel = 256}
+	local instant = {times = {[2] = 0, [3] = 0}, uses = 0, maxlevel = 256}
 
 	-- Override the hand tool
 	minetest.override_item("", {

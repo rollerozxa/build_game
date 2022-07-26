@@ -201,11 +201,6 @@ local function on_place_node(place_to, newnode,
 	end
 end
 
-local function can_dig_door(pos, digger)
-	replace_old_owner_information(pos)
-	return true
-end
-
 function doors.register(name, def)
 	if not name:find(":") then
 		name = "doors:" .. name
@@ -219,7 +214,7 @@ function doors.register(name, def)
 		on_place = function(itemstack, placer, pointed_thing)
 			local pos
 
-			if not pointed_thing.type == "node" then
+			if pointed_thing.type ~= "node" then
 				return itemstack
 			end
 

@@ -247,8 +247,6 @@ local function play_sound(name, sound, volume)
 end
 
 local function safe_teleport(player, pos)
-	local name = player:get_player_name()
-
 	local vel = player:get_velocity()
 	player:add_velocity(vector.multiply(vel, -1))
 

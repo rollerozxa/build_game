@@ -1,6 +1,4 @@
 
-local random = math.random
-
 --
 -- Grow trees from saplings
 --
@@ -32,7 +30,6 @@ function bldg.grow_sapling(pos)
 		return
 	end
 
-	local mg_name = minetest.get_mapgen_setting("mg_name")
 	local node = minetest.get_node(pos)
 	if node.name == "bldg_nodes:sapling" then
 		minetest.log("action", "A sapling grows into a tree at "..

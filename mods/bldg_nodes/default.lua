@@ -7,7 +7,6 @@ local sound_leaves = bldg_sounds.sound_leaves()
 local sound_glass = bldg_sounds.sound_glass()
 local sound_ice = bldg_sounds.sound_ice()
 local sound_metal = bldg_sounds.sound_metal()
-local sound_water = bldg_sounds.sound_water()
 local sound_snow = bldg_sounds.sound_snow()
 
 -- Required wrapper to allow customization of bldg.after_place_leaves

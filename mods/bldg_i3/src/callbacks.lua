@@ -1,10 +1,9 @@
 local storage = ...
 local fill_caches = i3.files.caches()
-local init_detached = i3.files.detached()
 local init_hud = i3.files.hud()
 local set_fs = i3.set_fs
 
-local spawn_item, reset_data, get_detached_inv = i3.get("spawn_item", "reset_data", "get_detached_inv")
+local reset_data = i3.get("reset_data")
 
 minetest.register_on_player_hpchange(function(player, hpchange)
 	local name = player:get_player_name()
@@ -47,20 +46,8 @@ if minetest.global_exists("skins") then
 	i3.modules.skins = true
 end
 
-local function disable_inventories()
-	if rawget(_G, "sfinv") then
-		function sfinv.set_player_inventory_formspec() return end
-		sfinv.enabled = false
-	end
-
-	if rawget(_G, "unified_inventory") then
-		function unified_inventory.set_inventory_formspec() return end
-	end
-end
-
 minetest.register_on_mods_loaded(function()
 	fill_caches()
-	disable_inventories()
 end)
 
 local function get_lang_code(info)

@@ -1,9 +1,9 @@
 local set_fs = i3.set_fs
 
 local S = i3.get("S")
-local fmt, sub, toupper = i3.get("fmt", "toupper")
+local fmt = i3.get("fmt")
 local msg, add_hud_waypoint, play_sound, reset_data = i3.get("msg", "add_hud_waypoint", "play_sound", "reset_data")
-local search, get_sorting_idx, sort_inventory, sort_by_category, get_recipes, get_detached_inv = i3.get("search", "get_sorting_idx", "sort_inventory", "sort_by_category", "get_recipes", "get_detached_inv")
+local search, get_sorting_idx, sort_inventory, sort_by_category, get_recipes = i3.get("search", "get_sorting_idx", "sort_inventory", "sort_by_category", "get_recipes")
 local valid_item, get_stack, clean_name, compressible, safe_teleport = i3.get("valid_item", "get_stack", "clean_name", "compressible", "safe_teleport")
 
 local function inv_fields(player, data, fields)
@@ -11,11 +11,11 @@ local function inv_fields(player, data, fields)
 	local inv = player:get_inventory()
 	local sb_inv = fields.scrbar_inv
 
-	if fields.skins then
+	--[[if fields.skins then
 		local id = tonumber(fields.skins)
 		local _skins = skins.get_skinlist_for_player(name)
 		skins.set_player_skin(player, _skins[id])
-	end
+	end]]
 
 	for field in pairs(fields) do
 		if string.sub(field, 1, 4) == "btn_" then
@@ -184,10 +184,10 @@ local function inv_fields(player, data, fields)
 	return set_fs(player)
 end
 
-local function select_item(player, data, _f)
+local function select_item(player, data, fields)
 	local item
 
-	for field in pairs(_f) do
+	for field in pairs(fields) do
 		if string.find(field, ":") then
 			item = field
 			break
@@ -276,8 +276,6 @@ local function select_item(player, data, _f)
 end
 
 local function rcp_fields(player, data, fields)
-	local sb_rcp, sb_usg = fields.scrbar_rcp, fields.scrbar_usg
-
 	if fields.cancel then
 		reset_data(data)
 

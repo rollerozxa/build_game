@@ -1,5 +1,4 @@
 
-local sound_dirt = bldg_sounds.sound_dirt()
 local sound_wood = bldg_sounds.sound_wood()
 local sound_stone = bldg_sounds.sound_stone()
 local sound_glass = bldg_sounds.sound_glass()

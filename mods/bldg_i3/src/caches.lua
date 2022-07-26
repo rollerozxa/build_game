@@ -1,11 +1,9 @@
 local PNG = i3.files.styles()
-local replacements = {fuel = {}}
 
-local fmt = i3.get("fmt")
 local true_table, is_table, valid_item = i3.get("true_table", "is_table", "valid_item")
 
 local function init_recipes()
-	local _select, _preselect = {}, {}
+	local _preselect = {}
 
 	for name, def in pairs(minetest.registered_items) do
 		if name ~= "" and valid_item(def) then
@@ -15,7 +13,6 @@ local function init_recipes()
 
 	for name in pairs(_preselect) do
 		table.insert(i3.init_items, name)
-		_select[name] = true
 	end
 
 	table.sort(i3.init_items)

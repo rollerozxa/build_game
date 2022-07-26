@@ -2,7 +2,7 @@ local make_fs, get_inventory_fs = i3.files.gui()
 
 local S, err, fmt = i3.get("S", "err", "fmt")
 local sorter, sort_inventory = i3.get("sorter", "sort_inventory")
-local true_str, true_table, is_str, is_func, is_table, clean_name = i3.get("true_str", "true_table", "is_str", "is_func", "is_table", "clean_name")
+local true_str, true_table, is_str, is_func, is_table = i3.get("true_str", "true_table", "is_str", "is_func", "is_table")
 
 function i3.add_recipe_filter(name, f)
 	if not true_str(name) then

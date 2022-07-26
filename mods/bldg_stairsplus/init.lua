@@ -7,19 +7,10 @@ Licensed under the zlib license. See LICENSE.md for more information.
 
 -- Nodes will be called <modname>:{stair,slab,panel,micro,slope}_<subname>
 
-local modpath = minetest.get_modpath("bldg_stairsplus")
-
 stairsplus = {}
-stairsplus.expect_infinite_stacks = false
 
+stairsplus.registered_nodes = {}
 stairsplus.shapes_list = {}
-
-if
-	not minetest.get_modpath("unified_inventory")
-	and minetest.settings:get_bool("creative_mode")
-then
-	stairsplus.expect_infinite_stacks = true
-end
 
 function stairsplus:prepare_groups(groups)
 	local result = {}
@@ -30,9 +21,6 @@ function stairsplus:prepare_groups(groups)
 			end
 		end
 	end
-	--if not moreblocks.config.stairsplus_in_creative_inventory then
-	--	result.not_in_creative_inventory = 1
-	--end
 	return result
 end
 

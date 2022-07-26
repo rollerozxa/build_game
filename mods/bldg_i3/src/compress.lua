@@ -270,8 +270,8 @@ local moreblocks_mods = {
 
 local t = {}
 
-for mod, v in pairs(moreblocks_mods) do
-mod = "bldg_stairsplus"
+for _, v in pairs(moreblocks_mods) do
+local mod = "bldg_stairsplus"
 for _, nodename in ipairs(v) do
 	t[nodename] = {}
 

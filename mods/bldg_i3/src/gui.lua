@@ -9,10 +9,9 @@ local VoxelArea, VoxelManip = VoxelArea, VoxelManip
 local upper = i3.get("upper")
 local msg = i3.get("msg")
 local round = i3.get("round")
-local get_detached_inv = i3.get("get_detached_inv")
-local S, ES, toupper = i3.get("S", "ES", "toupper")
+local ES, toupper = i3.get("ES", "toupper")
 local compression_active, compressible = i3.get("compression_active", "compressible")
-local true_str, is_num = i3.get("true_str", "is_num")
+local true_str = i3.get("true_str")
 local unpack = i3.get("unpack")
 local get_sorting_idx, get_recipes = i3.get("get_sorting_idx", "get_recipes")
 
@@ -242,11 +241,11 @@ local function get_container(fs, data, player, yoffset, ctn_len)
 	fs("box", 0, yextra + 0.45, ctn_len, 0.045, "#bababa50")
 	fs("box", (data.subcat - 1) * 1.18, yextra + 0.45, 1, 0.045, "#f9826c")
 
-	local function not_installed(modname)
+	--[[local function not_installed(modname)
 		fs("hypertext", 0, yextra + 0.9, ctn_len, 0.6, "not_installed",
 			fmt("<global size=16><center><style color=%s font=mono>%s</style> not installed</center>",
 				colors.blue, modname))
-	end
+	end]]
 
 	if data.subcat == 1 then
 		get_waypoint_fs(fs, data, player, yextra, ctn_len)
