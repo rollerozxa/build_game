@@ -204,7 +204,6 @@ local nodes = {
 		sounds = bldg_sounds.sound_dirt({
 			footstep = {name = "default_grass_footstep", gain = 0.25},
 		}),
-		no_stairs = true,
 	},
 	dirt_with_dry_grass = {
 		description = "Dirt with Savanna Grass",

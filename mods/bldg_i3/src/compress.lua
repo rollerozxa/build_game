@@ -193,6 +193,7 @@ local moreblocks_nodes = {
 	"obsidian_block",
 
 	"dirt",
+	"dirt_with_grass",
 	"ice",
 	"snowblock",
 
