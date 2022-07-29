@@ -1,6 +1,6 @@
 
 local function on_flood(pos, oldnode, newnode)
-	minetest.add_item(pos, ItemStack("bldg_nodes:torch 1"))
+	minetest.add_item(pos, ItemStack("bldg_torches:torch 1"))
 	-- Play flame-extinguish sound if liquid is not an 'igniter'
 	local nodedef = minetest.registered_items[newnode.name]
 	if not (nodedef and nodedef.groups and
@@ -54,15 +54,15 @@ minetest.register_node("bldg_torches:torch", {
 		local wdir = minetest.dir_to_wallmounted(vector.subtract(under, above))
 		local fakestack = itemstack
 		if wdir == 0 then
-			fakestack:set_name("bldg_nodes:torch_ceiling")
+			fakestack:set_name("bldg_torches:torch_ceiling")
 		elseif wdir == 1 then
-			fakestack:set_name("bldg_nodes:torch")
+			fakestack:set_name("bldg_torches:torch")
 		else
-			fakestack:set_name("bldg_nodes:torch_wall")
+			fakestack:set_name("bldg_torches:torch_wall")
 		end
 
 		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
-		itemstack:set_name("bldg_nodes:torch")
+		itemstack:set_name("bldg_torches:torch")
 
 		return itemstack
 	end,
