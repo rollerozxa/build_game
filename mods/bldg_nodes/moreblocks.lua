@@ -317,6 +317,9 @@ for name, def in pairs(nodes) do
 		def_copy.drawtype == "glasslike_framed_optional"
 	then
 		def.tiles = {def_copy.tiles[1]}
+		def.use_texture_alpha = "clip"
+	else
+		def.use_texture_alpha = "opaque"
 	end
 
 	if not def.no_stairs then
@@ -328,6 +331,7 @@ for name, def in pairs(nodes) do
 			tiles = def.tiles,
 			sunlight_propagates = def.sunlight_propagates,
 			light_source = def.light_source,
+			use_texture_alpha = def.use_texture_alpha,
 			sounds = def.sounds,
 		})
 		stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)

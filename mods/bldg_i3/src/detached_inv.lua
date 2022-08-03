@@ -19,3 +19,5 @@ local trash = minetest.create_detached_inventory("i3_trash", {
 })
 
 trash:set_size("main", 1)
+
+return init_detached

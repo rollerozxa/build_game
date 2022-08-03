@@ -1082,6 +1082,7 @@ for name, def in pairs(nodes) do
 		if #ndef.tiles > 1 and ndef.drawtype and ndef.drawtype:find("glass") then
 			ndef.tiles = {ndef.tiles[1]}
 			ndef.paramtype2 = nil
+			ndef.use_texture_alpha = "clip"
 		end
 
 		stairsplus:register_all("bldg_stairsplus", name, "bldg_nodes:" .. name, ndef)
