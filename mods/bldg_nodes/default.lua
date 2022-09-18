@@ -450,6 +450,17 @@ local nodes = {
 		no_stairs = true,
 	},
 
+	jungle_wood = {
+		description = "Jungle Wood Planks",
+		paramtype2 = "facedir",
+		place_param2 = 0,
+		tiles = {"default_junglewood.png"},
+		is_ground_content = false,
+		groups = {wood=1},
+		sounds = sound_wood,
+		original_itemstring = "default:junglewood",
+	},
+
 	pine_tree = {
 		description = "Pine Tree",
 		tiles = {
