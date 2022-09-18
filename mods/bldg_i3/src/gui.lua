@@ -14,6 +14,22 @@ local compression_active, compressible = i3.get("compression_active", "compressi
 local true_str = i3.get("true_str")
 local unpack = i3.get("unpack")
 local get_sorting_idx, get_recipes = i3.get("get_sorting_idx", "get_recipes")
+local play_sound = i3.get("play_sound")
+
+local trash = minetest.create_detached_inventory("i3_trash", {
+	allow_put = function(_, _, _, stack)
+		return stack:get_count()
+	end,
+
+	on_put = function(inv, listname, _, _, player)
+		inv:set_list(listname, {})
+
+		local name = player:get_player_name()
+		play_sound(name, "i3_trash", 1.0)
+	end,
+})
+
+trash:set_size("main", 1)
 
 local function fmt(elem, ...)
 	if not fs_elements[elem] then
