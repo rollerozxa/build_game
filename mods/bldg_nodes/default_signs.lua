@@ -51,7 +51,10 @@ local function register_sign(material, desc, def)
 			end
 		end,
 	})
-	minetest.register_alias("default:sign_wall_" .. material, "bldg_nodes:sign_wall_" .. material)
+
+	if do_compat then
+		minetest.register_alias("default:sign_wall_" .. material, "bldg_nodes:sign_wall_" .. material)
+	end
 end
 
 register_sign("wood", "Wooden Sign", {

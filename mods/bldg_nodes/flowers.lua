@@ -67,5 +67,7 @@ for name, def in pairs(nodes) do
 
 	minetest.register_node("bldg_nodes:"..name, def)
 
-	minetest.register_alias("flowers:"..name, "bldg_nodes:"..name)
+	if do_compat then
+		minetest.register_alias("flowers:"..name, "bldg_nodes:"..name)
+	end
 end

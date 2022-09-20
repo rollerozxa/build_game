@@ -27,12 +27,13 @@ for i = 1, #dyes do
 		sounds = bldg_sounds.sound(),
 	})
 
-	minetest.register_alias("wool:"..name, "bldg_nodes:wool_"..name)
-
 	local ndef = table.copy(minetest.registered_nodes[nodename])
 	ndef.sunlight_propagates = true
 
 	stairsplus:register_all("bldg_stairsplus", "wool_"..name, nodename, ndef)
 
-	stairsplus:register_alias_all("wool", name, "bldg_stairsplus", "wool_"..name)
+	if do_compat then
+		minetest.register_alias("wool:"..name, "bldg_nodes:wool_"..name)
+		stairsplus:register_alias_all("wool", name, "bldg_stairsplus", "wool_"..name)
+	end
 end

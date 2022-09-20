@@ -33,7 +33,9 @@ function register_mesepost(name, def)
 	def.texture = nil
 
 	minetest.register_node("bldg_nodes:"..name, def)
-	minetest.register_alias("default:"..name, "bldg_nodes:"..name)
+	if do_compat then
+		minetest.register_alias("default:"..name, "bldg_nodes:"..name)
+	end
 end
 
 register_mesepost("mese_post_light", {

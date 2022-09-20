@@ -1118,7 +1118,9 @@ for name, def in pairs(nodes) do
 		original_itemstring = def.original_itemstring
 	end
 
-	minetest.register_alias(original_itemstring, "bldg_nodes:"..name)
+	if do_compat then
+		minetest.register_alias(original_itemstring, "bldg_nodes:"..name)
+	end
 
 	if not def.no_stairs then
 		local ndef = table.copy(def)
@@ -1140,13 +1142,15 @@ for name, def in pairs(nodes) do
 
 		local origname = original_itemstring:gsub("default:", "")
 
-		-- non-moreblocks MTG compat
-		minetest.register_alias_force("stairs:stair_" .. origname, "bldg_stairsplus:stair_" .. name)
-		minetest.register_alias_force("stairs:stair_outer_" .. origname, "bldg_stairsplus:stair_" .. name .. "_outer")
-		minetest.register_alias_force("stairs:stair_inner_" .. origname, "bldg_stairsplus:stair_" .. name .. "_inner")
-		minetest.register_alias_force("stairs:slab_"  .. origname, "bldg_stairsplus:slab_"  .. name)
+		if do_compat then
+			-- non-moreblocks MTG compat
+			minetest.register_alias_force("stairs:stair_" .. origname, "bldg_stairsplus:stair_" .. name)
+			minetest.register_alias_force("stairs:stair_outer_" .. origname, "bldg_stairsplus:stair_" .. name .. "_outer")
+			minetest.register_alias_force("stairs:stair_inner_" .. origname, "bldg_stairsplus:stair_" .. name .. "_inner")
+			minetest.register_alias_force("stairs:slab_"  .. origname, "bldg_stairsplus:slab_"  .. name)
 
-		-- moreblocks stairs+ compat
-		stairsplus:register_alias_all("moreblocks", origname, "bldg_stairsplus", name)
+			-- moreblocks stairs+ compat
+			stairsplus:register_alias_all("moreblocks", origname, "bldg_stairsplus", name)
+		end
 	end
 end

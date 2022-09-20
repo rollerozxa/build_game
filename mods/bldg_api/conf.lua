@@ -19,5 +19,3 @@ for k,v in pairs(bldg.conf_world:to_table()) do
 		bldg.conf:set(k,v)
 	end
 end
-
-

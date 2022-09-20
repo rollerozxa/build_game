@@ -121,7 +121,9 @@ minetest.register_node("bldg_torches:torch_ceiling", {
 	on_rotate = false
 })
 
--- Compatibility for MTG
-minetest.register_alias("default:torch", "bldg_torches:torch")
-minetest.register_alias("default:torch_wall", "bldg_torches:torch_wall")
-minetest.register_alias("default:torch_ceiling", "bldg_torches:torch_ceiling")
+if do_compat then
+	-- Compatibility for MTG
+	minetest.register_alias("default:torch", "bldg_torches:torch")
+	minetest.register_alias("default:torch_wall", "bldg_torches:torch_wall")
+	minetest.register_alias("default:torch_ceiling", "bldg_torches:torch_ceiling")
+end

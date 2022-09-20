@@ -1,4 +1,6 @@
 
+do_compat = bldg.conf:get('bldg_compat')
+
 include("default")
 include("default_fences")
 include("default_mesepost")

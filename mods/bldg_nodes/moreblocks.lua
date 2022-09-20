@@ -334,6 +334,9 @@ for name, def in pairs(nodes) do
 			use_texture_alpha = def.use_texture_alpha,
 			sounds = def.sounds,
 		})
-		stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)
+
+		if do_compat then
+			stairsplus:register_alias_all("moreblocks", name, "bldg_stairsplus", name)
+		end
 	end
 end
