@@ -824,11 +824,6 @@ local nodes = {
 		groups = {leaves=1},
 		sounds = sound_leaves,
 		node_dig_prediction = "bldg_nodes:blueberry_bush_leaves",
-
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			minetest.set_node(pos, {name = "bldg_nodes:blueberry_bush_leaves"})
-			minetest.get_node_timer(pos):start(math.random(300, 1500))
-		end,
 		no_stairs = true,
 	},
 	blueberry_bush_leaves = {
@@ -838,15 +833,6 @@ local nodes = {
 		paramtype = "light",
 		groups = {leaves=1},
 		sounds = sound_leaves,
-
-		on_timer = function(pos, elapsed)
-			if minetest.get_node_light(pos) < 11 then
-				minetest.get_node_timer(pos):start(200)
-			else
-				minetest.set_node(pos, {name = "bldg_nodes:blueberry_bush_leaves_with_berries"})
-			end
-		end,
-
 		after_place_node = after_place_leaves,
 		no_stairs = true,
 	},

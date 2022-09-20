@@ -1,15 +1,3 @@
-print[[
-
-	Powered by
-
-	██╗██████╗
-	██║╚════██╗
-	██║ █████╔╝
-	██║ ╚═══██╗
-	██║██████╔╝
-	╚═╝╚═════╝
-]]
-
 local storage = minetest.get_mod_storage()
 
 local function lf(path)
@@ -46,7 +34,6 @@ i3 = {
 		callbacks = lf"/src/callbacks.lua",
 		common = lf"/src/common.lua",
 		compress = lf"/src/compress.lua",
-		detached = lf"/src/detached_inv.lua",
 		fields = lf"/src/fields.lua",
 		gui = lf"/src/gui.lua",
 		hud = lf"/src/hud.lua",
