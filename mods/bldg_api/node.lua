@@ -1,7 +1,5 @@
 
-buildgame = {}
-
-function buildgame.register_node(def)
+function bldg.register_node(def)
 	-- Shorthand, which is disabled if someone uses the long form
 	local name
 	if not def.name:find(":") then

@@ -1,3 +1,4 @@
+
 bldg = {}
 
 -- Less verbose file include function taken from NodeCore
@@ -14,6 +15,7 @@ rawset(_G, "include", include)
 
 include('conf')
 include('leafdecay')
+include('node')
 
 --
 -- Dig upwards
