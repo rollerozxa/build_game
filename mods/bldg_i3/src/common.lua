@@ -85,7 +85,7 @@ local function search(data)
 		local item = data.items_raw[i]
 		local def = minetest.registered_items[item]
 		local desc = string.lower(minetest.get_translated_string(data.lang_code, def and def.description)) or ""
-		local search_in = fmt("%s %s", item, desc)
+		local search_in = fmt("%s", desc)
 		local temp, j, to_add = {}, 1
 
 		if search_filter then
