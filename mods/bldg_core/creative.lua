@@ -4,7 +4,7 @@ if minetest.is_creative_enabled("") then
 
 	-- Override the hand tool
 	minetest.override_item("", {
-		range = 15,
+		range = 12,
 		tool_capabilities = {
 			max_drop_level = 3,
 			groupcaps = {

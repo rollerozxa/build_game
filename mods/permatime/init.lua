@@ -49,7 +49,7 @@ minetest.register_chatcommand("permatime", {
 	description = "Set the permanent time",
 	privs = {},
 	func = function(name, param)
-		if not core.get_player_privs(name).settime then
+		if not minetest.get_player_privs(name).settime then
 			return false, "You don't have permission to run this command (missing privilege: settime)."
 		end
 

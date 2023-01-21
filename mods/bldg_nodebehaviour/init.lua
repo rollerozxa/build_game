@@ -39,7 +39,7 @@ minetest.register_abm({
 		"bldg_nodes:snow",
 	},
 	interval = 6,
-	chance = 50,
+	chance = 1,
 	catch_up = false,
 	action = function(pos, node)
 		-- Check for darkness: night, shadow or under a light-blocking node
@@ -78,8 +78,8 @@ minetest.register_abm({
 minetest.register_abm({
 	label = "Grass covered",
 	nodenames = {"group:spreading_dirt_type", "bldg_nodes:dry_dirt_with_dry_grass"},
-	interval = 8,
-	chance = 50,
+	interval = 6,
+	chance = 1,
 	catch_up = false,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -93,36 +93,6 @@ minetest.register_abm({
 			else
 				minetest.set_node(pos, {name = "bldg_nodes:dirt"})
 			end
-		end
-	end
-})
-
-
---
--- Moss growth on cobble near water
---
-
-local moss_correspondences = {
-	["bldg_nodes:cobble"] = "bldg_nodes:mossycobble",
-	["stairs:slab_cobble"] = "stairs:slab_mossycobble",
-	["stairs:stair_cobble"] = "stairs:stair_mossycobble",
-	["stairs:stair_inner_cobble"] = "stairs:stair_inner_mossycobble",
-	["stairs:stair_outer_cobble"] = "stairs:stair_outer_mossycobble",
-	["walls:cobble"] = "walls:mossycobble",
-}
-minetest.register_abm({
-	label = "Moss growth",
-	nodenames = {"bldg_nodes:cobble", "stairs:slab_cobble", "stairs:stair_cobble",
-		"stairs:stair_inner_cobble", "stairs:stair_outer_cobble",
-		"walls:cobble"},
-	neighbors = {"group:water"},
-	interval = 16,
-	chance = 200,
-	catch_up = false,
-	action = function(pos, node)
-		node.name = moss_correspondences[node.name]
-		if node.name then
-			minetest.set_node(pos, node)
 		end
 	end
 })

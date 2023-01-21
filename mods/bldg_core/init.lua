@@ -3,7 +3,7 @@
 -- global build game namespace
 bldg = {}
 
-minetest.override_item("", {
+minetest.register_craftitem(":", {
 	wield_image = "wieldhand.png",
 	wield_scale = { x = 1, y = 1, z = 2.5 },
 	tool_capabilities = {

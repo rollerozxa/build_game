@@ -7,18 +7,6 @@ Licensed under the zlib license. See LICENSE.md for more information.
 
 -- Node will be called <modname>:slab_<subname>
 
--- luacheck: no unused
-local function register_slab(modname, subname, recipeitem, groups, images, description, drop, light)
-	stairsplus:register_slab(modname, subname, recipeitem, {
-		groups = groups,
-		tiles = images,
-		description = description,
-		drop = drop,
-		light_source = light,
-		sounds = default.sound_stone(),
-	})
-end
-
 function stairsplus:register_slab_alias(modname_old, subname_old, modname_new, subname_new)
 	local defs = table.copy(stairsplus.defs["slab"])
 	for alternate, def in pairs(defs) do

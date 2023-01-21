@@ -61,18 +61,6 @@ local subset = {
 }
 --]]
 
--- luacheck: no unused
-local function register_custom_subset(subset, modname, subname, recipeitem, groups, images, description, drop, light)
-	stairsplus:register_custom_subset(subset, modname, subname, recipeitem, {
-		groups = groups,
-		tiles = images,
-		description = description,
-		drop = drop,
-		light_source = light,
-		sounds = default.sound_stone(),
-	})
-end
-
 function stairsplus:register_custom_subset_alias(subset, modname_old, subname_old, modname_new, subname_new)
 	local subset_copy = table.copy(subset)
 	for k, v in pairs(subset_copy) do

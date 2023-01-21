@@ -1,7 +1,7 @@
 local fmt = i3.get("fmt")
 
 local wood_types = {
-	"acacia_wood", "aspen_wood", "junglewood", "pine_wood",
+	"acacia_wood", "aspen_wood", "jungle_wood", "pine_wood",
 }
 
 local material_tools = {
@@ -259,6 +259,7 @@ local moreblocks_nodes = {
 	"coal_glass",
 
 	"straw",
+	"jungle_wood"
 }
 
 local colors_moreblocks = table.copy(wool_colours)

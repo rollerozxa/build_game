@@ -23,3 +23,7 @@
 
 # GIMP source files
 *.xcf
+
+# blarg
+mods/bldg_api_tests
+
