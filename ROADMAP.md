@@ -12,5 +12,7 @@ Think of it like [Dreambuilder](https://content.minetest.net/packages/VanessaE/d
 - Detailed furniture blocks or the like (homedecor)
 - Regular survival items or crafting recipes (It is intended to be played primarily in creative)
 
+This can all be added separately though, any game agnostic mod should be able to be installed on top and work.
+
 ## World compatibility
 Build Game is intended to be more or less compatible with worlds initially created in Minetest Game. There are some things Build Game lacks (insects, items, some removed MTG blocks...) but most basic nodes should be compatible and transfer over.
