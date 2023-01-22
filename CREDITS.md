@@ -11,4 +11,5 @@ Build Game itself is based off of Minetest Game, and makes use of code and asset
 - `pickblock`
 - `redef` (cut down into `bldg_redef`)
 - `unifiedbricks`
+- `terraform`
 - `worldedit`
