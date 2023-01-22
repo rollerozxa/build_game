@@ -108,7 +108,7 @@ local to_compress = {
 
 	["walls:cobble"] = {
 		replace = "cobble",
-		by = {"desertcobble", "mossycobble"}
+		by = material_stairs
 	},
 }
 
