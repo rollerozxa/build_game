@@ -1,6 +1,6 @@
 
-# Tip: These settings can all be configured per-world by putting the settings in a file called `minetest.conf` in your
-#
+# Tip: These settings can all be configured per-world by putting the settings in a file called `minetest.conf` in your world folder. Only Build Game settings (and mods that
+# may hook into Build Game's settings API) can be used in this file.
 
 
 
@@ -8,6 +8,9 @@
 #	change this on an existing world as it will cause issues in mapgen, only
 #	use it on a new world or one where you've nuked the map database.
 bldg_biomes (Biomes) string icesheet,taiga,snowy_grassland,grassland,coniferous_forest,deciduous_forest,desert,sandstone_desert
+
+#	Toggles ore generation. (Includes mineral ores and other materials)
+bldg_ores (Generate ores) bool true
 
 #	Enable compatibility with old MTG worlds and mods which are part of Build Game.
 #	If you have a new world then this is more or less unnecessary, this is if you want

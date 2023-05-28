@@ -3,7 +3,7 @@
 Build Game as a whole is licensed under the AGPLv3 license.
 
 	Build Game
-	Copyright (C) 2022 ROllerozxa
+	Copyright (C) 2022-2023 ROllerozxa
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as published
@@ -18,7 +18,8 @@ Build Game as a whole is licensed under the AGPLv3 license.
 	You should have received a copy of the GNU Affero General Public License
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-Build Game makes use of code from Minetest Game licensed under LGPLv2.1, and other third-party mods under their respective license. Please check the license and/or readme file in each mod folder.
+Build Game makes use of code from Minetest Game licensed under LGPLv2.1, and other third-party mods under their respective license.
+Please check the license and/or readme file in each mod folder.
 
 
 == Media ==

@@ -9,4 +9,8 @@ minetest.register_alias("mapgen_river_water_source", "bldg_nodes:river_water_sou
 include("biomes")
 include("decorations")
 include("flowers")
-include("ores")
+
+local use_ores = bldg.conf:get('bldg_ores') or true
+if use_ores then
+	include("ores")
+end
